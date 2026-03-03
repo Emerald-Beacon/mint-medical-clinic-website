@@ -13,6 +13,118 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Product",
+                "@id": "https://mintmedicalclinic.com/Products/colon-cleanse.html#product",
+                "name": "Colon Cleanse",
+                "description": "A gentle yet effective physician-formulated colon cleanse designed to support digestive health, promote regularity, and help eliminate toxins.",
+                "image": "https://mintmedicalclinic.com/Products/MN-CLEANSE-FRONT@3x.jpg",
+                "brand": {
+                    "@type": "MedicalBusiness",
+                    "name": "Mint Medical Clinic"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "79.00",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "priceValidUntil": "2026-12-31",
+                    "url": "https://mintmedicalclinic.com/Products/colon-cleanse.html"
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is Colon Cleanse?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "A physician-formulated digestive support supplement designed to promote healthy elimination and gut health. This natural formula contains carefully selected fibers and gentle cleansing agents that work together to support your digestive system."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does Colon Cleanse work?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Contains natural fibers and gentle cleansing agents that support regular bowel movements and digestive comfort. The formula promotes natural peristalsis (the movement of food through the digestive tract) while helping to eliminate toxins and waste buildup."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What are the benefits?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Promotes regularity, supports digestive health, may reduce bloating, and aids natural detoxification. Many users report feeling lighter, more energetic, and experiencing improved digestive comfort after completing a cleanse cycle."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Who should use Colon Cleanse?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Those experiencing occasional constipation, bloating, or seeking digestive optimization. It's also beneficial for individuals starting a new wellness program, looking to support their weight loss journey, or wanting to reset their digestive system periodically."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How often should I take it?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Follow physician instructions; typically used as needed or as part of a wellness protocol. Most patients use Colon Cleanse in 7-14 day cycles, though your doctor will provide specific guidance based on your individual health needs and goals."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Are there side effects?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Generally well-tolerated; may cause initial digestive changes as your body adjusts. Some users may experience mild cramping or more frequent bowel movements during the first few days. Staying well-hydrated minimizes any discomfort."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do I need a prescription?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, available through telehealth consultation with our physicians. While Colon Cleanse contains natural ingredients, our doctors review your health history and current medications to ensure it's safe and appropriate for you, and provide personalized usage guidance."
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://mintmedicalclinic.com/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Products",
+                        "item": "https://mintmedicalclinic.com/products.html"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Colon Cleanse",
+                        "item": "https://mintmedicalclinic.com/Products/colon-cleanse.html"
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+
     <!-- Snipcart -->
     <script>
         window.SnipcartSettings = {
@@ -43,8 +155,31 @@
                 </a>
                 <ul class="nav-links">
                     <li class="mobile-cta"><a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-primary">Book Consultation</a></li>
-                    <li><a href="/services.html">Services</a></li>
-                    <li><a href="/products.html">Products</a></li>
+                    <li class="has-dropdown">
+                        <a href="/services.html">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/services/acoustic-wave-therapy.html">Acoustic Wave Therapy</a></li>
+                            <li><a href="/services/trifecta-protocol.html">Trifecta Protocol</a></li>
+                            <li><a href="/services/hormone-therapy.html">Hormone Therapy</a></li>
+                            <li><a href="/services/glp1-weight-loss.html">GLP-1 Weight Loss</a></li>
+                            <li><a href="/services/womens-health.html">Women's Health</a></li>
+                            <li><a href="/services/peptides.html">Peptide Therapy</a></li>
+                            <li><a href="/services/mint-contouring.html">Mint Contouring</a></li>
+                            <li><a href="/services/telehealth-ed.html">Telehealth ED</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="/products.html">Products</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Products/test-boost.html">Test Boost</a></li>
+                            <li><a href="/Products/vaso-pump.html">Vaso Pump</a></li>
+                            <li><a href="/Products/estro-block.html">Estro Block</a></li>
+                            <li><a href="/Products/glp1-support-protein.html">GLP-1 Support Protein</a></li>
+                            <li><a href="/Products/super-ionic-mint-minerals.html">Super Ionic Minerals</a></li>
+                            <li><a href="/Products/glp1.html">GLP-1</a></li>
+                            <li><a href="/Products/colon-cleanse.html">Colon Cleanse</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/about.html">About</a></li>
                     <li><a href="/process.html">Our Process</a></li>
                     <li><a href="/results.html">Results</a></li>
@@ -247,6 +382,46 @@
                     <h4>Mint Contouring</h4>
                     <p>Non-invasive body sculpting</p>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="service-faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Common Questions</span>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>What is Colon Cleanse?</h3>
+                    <p>A physician-formulated digestive support supplement designed to promote healthy elimination and gut health. This natural formula contains carefully selected fibers and gentle cleansing agents that work together to support your digestive system.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How does Colon Cleanse work?</h3>
+                    <p>Contains natural fibers and gentle cleansing agents that support regular bowel movements and digestive comfort. The formula promotes natural peristalsis (the movement of food through the digestive tract) while helping to eliminate toxins and waste buildup.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What are the benefits?</h3>
+                    <p>Promotes regularity, supports digestive health, may reduce bloating, and aids natural detoxification. Many users report feeling lighter, more energetic, and experiencing improved digestive comfort after completing a cleanse cycle.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Who should use Colon Cleanse?</h3>
+                    <p>Those experiencing occasional constipation, bloating, or seeking digestive optimization. It's also beneficial for individuals starting a new wellness program, looking to support their weight loss journey, or wanting to reset their digestive system periodically.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How often should I take it?</h3>
+                    <p>Follow physician instructions; typically used as needed or as part of a wellness protocol. Most patients use Colon Cleanse in 7-14 day cycles, though your doctor will provide specific guidance based on your individual health needs and goals.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are there side effects?</h3>
+                    <p>Generally well-tolerated; may cause initial digestive changes as your body adjusts. Some users may experience mild cramping or more frequent bowel movements during the first few days. Staying well-hydrated minimizes any discomfort.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do I need a prescription?</h3>
+                    <p>Yes, available through telehealth consultation with our physicians. While Colon Cleanse contains natural ingredients, our doctors review your health history and current medications to ensure it's safe and appropriate for you, and provide personalized usage guidance.</p>
+                </div>
             </div>
         </div>
     </section>

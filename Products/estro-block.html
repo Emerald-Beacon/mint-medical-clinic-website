@@ -23,6 +23,123 @@
 
         (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
     </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Product",
+                "@id": "https://mintmedicalclinic.com/Products/estro-block.html#product",
+                "name": "Estro Block",
+                "description": "Physician-formulated supplement designed to support healthy estrogen metabolism and maintain optimal hormone balance. Essential for men on testosterone optimization protocols.",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Mint Medical Clinic"
+                },
+                "image": "https://mintmedicalclinic.com/Products/MN-PCT-FRONT@3x.jpg",
+                "offers": {
+                    "@type": "Offer",
+                    "url": "https://mintmedicalclinic.com/Products/estro-block.html",
+                    "priceCurrency": "USD",
+                    "price": "79.00",
+                    "priceValidUntil": "2026-12-31",
+                    "itemCondition": "https://schema.org/NewCondition",
+                    "availability": "https://schema.org/InStock",
+                    "seller": {
+                        "@type": "MedicalBusiness",
+                        "name": "Mint Medical Clinic"
+                    }
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is Estro Block?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Estro Block is a physician-formulated supplement designed to support healthy estrogen metabolism and hormonal balance in men. It contains natural compounds like DIM, Calcium D-Glucarate, and Chrysin Extract that help maintain optimal testosterone-to-estrogen ratios."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why do men need estrogen control?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "As testosterone increases (naturally or through TRT), some converts to estrogen through a process called aromatization. Estro Block helps maintain optimal balance by supporting healthy estrogen metabolism pathways, preventing estrogen-related side effects like water retention and mood changes."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does Estro Block work?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Estro Block contains DIM and other natural compounds that support healthy estrogen metabolism pathways. These ingredients help your body process and eliminate excess estrogen while maintaining the ideal hormonal balance necessary for optimal male health and performance."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Who should take Estro Block?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Estro Block is ideal for men on testosterone replacement therapy (TRT), those with naturally high estrogen levels, or anyone seeking hormonal optimization. It's particularly beneficial for men experiencing symptoms of estrogen dominance like water retention or difficulty losing body fat."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What are signs of high estrogen in men?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Common signs include water retention and bloating, mood changes or irritability, fatigue and low energy, reduced libido, difficulty losing body fat (especially around the midsection), and gynecomastia (breast tissue development). If you're experiencing these symptoms, consult with our physicians."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How long until I see results?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Effects on hormonal balance are typically noticed within 4-6 weeks with consistent use. Many patients report reduced water retention and improved energy within the first few weeks. Optimal results are achieved when combined with proper hormone monitoring by your physician."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do I need a prescription?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, Estro Block is available through telehealth consultation with our physicians. Because it affects hormone balance, medical supervision is important to ensure proper dosing and monitoring. Our doctors will review your hormone levels and health history to determine if it's appropriate for you."
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://mintmedicalclinic.com/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Products",
+                        "item": "https://mintmedicalclinic.com/products.html"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Estro Block",
+                        "item": "https://mintmedicalclinic.com/Products/estro-block.html"
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <!-- Promo Banner -->
@@ -43,8 +160,31 @@
                 </a>
                 <ul class="nav-links">
                     <li class="mobile-cta"><a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-primary">Book Consultation</a></li>
-                    <li><a href="/services.html">Services</a></li>
-                    <li><a href="/products.html">Products</a></li>
+                    <li class="has-dropdown">
+                        <a href="/services.html">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/services/acoustic-wave-therapy.html">Acoustic Wave Therapy</a></li>
+                            <li><a href="/services/trifecta-protocol.html">Trifecta Protocol</a></li>
+                            <li><a href="/services/hormone-therapy.html">Hormone Therapy</a></li>
+                            <li><a href="/services/glp1-weight-loss.html">GLP-1 Weight Loss</a></li>
+                            <li><a href="/services/womens-health.html">Women's Health</a></li>
+                            <li><a href="/services/peptides.html">Peptide Therapy</a></li>
+                            <li><a href="/services/mint-contouring.html">Mint Contouring</a></li>
+                            <li><a href="/services/telehealth-ed.html">Telehealth ED</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="/products.html">Products</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Products/test-boost.html">Test Boost</a></li>
+                            <li><a href="/Products/vaso-pump.html">Vaso Pump</a></li>
+                            <li><a href="/Products/estro-block.html">Estro Block</a></li>
+                            <li><a href="/Products/glp1-support-protein.html">GLP-1 Support Protein</a></li>
+                            <li><a href="/Products/super-ionic-mint-minerals.html">Super Ionic Minerals</a></li>
+                            <li><a href="/Products/glp1.html">GLP-1</a></li>
+                            <li><a href="/Products/colon-cleanse.html">Colon Cleanse</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/about.html">About</a></li>
                     <li><a href="/process.html">Our Process</a></li>
                     <li><a href="/results.html">Results</a></li>
@@ -245,6 +385,46 @@
                     <h4>Vaso Pump</h4>
                     <p>Enhanced blood flow and circulation</p>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="service-faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Common Questions</span>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>What is Estro Block?</h3>
+                    <p>Estro Block is a physician-formulated supplement designed to support healthy estrogen metabolism and hormonal balance in men. It contains natural compounds like DIM, Calcium D-Glucarate, and Chrysin Extract that help maintain optimal testosterone-to-estrogen ratios.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Why do men need estrogen control?</h3>
+                    <p>As testosterone increases (naturally or through TRT), some converts to estrogen through a process called aromatization. Estro Block helps maintain optimal balance by supporting healthy estrogen metabolism pathways, preventing estrogen-related side effects like water retention and mood changes.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How does Estro Block work?</h3>
+                    <p>Estro Block contains DIM and other natural compounds that support healthy estrogen metabolism pathways. These ingredients help your body process and eliminate excess estrogen while maintaining the ideal hormonal balance necessary for optimal male health and performance.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Who should take Estro Block?</h3>
+                    <p>Estro Block is ideal for men on testosterone replacement therapy (TRT), those with naturally high estrogen levels, or anyone seeking hormonal optimization. It's particularly beneficial for men experiencing symptoms of estrogen dominance like water retention or difficulty losing body fat.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What are signs of high estrogen in men?</h3>
+                    <p>Common signs include water retention and bloating, mood changes or irritability, fatigue and low energy, reduced libido, difficulty losing body fat (especially around the midsection), and gynecomastia (breast tissue development). If you're experiencing these symptoms, consult with our physicians.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How long until I see results?</h3>
+                    <p>Effects on hormonal balance are typically noticed within 4-6 weeks with consistent use. Many patients report reduced water retention and improved energy within the first few weeks. Optimal results are achieved when combined with proper hormone monitoring by your physician.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do I need a prescription?</h3>
+                    <p>Yes, Estro Block is available through telehealth consultation with our physicians. Because it affects hormone balance, medical supervision is important to ensure proper dosing and monitoring. Our doctors will review your hormone levels and health history to determine if it's appropriate for you.</p>
+                </div>
             </div>
         </div>
     </section>

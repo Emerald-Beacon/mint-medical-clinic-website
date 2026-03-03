@@ -66,6 +66,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 closeMobileMenu();
             }
         });
+
+        // Mobile dropdown toggle
+        const dropdownParents = navLinks.querySelectorAll('li.has-dropdown > a');
+        dropdownParents.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Only handle on mobile
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const parent = this.parentElement;
+
+                    // Close other dropdowns
+                    navLinks.querySelectorAll('li.has-dropdown.dropdown-open').forEach(item => {
+                        if (item !== parent) {
+                            item.classList.remove('dropdown-open');
+                        }
+                    });
+
+                    // Toggle this dropdown
+                    parent.classList.toggle('dropdown-open');
+                }
+            });
+        });
     }
 
     // ===== Header Scroll Effect =====
