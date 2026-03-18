@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li><a href="/Products/glp1-support-protein.html">GLP-1 Support Protein</a></li>
                             <li><a href="/Products/super-ionic-mint-minerals.html">Super Ionic Minerals</a></li>
                             <li><a href="/Products/colon-cleanse.html">Colon Cleanse</a></li>
+                            <li style="border-top: 1px solid #eee; margin-top: 5px; padding-top: 5px;"><a href="/services/peptides.html"><strong>Peptides →</strong></a></li>
                         </ul>
                     </li>
                     <li><a href="/about.html">About</a></li>
