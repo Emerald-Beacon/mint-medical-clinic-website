@@ -209,17 +209,15 @@ exports.handler = async (event, context) => {
             };
         }
 
-        const validation = validateArticle(article);
-        if (!validation.valid) {
-            return {
-                statusCode: 400,
-                headers,
-                body: JSON.stringify({ error: validation.error })
-            };
-        }
-
-        // Handle delete action
+        // Handle delete action - only requires slug
         if (action === 'delete') {
+            if (!article.slug) {
+                return {
+                    statusCode: 400,
+                    headers,
+                    body: JSON.stringify({ error: 'Missing required field: slug' })
+                };
+            }
             await store.delete(article.slug);
             console.log(`Article deleted: ${article.slug}`);
             return {
@@ -230,6 +228,16 @@ exports.handler = async (event, context) => {
                     message: 'Article deleted successfully',
                     slug: article.slug
                 })
+            };
+        }
+
+        // Full validation for create/update actions
+        const validation = validateArticle(article);
+        if (!validation.valid) {
+            return {
+                statusCode: 400,
+                headers,
+                body: JSON.stringify({ error: validation.error })
             };
         }
 
