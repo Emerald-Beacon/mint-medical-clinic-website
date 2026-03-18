@@ -4,8 +4,10 @@
     'use strict';
 
     const ARTICLES_URL = '/api/blog-webhook';
+    const AUTH_API = '/api/admin-auth';
     const ARTICLES_PER_PAGE = 9;
     let allArticles = [];
+    let categories = {};
 
     function escapeHtml(str) {
         if (str == null) return '';
@@ -16,6 +18,36 @@
     let filteredArticles = [];
     let currentPage = 1;
     let currentCategory = 'all';
+
+    // Load categories from API
+    async function loadCategories() {
+        try {
+            const response = await fetch(AUTH_API, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'list-categories' })
+            });
+            const data = await response.json();
+            const categoryList = data.categories || [];
+
+            // Convert to lookup object
+            categories = {};
+            categoryList.forEach(cat => {
+                categories[cat.id] = cat.name;
+            });
+        } catch (error) {
+            console.error('Error loading categories:', error);
+            // Fallback to defaults
+            categories = {
+                'ed-treatment': 'ED Treatment',
+                'hormone-therapy': 'Hormone Therapy',
+                'weight-loss': 'Weight Loss',
+                'womens-health': "Women's Health",
+                'wellness': 'Wellness',
+                'news': 'News'
+            };
+        }
+    }
 
     // ===== Initialize Blog =====
     document.addEventListener('DOMContentLoaded', function() {
@@ -34,6 +66,9 @@
     // ===== Blog Listing Page =====
     async function initBlogListing() {
         try {
+            // Load categories first, then articles
+            await loadCategories();
+
             const response = await fetch(ARTICLES_URL);
             const data = await response.json();
             allArticles = data.articles || [];
@@ -158,6 +193,9 @@
         }
 
         try {
+            // Load categories first, then articles
+            await loadCategories();
+
             const response = await fetch(ARTICLES_URL);
             const data = await response.json();
             allArticles = data.articles || [];
@@ -382,15 +420,12 @@
     }
 
     function getCategoryLabel(category) {
-        const labels = {
-            'ed-treatment': 'ED Treatment',
-            'hormone-therapy': 'Hormone Therapy',
-            'weight-loss': 'Weight Loss',
-            'womens-health': "Women's Health",
-            'wellness': 'Wellness',
-            'news': 'News'
-        };
-        return labels[category] || 'Wellness';
+        // Use dynamically loaded categories, with fallback
+        if (categories[category]) {
+            return categories[category];
+        }
+        // Fallback for any unrecognized categories
+        return category ? category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Wellness';
     }
 
 })();
