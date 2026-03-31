@@ -5,18 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('header.header');
     if (!header) return;
 
-    // Determine if we're in a subdirectory
-    const path = window.location.pathname;
-    const isSubdir = path.includes('/services/') || path.includes('/Products/') || path.includes('/blog/');
-    const prefix = isSubdir ? '../' : '';
-    const rootPrefix = isSubdir ? '/' : '';
-
     // Replace the entire header content
+    // Use absolute paths for all assets to work from any subdirectory
     header.innerHTML = `
         <div class="container">
             <nav class="nav">
                 <a href="/" class="logo">
-                    <img src="${prefix}images/mint-medical-logo.png" alt="Mint Medical Clinic - Intimacy Health & Wellness Utah" title="Mint Medical Clinic">
+                    <img src="/images/mint-medical-logo.png" alt="Mint Medical Clinic - Intimacy Health & Wellness Utah" title="Mint Medical Clinic">
                 </a>
                 <ul class="nav-links">
                     <li class="mobile-cta"><a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-primary">Book Consultation</a></li>
@@ -50,8 +45,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li style="border-top: 1px solid #eee; margin-top: 5px; padding-top: 5px;"><a href="/services/peptides.html"><strong>Peptides →</strong></a></li>
                         </ul>
                     </li>
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="/process.html">Our Process</a></li>
+                    <li class="has-dropdown">
+                        <a href="/about.html">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/about.html">About Mint Medical</a></li>
+                            <li><a href="/process.html">Our Process</a></li>
+                            <li style="border-top: 1px solid #eee; margin-top: 5px; padding-top: 5px;"><a href="/providers/dr-darren-stettler.html"><strong>Dr. Darren Stettler, DO</strong></a></li>
+                        </ul>
+                    </li>
                     <li><a href="/results.html">Results</a></li>
                     <li><a href="/blog.html">Blog</a></li>
                 </ul>
@@ -78,11 +79,52 @@ document.addEventListener('DOMContentLoaded', function() {
     // Re-initialize mobile menu after header injection
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
+
+    function toggleMobileMenu() {
+        mobileMenuBtn.classList.toggle('active');
+        navLinks.classList.toggle('mobile-open');
+        body.classList.toggle('menu-open');
+    }
+
+    function closeMobileMenu() {
+        mobileMenuBtn.classList.remove('active');
+        navLinks.classList.remove('mobile-open');
+        body.classList.remove('menu-open');
+    }
 
     if (mobileMenuBtn && navLinks) {
-        mobileMenuBtn.addEventListener('click', function() {
-            navLinks.classList.toggle('mobile-open');
-            mobileMenuBtn.classList.toggle('active');
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+
+        // Close menu when clicking a nav link (except dropdown parents on mobile)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const parent = this.parentElement;
+                // Don't close if it's a dropdown parent on mobile
+                if (parent.classList.contains('has-dropdown') && window.innerWidth <= 1024) {
+                    return;
+                }
+                closeMobileMenu();
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (navLinks.classList.contains('mobile-open') &&
+                !navLinks.contains(e.target) &&
+                !mobileMenuBtn.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) {
+                closeMobileMenu();
+            }
         });
     }
 
@@ -93,6 +135,15 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             if (window.innerWidth <= 1024) {
                 e.preventDefault();
+                e.stopPropagation();
+
+                // Close other dropdowns
+                dropdowns.forEach(other => {
+                    if (other !== dropdown) {
+                        other.classList.remove('dropdown-open');
+                    }
+                });
+
                 dropdown.classList.toggle('dropdown-open');
             }
         });
