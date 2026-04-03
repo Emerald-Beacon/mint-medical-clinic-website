@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <li class="has-dropdown">
                         <a href="/services.html">Services</a>
                         <ul class="dropdown-menu">
+                            <li><a href="/services/trifecta-protocol.html"><strong>Trifecta Protocol</strong></a></li>
                             <li><a href="/services/acoustic-wave-therapy.html">Acoustic Wave Therapy</a></li>
                             <li><a href="/services/ed-treatment.html">ED Treatment</a></li>
                             <li><a href="/services/low-testosterone.html">Low Testosterone</a></li>
