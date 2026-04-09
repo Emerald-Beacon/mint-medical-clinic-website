@@ -10,9 +10,9 @@
     <link rel="apple-touch-icon" href="images/Untitled design (1).png">
 
     <!-- Primary Meta Tags -->
-    <title>Mint Medical Clinic | Intimacy Health, ED Treatment, Hormone Therapy & Weight Loss | Sandy & Layton, UT</title>
-    <meta name="title" content="Mint Medical Clinic | Intimacy Health, ED Treatment, Hormone Therapy & Weight Loss | Sandy & Layton, UT">
-    <meta name="description" content="Utah's premier intimacy and wellness clinic. Acoustic wave therapy, hormone replacement, GLP-1 weight loss, body contouring & more for men and women. Free consultation. (801) 804-8000.">
+    <title>Mint Medical Clinic | ED Treatment, Hormone Therapy & Weight Loss | Sandy & Layton, UT</title>
+    <meta name="title" content="Mint Medical Clinic | ED Treatment, Hormone Therapy & Weight Loss | Sandy & Layton, UT">
+    <meta name="description" content="Utah's premier intimacy and wellness clinic. Non-invasive ED treatment, hormone therapy, GLP-1 weight loss & more for men and women. Free consultation includes $650 ultrasound. Sandy & Layton. (801) 804-8000.">
     <meta name="keywords" content="ED treatment Utah, erectile dysfunction clinic Sandy, hormone therapy Layton, GLP-1 weight loss Utah, acoustic wave therapy, men's health clinic, women's intimacy health, testosterone replacement therapy, TRT Utah, body contouring Salt Lake">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Mint Medical Clinic">
@@ -64,19 +64,21 @@
         "@context": "https://schema.org",
         "@graph": [
             {
-                "@type": "MedicalBusiness",
+                "@type": "MedicalClinic",
                 "@id": "https://mintmedicalclinic.com/#organization",
                 "name": "Mint Medical Clinic",
                 "alternateName": "Mint Medical",
                 "url": "https://mintmedicalclinic.com",
                 "logo": "https://mintmedicalclinic.com/images/mint-medical-logo.png",
                 "image": "https://mintmedicalclinic.com/images/Patient-Consult-scaled-1.jpg",
-                "description": "Utah's premier intimacy and wellness clinic specializing in ED treatment, hormone therapy, GLP-1 weight loss, and body contouring for men and women.",
-                "telephone": "+1-801-804-8000",
+                "description": "Utah's premier intimacy health and wellness clinic with locations in Sandy and Layton, UT. Specializing in acoustic wave therapy for ED, bioidentical hormone replacement therapy, GLP-1 medical weight loss, women's sexual wellness, and body contouring. Telehealth available statewide.",
+                "telephone": "+18018048000",
                 "email": "info@mintmedicalclinic.com",
-                "priceRange": "$$",
+                "priceRange": "$",
                 "currenciesAccepted": "USD",
                 "paymentAccepted": "Cash, Credit Card, Financing",
+                "availableLanguage": ["English", "Spanish"],
+                "medicalSpecialty": ["Sexual Health", "Endocrinology", "Bariatric Medicine"],
                 "areaServed": {
                     "@type": "State",
                     "name": "Utah"
@@ -84,29 +86,68 @@
                 "sameAs": [],
                 "hasOfferCatalog": {
                     "@type": "OfferCatalog",
-                    "name": "Medical Services",
+                    "name": "Intimacy Health & Wellness Services",
                     "itemListElement": [
-                        {
-                            "@type": "MedicalProcedure",
-                            "name": "Acoustic Wave Therapy",
-                            "description": "Non-invasive sound wave technology for ED treatment that restores natural blood flow without pills or surgery."
-                        },
-                        {
-                            "@type": "MedicalProcedure",
-                            "name": "Hormone Replacement Therapy",
-                            "description": "Bioidentical hormone replacement for men and women to restore energy, mood, and vitality."
-                        },
-                        {
-                            "@type": "MedicalProcedure",
-                            "name": "GLP-1 Weight Loss",
-                            "description": "Prescription weight loss injections (semaglutide/tirzepatide) with medical oversight for sustainable results."
-                        },
-                        {
-                            "@type": "MedicalProcedure",
-                            "name": "The Trifecta Protocol",
-                            "description": "Comprehensive treatment combining Acoustic Wave, Cryotherapy, and Hormone Replacement."
-                        }
+                        { "@type": "Offer", "itemOffered": { "@type": "MedicalTherapy", "name": "Acoustic Wave Therapy" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "MedicalTherapy", "name": "Trifecta Protocol" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "MedicalTherapy", "name": "Hormone Replacement Therapy" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "MedicalTherapy", "name": "Women's Sexual Wellness" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "GLP-1 Medical Weight Loss" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "MedicalTherapy", "name": "Body Contouring" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "MedicalTherapy", "name": "Telehealth Consultations" } }
                     ]
+                },
+                "location": [
+                    {
+                        "@type": "MedicalClinic",
+                        "name": "Mint Medical Clinic - Sandy",
+                        "telephone": "+18018048000",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "10011 S. Centennial Pkwy, Suite 350",
+                            "addressLocality": "Sandy",
+                            "addressRegion": "UT",
+                            "postalCode": "84070",
+                            "addressCountry": "US"
+                        },
+                        "openingHoursSpecification": [
+                            {
+                                "@type": "OpeningHoursSpecification",
+                                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                                "opens": "09:00",
+                                "closes": "18:00"
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "MedicalClinic",
+                        "name": "Mint Medical Clinic - Layton",
+                        "telephone": "+18018048000",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "836 S Main St",
+                            "addressLocality": "Layton",
+                            "addressRegion": "UT",
+                            "postalCode": "84041",
+                            "addressCountry": "US"
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "Offer",
+                "name": "Free Consultation with Blood Flow Ultrasound",
+                "description": "New patients receive a complimentary consultation including a blood flow ultrasound and intimacy gift valued at $650.",
+                "price": "0",
+                "priceCurrency": "USD",
+                "eligibleRegion": {
+                    "@type": "State",
+                    "name": "Utah"
+                },
+                "seller": {
+                    "@type": "MedicalClinic",
+                    "name": "Mint Medical Clinic",
+                    "url": "https://mintmedicalclinic.com"
                 }
             },
             {
