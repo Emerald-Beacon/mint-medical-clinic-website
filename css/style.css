@@ -2654,6 +2654,10 @@ ul {
     background: linear-gradient(135deg, #4A90A4 0%, #3d7a8e 50%, #306478 100%);
 }
 
+.service-hero-locations {
+    background: linear-gradient(135deg, #3EB489 0%, #35a07a 50%, #2c8c6b 100%);
+}
+
 /* Service Info Section */
 .service-info {
     padding: 100px 0;
