@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <ul class="dropdown-menu">
                             <li><a href="/about.html">About Mint Medical</a></li>
                             <li><a href="/process.html">Our Process</a></li>
-                            <li style="border-top: 1px solid #eee; margin-top: 5px; padding-top: 5px;"><a href="/providers/dr-darren-stettler.html"><strong>Dr. Darren Stettler, DO</strong></a></li>
+                            <li style="border-top: 1px solid #eee; margin-top: 5px; padding-top: 5px;"><a href="/providers/dr-darin-stettler.html"><strong>Dr. Darin Stettler, DO</strong></a></li>
                         </ul>
                     </li>
                     <li><a href="/locations/">Locations</a></li>
