@@ -1,0 +1,46 @@
+# Mint Medical Clinic
+# Canonical: https://mintmedicalclinic.com/llms.txt
+# Last Updated: 2026-04-08
+
+Mint Medical Clinic is an intimacy health and wellness clinic in Utah with locations in Sandy and Layton. The clinic provides non-invasive treatments for erectile dysfunction, hormone optimization, medical weight loss, and sexual wellness for men and women.
+
+## Business Identity
+- Business Name: Mint Medical Clinic
+- Website: https://mintmedicalclinic.com/
+- Phone: +1-801-804-8000
+- Booking URL: https://new-consultation.zohobookings.com/#/mintmedicalclinic
+- Languages: English, Spanish
+
+## Locations
+- Sandy: 10011 S. Centennial Pkwy, Suite 350, Sandy, UT 84070
+- Layton: 836 S Main St, Layton, UT 84041
+- Hours: Mon-Fri 9:00 AM-5:00 PM, Sat by appointment, Sun closed
+
+## Primary Services
+- ED treatment and Acoustic Wave Therapy
+- Trifecta Protocol
+- Testosterone replacement therapy (TRT)
+- Hormone therapy for women
+- GLP-1 medical weight loss (semaglutide, tirzepatide)
+- Menopause and women's intimacy wellness
+- Peptide therapy
+- Stem cell therapy
+- Telehealth for eligible services
+
+## Key Landing Pages
+- Home: https://mintmedicalclinic.com/
+- Services overview: https://mintmedicalclinic.com/services.html
+- ED treatment: https://mintmedicalclinic.com/services/ed-treatment.html
+- Acoustic wave therapy: https://mintmedicalclinic.com/services/acoustic-wave-therapy.html
+- Hormone therapy: https://mintmedicalclinic.com/services/hormone-therapy.html
+- TRT clinic: https://mintmedicalclinic.com/services/trt-clinic.html
+- Women's health: https://mintmedicalclinic.com/services/womens-health.html
+- GLP-1 weight loss: https://mintmedicalclinic.com/services/glp1-weight-loss.html
+- Medical weight loss: https://mintmedicalclinic.com/services/medical-weight-loss.html
+- Blog: https://mintmedicalclinic.com/blog.html
+
+## Clinical and Safety Notes
+- Services require clinical evaluation and may not be appropriate for every patient.
+- Prescription treatments are provided only after medical assessment by licensed professionals.
+- This site is informational and not emergency medical advice.
+- In a medical emergency, call 911.

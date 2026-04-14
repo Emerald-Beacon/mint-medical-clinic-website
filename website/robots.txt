@@ -1,0 +1,43 @@
+# Mint Medical Clinic - Robots.txt
+# https://mintmedicalclinic.com/robots.txt
+# Last Updated: 2026-04-08
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /.netlify/
+Disallow: /api/
+
+# Primary sitemap and AI-discovery file
+Sitemap: https://mintmedicalclinic.com/sitemap.xml
+
+# Explicitly allow modern search/AI crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /

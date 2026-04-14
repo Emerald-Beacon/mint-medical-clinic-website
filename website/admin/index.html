@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin | Mint Medical Clinic</title>
+    <link rel="icon" type="image/png" href="../images/Untitled design (1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mint: #3EB489;
+            --mint-dark: #2d8a69;
+            --dark: #1a1a2e;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-400: #9a9a9a;
+            --gray-600: #6b6b6b;
+            --white: #ffffff;
+            --red: #e63946;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray-100);
+            min-height: 100vh;
+        }
+
+        /* Login Screen */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box h1 {
+            color: var(--dark);
+            font-size: 24px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .login-box p {
+            color: var(--gray-600);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-logo img {
+            height: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--mint);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--mint);
+            color: var(--white);
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: var(--mint-dark);
+        }
+
+        .btn-secondary {
+            background: var(--gray-200);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-400);
+        }
+
+        .btn-danger {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .error-message {
+            background: #fee;
+            color: var(--red);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Admin Dashboard */
+        .admin-container {
+            display: none;
+        }
+
+        .admin-header {
+            background: var(--white);
+            padding: 16px 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h1 {
+            font-size: 20px;
+            color: var(--dark);
+        }
+
+        .admin-header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-name {
+            color: var(--gray-600);
+        }
+
+        .admin-nav {
+            background: var(--dark);
+            padding: 0 24px;
+        }
+
+        .admin-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 8px;
+        }
+
+        .admin-nav a {
+            display: block;
+            padding: 16px 20px;
+            color: var(--gray-400);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .admin-nav a:hover,
+        .admin-nav a.active {
+            color: var(--white);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .admin-content {
+            padding: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .admin-card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 24px;
+        }
+
+        .admin-card-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-card-header h2 {
+            font-size: 18px;
+            color: var(--dark);
+        }
+
+        .admin-card-body {
+            padding: 24px;
+        }
+
+        /* Articles Table */
+        .articles-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .articles-table th,
+        .articles-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .articles-table th {
+            font-weight: 600;
+            color: var(--gray-600);
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .articles-table tr:hover {
+            background: var(--gray-100);
+        }
+
+        .article-title {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .article-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--gray-100);
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--gray-600);
+        }
+
+        .article-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 14px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 20px;
+            color: var(--dark);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray-600);
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        /* Rich Text Editor */
+        .editor-toolbar {
+            display: flex;
+            gap: 4px;
+            padding: 8px;
+            background: var(--gray-100);
+            border: 1px solid var(--gray-200);
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            flex-wrap: wrap;
+        }
+
+        .editor-toolbar button {
+            padding: 8px 12px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .editor-toolbar button:hover {
+            background: var(--gray-200);
+        }
+
+        .editor-content {
+            min-height: 300px;
+            padding: 16px;
+            border: 1px solid var(--gray-200);
+            border-radius: 0 0 8px 8px;
+            outline: none;
+        }
+
+        .editor-content:focus {
+            border-color: var(--mint);
+        }
+
+        /* Categories */
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .category-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: var(--gray-100);
+            border-radius: 8px;
+        }
+
+        .category-item input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid var(--gray-200);
+            border-radius: 4px;
+            margin-right: 12px;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-600);
+        }
+
+        .empty-state svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        /* Loading */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--gray-200);
+            border-top-color: var(--mint);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Tabs */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 16px 24px;
+            background: var(--dark);
+            color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 2000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            background: var(--mint);
+        }
+
+        .toast.error {
+            background: var(--red);
+        }
+
+        @media (max-width: 768px) {
+            .admin-nav ul {
+                overflow-x: auto;
+            }
+
+            .articles-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .modal-content {
+                max-height: 100vh;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginContainer" class="login-container">
+        <div class="login-box">
+            <div class="login-logo">
+                <img src="../images/mint-medical-logo.png" alt="Mint Medical Clinic">
+            </div>
+
+            <!-- Setup Form (First Time) -->
+            <div id="setupForm" style="display: none;">
+                <h1>Create Admin Account</h1>
+                <p>Set up your first admin account to get started</p>
+                <div id="setupError" class="error-message"></div>
+                <form onsubmit="handleSetup(event)">
+                    <div class="form-group">
+                        <label for="setupName">Full Name</label>
+                        <input type="text" id="setupName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="setupUsername">Username</label>
+                        <input type="text" id="setupUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="setupPassword">Password</label>
+                        <input type="password" id="setupPassword" required minlength="8">
+                    </div>
+                    <div class="form-group">
+                        <label for="setupPasswordConfirm">Confirm Password</label>
+                        <input type="password" id="setupPasswordConfirm" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                </form>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm">
+                <h1>Admin Login</h1>
+                <p>Sign in to manage your blog</p>
+                <div id="loginError" class="error-message"></div>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminContainer" class="admin-container">
+        <header class="admin-header">
+            <h1>Blog Admin</h1>
+            <div class="admin-header-right">
+                <a href="/" class="btn btn-secondary btn-sm" style="text-decoration: none;">Back to Site</a>
+                <span class="user-name" id="userName"></span>
+                <button onclick="handleLogout()" class="btn btn-secondary btn-sm">Logout</button>
+            </div>
+        </header>
+
+        <nav class="admin-nav">
+            <ul>
+                <li><a href="#" class="active" data-tab="articles">Articles</a></li>
+                <li><a href="#" data-tab="categories">Categories</a></li>
+                <li><a href="#" data-tab="users">Users</a></li>
+                <li><a href="#" data-tab="settings">Settings</a></li>
+            </ul>
+        </nav>
+
+        <main class="admin-content">
+            <!-- Articles Tab -->
+            <div id="articlesTab" class="tab-content active">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2>All Articles</h2>
+                        <button onclick="openArticleModal()" class="btn btn-primary btn-sm" style="width: auto;">+ New Article</button>
+                    </div>
+                    <div class="admin-card-body">
+                        <div id="articlesLoading" class="loading">
+                            <div class="spinner"></div>
+                        </div>
+                        <div id="articlesEmpty" class="empty-state" style="display: none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 12h10"/>
+                            </svg>
+                            <h3>No articles yet</h3>
+                            <p>Create your first article to get started</p>
+                        </div>
+                        <table id="articlesTable" class="articles-table" style="display: none;">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="articlesTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Tab -->
+            <div id="categoriesTab" class="tab-content">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2>Categories</h2>
+                        <button onclick="openCategoryModal()" class="btn btn-primary btn-sm" style="width: auto;">+ Add Category</button>
+                    </div>
+                    <div class="admin-card-body">
+                        <div id="categoriesLoading" class="loading">
+                            <div class="spinner"></div>
+                        </div>
+                        <div id="categoriesList" class="category-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Tab -->
+            <div id="usersTab" class="tab-content">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2>Admin Users</h2>
+                        <button onclick="openUserModal()" class="btn btn-primary btn-sm" style="width: auto;">+ Add User</button>
+                    </div>
+                    <div class="admin-card-body">
+                        <div id="usersLoading" class="loading">
+                            <div class="spinner"></div>
+                        </div>
+                        <div id="usersEmpty" class="empty-state" style="display: none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <h3>No users found</h3>
+                            <p>Add your first admin user</p>
+                        </div>
+                        <table id="usersTable" class="articles-table" style="display: none;">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Created</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settingsTab" class="tab-content">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2>Change Password</h2>
+                    </div>
+                    <div class="admin-card-body">
+                        <form onsubmit="handleChangePassword(event)" style="max-width: 400px;">
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <input type="password" id="currentPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" id="newPassword" required minlength="8">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmNewPassword">Confirm New Password</label>
+                                <input type="password" id="confirmNewPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Password</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Article Modal -->
+    <div id="articleModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="articleModalTitle">New Article</h2>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="closeArticleModal()">Cancel</button>
+                    <button type="button" class="btn btn-primary btn-sm" style="width: auto;" onclick="saveArticle()">Save Article</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form id="articleForm">
+                    <input type="hidden" id="articleSlug">
+                    <div class="form-group">
+                        <label for="articleTitle">Title</label>
+                        <input type="text" id="articleTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="articleExcerpt">Excerpt</label>
+                        <input type="text" id="articleExcerpt" placeholder="Brief description for previews">
+                    </div>
+                    <div class="form-group">
+                        <label for="articleCategory">Category</label>
+                        <select id="articleCategory" style="width: 100%; padding: 12px; border: 1px solid var(--gray-200); border-radius: 8px;">
+                            <option value="wellness">Wellness</option>
+                            <option value="ed-treatment">ED Treatment</option>
+                            <option value="hormone-therapy">Hormone Therapy</option>
+                            <option value="weight-loss">Weight Loss</option>
+                            <option value="womens-health">Women's Health</option>
+                            <option value="news">News</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="articleImage">Featured Image URL</label>
+                        <input type="url" id="articleImage" placeholder="https://...">
+                    </div>
+                    <div class="form-group">
+                        <label for="articleAuthor">Author</label>
+                        <input type="text" id="articleAuthor" placeholder="Leave blank for 'Mint Medical Team'">
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <div class="editor-toolbar">
+                            <button type="button" onclick="execCmd('bold')"><b>B</b></button>
+                            <button type="button" onclick="execCmd('italic')"><i>I</i></button>
+                            <button type="button" onclick="execCmd('underline')"><u>U</u></button>
+                            <button type="button" onclick="execCmd('formatBlock', 'h2')">H2</button>
+                            <button type="button" onclick="execCmd('formatBlock', 'h3')">H3</button>
+                            <button type="button" onclick="execCmd('formatBlock', 'p')">P</button>
+                            <button type="button" onclick="execCmd('insertUnorderedList')">• List</button>
+                            <button type="button" onclick="execCmd('insertOrderedList')">1. List</button>
+                            <button type="button" onclick="insertLink()">Link</button>
+                        </div>
+                        <div id="articleContent" class="editor-content" contenteditable="true"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Modal -->
+    <div id="categoryModal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2 id="categoryModalTitle">Add Category</h2>
+                <button class="modal-close" onclick="closeCategoryModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="categoryForm">
+                    <input type="hidden" id="categoryEditId">
+                    <div class="form-group">
+                        <label for="categoryName">Category Name</label>
+                        <input type="text" id="categoryName" required placeholder="e.g., Men's Health">
+                    </div>
+                    <div class="form-group" id="categoryIdGroup">
+                        <label for="categoryId">Category ID (URL slug)</label>
+                        <input type="text" id="categoryId" required placeholder="e.g., mens-health" pattern="[a-z0-9-]+">
+                        <p style="font-size: 12px; color: var(--gray-600); margin-top: 4px;">
+                            Lowercase letters, numbers, and hyphens only. Cannot be changed after creation.
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeCategoryModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveCategory()">Save Category</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div id="userModal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2>Add New User</h2>
+                <button class="modal-close" onclick="closeUserModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <div class="form-group">
+                        <label for="newUserName">Full Name</label>
+                        <input type="text" id="newUserName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newUserUsername">Username / Email</label>
+                        <input type="text" id="newUserUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newUserPassword">Password</label>
+                        <input type="password" id="newUserPassword" required minlength="8">
+                    </div>
+                    <div class="form-group">
+                        <label for="newUserPasswordConfirm">Confirm Password</label>
+                        <input type="password" id="newUserPasswordConfirm" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeUserModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveUser()">Create User</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h2>Delete Article</h2>
+                <button class="modal-close" onclick="closeDeleteModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete "<span id="deleteArticleTitle"></span>"?</p>
+                <p style="color: var(--red); margin-top: 12px;">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+                <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // API endpoints
+        const AUTH_API = '/api/admin-auth';
+        const ARTICLES_API = '/api/blog-webhook';
+
+        // State
+        let authToken = localStorage.getItem('adminToken');
+        let currentUser = null;
+        let articles = [];
+        let editingSlug = null;
+        let deletingSlug = null;
+
+        let categories = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', async () => {
+            await checkAuth();
+            initTabs();
+        });
+
+        // Auth Functions
+        async function checkAuth() {
+            // First check if setup is needed
+            try {
+                const setupRes = await fetch(AUTH_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'check-setup' })
+                });
+                const setupData = await setupRes.json();
+
+                if (setupData.needsSetup) {
+                    showSetupForm();
+                    return;
+                }
+            } catch (e) {
+                console.error('Setup check failed:', e);
+            }
+
+            if (!authToken) {
+                showLogin();
+                return;
+            }
+
+            try {
+                const res = await fetch(AUTH_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'validate', token: authToken })
+                });
+                const data = await res.json();
+
+                if (data.valid) {
+                    currentUser = data.user;
+                    showDashboard();
+                } else {
+                    localStorage.removeItem('adminToken');
+                    authToken = null;
+                    showLogin();
+                }
+            } catch (e) {
+                showLogin();
+            }
+        }
+
+        function showSetupForm() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('setupForm').style.display = 'block';
+            document.getElementById('loginContainer').style.display = 'flex';
+            document.getElementById('adminContainer').style.display = 'none';
+        }
+
+        function showLogin() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('setupForm').style.display = 'none';
+            document.getElementById('loginContainer').style.display = 'flex';
+            document.getElementById('adminContainer').style.display = 'none';
+        }
+
+        async function showDashboard() {
+            document.getElementById('loginContainer').style.display = 'none';
+            document.getElementById('adminContainer').style.display = 'block';
+            document.getElementById('userName').textContent = currentUser.name;
+            await loadCategories(); // Load categories first for article dropdown
+            loadArticles();
+            loadUsers();
+        }
+
+        async function handleSetup(e) {
+            e.preventDefault();
+            const name = document.getElementById('setupName').value;
+            const username = document.getElementById('setupUsername').value;
+            const password = document.getElementById('setupPassword').value;
+            const confirmPassword = document.getElementById('setupPasswordConfirm').value;
+
+            if (password !== confirmPassword) {
+                showError('setupError', 'Passwords do not match');
+                return;
+            }
+
+            try {
+                const res = await fetch(AUTH_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'create-user', username, password, name })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    showToast('Account created! Please log in.', 'success');
+                    showLogin();
+                } else {
+                    showError('setupError', data.error);
+                }
+            } catch (e) {
+                showError('setupError', 'Setup failed. Please try again.');
+            }
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const res = await fetch(AUTH_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'login', username, password })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    authToken = data.token;
+                    localStorage.setItem('adminToken', authToken);
+                    currentUser = data.user;
+                    showDashboard();
+                } else {
+                    showError('loginError', data.error);
+                }
+            } catch (e) {
+                showError('loginError', 'Login failed. Please try again.');
+            }
+        }
+
+        async function handleLogout() {
+            await fetch(AUTH_API, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'logout', token: authToken })
+            });
+            localStorage.removeItem('adminToken');
+            authToken = null;
+            currentUser = null;
+            showLogin();
+        }
+
+        async function handleChangePassword(e) {
+            e.preventDefault();
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+
+            if (newPassword !== confirmNewPassword) {
+                showToast('New passwords do not match', 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch(AUTH_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'change-password',
+                        token: authToken,
+                        currentPassword,
+                        newPassword
+                    })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    showToast('Password updated successfully', 'success');
+                    document.getElementById('currentPassword').value = '';
+                    document.getElementById('newPassword').value = '';
+                    document.getElementById('confirmNewPassword').value = '';
+                } else {
+                    showToast(data.error, 'error');
+                }
+            } catch (e) {
+                showToast('Failed to update password', 'error');
+            }
+        }
+
+        // Articles Functions
+        async function loadArticles() {
+            document.getElementById('articlesLoading').style.display = 'flex';
+            document.getElementById('articlesTable').style.display = 'none';
+            document.getElementById('articlesEmpty').style.display = 'none';
+
+            try {
+                const res = await fetch(ARTICLES_API);
+                const data = await res.json();
+                articles = data.articles || [];
+
+                document.getElementById('articlesLoading').style.display = 'none';
+
+                if (articles.length === 0) {
+                    document.getElementById('articlesEmpty').style.display = 'block';
+                } else {
+                    renderArticlesTable();
+                    document.getElementById('articlesTable').style.display = 'table';
+                }
+            } catch (e) {
+                document.getElementById('articlesLoading').style.display = 'none';
+                document.getElementById('articlesEmpty').style.display = 'block';
+            }
+        }
+
+        function renderArticlesTable() {
+            const tbody = document.getElementById('articlesTableBody');
+            tbody.innerHTML = articles.map(article => `
+                <tr>
+                    <td class="article-title">${escapeHtml(article.title)}</td>
+                    <td><span class="article-category">${escapeHtml(getCategoryName(article.category))}</span></td>
+                    <td>${escapeHtml(formatDate(article.publishedAt))}</td>
+                    <td class="article-actions">
+                        <button class="btn btn-secondary btn-sm" data-article-slug="${escapeHtml(article.slug)}" onclick="editArticle(this.dataset.articleSlug)">Edit</button>
+                        <button class="btn btn-danger btn-sm" data-article-slug="${escapeHtml(article.slug)}" data-article-title="${escapeHtml(article.title)}" onclick="deleteArticle(this.dataset.articleSlug, this.dataset.articleTitle)">Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function openArticleModal(slug = null) {
+            editingSlug = slug;
+            document.getElementById('articleModalTitle').textContent = slug ? 'Edit Article' : 'New Article';
+
+            if (slug) {
+                const article = articles.find(a => a.slug === slug);
+                if (article) {
+                    document.getElementById('articleSlug').value = article.slug;
+                    document.getElementById('articleTitle').value = article.title;
+                    document.getElementById('articleExcerpt').value = article.excerpt || '';
+                    document.getElementById('articleCategory').value = article.category || 'wellness';
+                    document.getElementById('articleImage').value = article.featuredImage || '';
+                    document.getElementById('articleAuthor').value = article.author || '';
+                    document.getElementById('articleContent').innerHTML = article.content || '';
+                }
+            } else {
+                document.getElementById('articleForm').reset();
+                document.getElementById('articleContent').innerHTML = '';
+            }
+
+            document.getElementById('articleModal').classList.add('show');
+        }
+
+        function closeArticleModal() {
+            document.getElementById('articleModal').classList.remove('show');
+            editingSlug = null;
+        }
+
+        function editArticle(slug) {
+            openArticleModal(slug);
+        }
+
+        async function saveArticle() {
+            const title = document.getElementById('articleTitle').value;
+            const excerpt = document.getElementById('articleExcerpt').value;
+            const category = document.getElementById('articleCategory').value;
+            const featuredImage = document.getElementById('articleImage').value;
+            const author = document.getElementById('articleAuthor').value;
+            const content = document.getElementById('articleContent').innerHTML;
+
+            if (!title || !content) {
+                showToast('Title and content are required', 'error');
+                return;
+            }
+
+            const slug = editingSlug || title.toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-|-$/g, '');
+
+            const article = {
+                slug,
+                title,
+                excerpt,
+                category,
+                featuredImage,
+                author,
+                content
+            };
+
+            try {
+                const res = await fetch(ARTICLES_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: editingSlug ? 'update' : 'create',
+                        article,
+                        token: authToken
+                    })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    showToast('Article saved successfully', 'success');
+                    closeArticleModal();
+                    loadArticles();
+                } else {
+                    if (res.status === 401) {
+                        localStorage.removeItem('adminToken');
+                        authToken = null;
+                        showLogin();
+                    }
+                    showToast(data.error || 'Failed to save article', 'error');
+                }
+            } catch (e) {
+                showToast('Failed to save article', 'error');
+            }
+        }
+
+        function deleteArticle(slug, title) {
+            deletingSlug = slug;
+            document.getElementById('deleteArticleTitle').textContent = title;
+            document.getElementById('deleteModal').classList.add('show');
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').classList.remove('show');
+            deletingSlug = null;
+        }
+
+        async function confirmDelete() {
+            if (!deletingSlug) return;
+
+            try {
+                const res = await fetch(ARTICLES_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'delete',
+                        article: { slug: deletingSlug },
+                        token: authToken
+                    })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    showToast('Article deleted', 'success');
+                    closeDeleteModal();
+                    loadArticles();
+                } else {
+                    if (res.status === 401) {
+                        localStorage.removeItem('adminToken');
+                        authToken = null;
+                        showLogin();
+                    }
+                    showToast(data.error || 'Failed to delete article', 'error');
+                }
+            } catch (e) {
+                showToast('Failed to delete article', 'error');
+            }
+        }
+
+        // Categories Functions
+        let editingCategoryId = null;
+
+        async function loadCategories() {
+            const loading = document.getElementById('categoriesLoading');
+            const list = document.getElementById('categoriesList');
+
+            if (loading) loading.style.display = 'flex';
+            list.innerHTML = '';
+
+            try {
+                const res = await fetch(AUTH_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'list-categories' })
+                });
+                const data = await res.json();
+                categories = data.categories || [];
+
+                if (loading) loading.style.display = 'none';
+                renderCategories();
+                updateCategoryDropdown();
+            } catch (e) {
+                if (loading) loading.style.display = 'none';
+                console.error('Failed to load categories:', e);
+            }
+        }
+
+        function renderCategories() {
+            const list = document.getElementById('categoriesList');
+            list.innerHTML = categories.map(cat => `
+                <div class="category-item">
+                    <span><strong>${escapeHtml(cat.name)}</strong> <span style="color: var(--gray-400);">(${escapeHtml(cat.id)})</span></span>
+                    <div class="article-actions">
+                        <button class="btn btn-secondary btn-sm" data-cat-id="${escapeHtml(cat.id)}" data-cat-name="${escapeHtml(cat.name)}" onclick="editCategory(this.dataset.catId, this.dataset.catName)">Edit</button>
+                        <button class="btn btn-danger btn-sm" data-cat-id="${escapeHtml(cat.id)}" data-cat-name="${escapeHtml(cat.name)}" onclick="deleteCategory(this.dataset.catId, this.dataset.catName)">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateCategoryDropdown() {
+            const select = document.getElementById('articleCategory');
+            if (select) {
+                select.innerHTML = categories.map(cat =>
+                    `<option value="${cat.id}">${cat.name}</option>`
+                ).join('');
+            }
+        }
+
+        function openCategoryModal(id = null, name = null) {
+            editingCategoryId = id;
+            document.getElementById('categoryModalTitle').textContent = id ? 'Edit Category' : 'Add Category';
+            document.getElementById('categoryForm').reset();
+
+            if (id) {
+                document.getElementById('categoryEditId').value = id;
+                document.getElementById('categoryName').value = name || '';
+                document.getElementById('categoryId').value = id;
+                document.getElementById('categoryIdGroup').style.display = 'none';
+            } else {
+                document.getElementById('categoryEditId').value = '';
+                document.getElementById('categoryIdGroup').style.display = 'block';
+            }
+
+            document.getElementById('categoryModal').classList.add('show');
+        }
+
+        function closeCategoryModal() {
+            document.getElementById('categoryModal').classList.remove('show');
+            editingCategoryId = null;
+        }
+
+        function editCategory(id, name) {
+            openCategoryModal(id, name);
+        }
+
+        async function saveCategory() {
+            const name = document.getElementById('categoryName').value.trim();
+            const id = editingCategoryId || document.getElementById('categoryId').value.trim().toLowerCase();
+
+            if (!name) {
+                showToast('Category name is required', 'error');
+                return;
+            }
+
+            if (!editingCategoryId && !id) {
+                showToast('Category ID is required', 'error');
+                return;
+            }
+
+            if (!editingCategoryId && !/^[a-z0-9-]+$/.test(id)) {
+                showToast('Category ID can only contain lowercase letters, numbers, and hyphens', 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch(AUTH_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: editingCategoryId ? 'update-category' : 'create-category',
+                        token: authToken,
+                        id,
+                        name
+                    })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    showToast(editingCategoryId ? 'Category updated' : 'Category created', 'success');
+                    closeCategoryModal();
+                    loadCategories();
+                } else {
+                    showToast(data.error || 'Failed to save category', 'error');
+                }
+            } catch (e) {
+                showToast('Failed to save category', 'error');
+            }
+        }
+
+        async function deleteCategory(id, name) {
+            if (!confirm(`Are you sure you want to delete the category "${name}"?\n\nArticles using this category will not be deleted but may display incorrectly.`)) {
+                return;
+            }
+
+            try {
+                const res = await fetch(AUTH_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'delete-category',
+                        token: authToken,
+                        id
+                    })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    showToast('Category deleted', 'success');
+                    loadCategories();
+                } else {
+                    showToast(data.error || 'Failed to delete category', 'error');
+                }
+            } catch (e) {
+                showToast('Failed to delete category', 'error');
+            }
+        }
+
+        // Users Functions
+        let users = [];
+
+        async function loadUsers() {
+            document.getElementById('usersLoading').style.display = 'flex';
+            document.getElementById('usersTable').style.display = 'none';
+            document.getElementById('usersEmpty').style.display = 'none';
+
+            try {
+                const res = await fetch(AUTH_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'list-users', token: authToken })
+                });
+                const data = await res.json();
+                users = data.users || [];
+
+                document.getElementById('usersLoading').style.display = 'none';
+
+                if (users.length === 0) {
+                    document.getElementById('usersEmpty').style.display = 'block';
+                } else {
+                    renderUsersTable();
+                    document.getElementById('usersTable').style.display = 'table';
+                }
+            } catch (e) {
+                document.getElementById('usersLoading').style.display = 'none';
+                document.getElementById('usersEmpty').style.display = 'block';
+            }
+        }
+
+        function renderUsersTable() {
+            const tbody = document.getElementById('usersTableBody');
+            tbody.innerHTML = users.map(user => `
+                <tr>
+                    <td><strong>${escapeHtml(user.name)}</strong></td>
+                    <td>${escapeHtml(user.username)}</td>
+                    <td>${escapeHtml(formatDate(user.createdAt))}</td>
+                </tr>
+            `).join('');
+        }
+
+        function openUserModal() {
+            document.getElementById('userForm').reset();
+            document.getElementById('userModal').classList.add('show');
+        }
+
+        function closeUserModal() {
+            document.getElementById('userModal').classList.remove('show');
+        }
+
+        async function saveUser() {
+            const name = document.getElementById('newUserName').value;
+            const username = document.getElementById('newUserUsername').value;
+            const password = document.getElementById('newUserPassword').value;
+            const confirmPassword = document.getElementById('newUserPasswordConfirm').value;
+
+            if (!name || !username || !password) {
+                showToast('All fields are required', 'error');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showToast('Passwords do not match', 'error');
+                return;
+            }
+
+            if (password.length < 8) {
+                showToast('Password must be at least 8 characters', 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch(AUTH_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'create-user',
+                        token: authToken,
+                        username,
+                        password,
+                        name
+                    })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    showToast('User created successfully', 'success');
+                    closeUserModal();
+                    loadUsers();
+                } else {
+                    showToast(data.error || 'Failed to create user', 'error');
+                }
+            } catch (e) {
+                showToast('Failed to create user', 'error');
+            }
+        }
+
+        // Tabs
+        function initTabs() {
+            document.querySelectorAll('.admin-nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tab = link.dataset.tab;
+
+                    document.querySelectorAll('.admin-nav a').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+
+                    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+                    document.getElementById(`${tab}Tab`).classList.add('active');
+                });
+            });
+        }
+
+        // Editor Functions
+        function execCmd(cmd, value = null) {
+            document.execCommand(cmd, false, value);
+            document.getElementById('articleContent').focus();
+        }
+
+        function insertLink() {
+            const url = prompt('Enter URL:');
+            if (url) {
+                document.execCommand('createLink', false, url);
+            }
+        }
+
+        // Escape for safe HTML and attribute use (XSS prevention)
+        function escapeHtml(str) {
+            if (str == null) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // Utility Functions
+        function showError(elementId, message) {
+            const el = document.getElementById(elementId);
+            el.textContent = message;
+            el.classList.add('show');
+            setTimeout(() => el.classList.remove('show'), 5000);
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type} show`;
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function getCategoryName(id) {
+            const cat = categories.find(c => c.id === id);
+            return cat ? cat.name : 'Wellness';
+        }
+
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+    </script>
+</body>
+</html>
