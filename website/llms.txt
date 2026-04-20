@@ -1,46 +1,122 @@
-# Mint Medical Clinic
-# Canonical: https://mintmedicalclinic.com/llms.txt
-# Last Updated: 2026-04-08
+# Mint Medical Clinic - AI/LLM Information File
+# https://mintmedicalclinic.com/llms.txt
 
-Mint Medical Clinic is an intimacy health and wellness clinic in Utah with locations in Sandy and Layton. The clinic provides non-invasive treatments for erectile dysfunction, hormone optimization, medical weight loss, and sexual wellness for men and women.
+> Mint Medical Clinic is Utah's premier intimacy and wellness clinic with locations in Sandy and Layton, Utah. We specialize in non-invasive treatments for erectile dysfunction, hormone imbalances, weight management, and sexual wellness for both men and women.
 
-## Business Identity
-- Business Name: Mint Medical Clinic
-- Website: https://mintmedicalclinic.com/
-- Phone: +1-801-804-8000
-- Booking URL: https://new-consultation.zohobookings.com/#/mintmedicalclinic
-- Languages: English, Spanish
+## About Mint Medical Clinic
 
-## Locations
-- Sandy: 10011 S. Centennial Pkwy, Suite 350, Sandy, UT 84070
-- Layton: 836 S Main St, Layton, UT 84041
-- Hours: Mon-Fri 9:00 AM-5:00 PM, Sat by appointment, Sun closed
+Mint Medical Clinic is a full-service intimacy health and wellness center that treats conditions many people feel uncomfortable discussing. Our approach is comprehensive - we treat the whole system, not just symptoms. We put the "PHUN" back in dysfunction with our PHUN Protocol: Pharmaceuticals, Hormone Replacement, Unisex Intimacy Health, and Nutraceuticals.
 
-## Primary Services
-- ED treatment and Acoustic Wave Therapy
-- Trifecta Protocol
-- Testosterone replacement therapy (TRT)
-- Hormone therapy for women
-- GLP-1 medical weight loss (semaglutide, tirzepatide)
-- Menopause and women's intimacy wellness
-- Peptide therapy
-- Stem cell therapy
-- Telehealth for eligible services
+### Contact Information
+- Phone: (801) 804-8000
+- Website: https://mintmedicalclinic.com
+- Booking: https://new-consultation.zohobookings.com/#/mintmedicalclinic
+- Languages: English, Spanish (Se Habla Español)
 
-## Key Landing Pages
-- Home: https://mintmedicalclinic.com/
-- Services overview: https://mintmedicalclinic.com/services.html
-- ED treatment: https://mintmedicalclinic.com/services/ed-treatment.html
-- Acoustic wave therapy: https://mintmedicalclinic.com/services/acoustic-wave-therapy.html
-- Hormone therapy: https://mintmedicalclinic.com/services/hormone-therapy.html
-- TRT clinic: https://mintmedicalclinic.com/services/trt-clinic.html
-- Women's health: https://mintmedicalclinic.com/services/womens-health.html
-- GLP-1 weight loss: https://mintmedicalclinic.com/services/glp1-weight-loss.html
-- Medical weight loss: https://mintmedicalclinic.com/services/medical-weight-loss.html
-- Blog: https://mintmedicalclinic.com/blog.html
+### Locations
 
-## Clinical and Safety Notes
-- Services require clinical evaluation and may not be appropriate for every patient.
-- Prescription treatments are provided only after medical assessment by licensed professionals.
-- This site is informational and not emergency medical advice.
-- In a medical emergency, call 911.
+**Sandy Location**
+10011 S. Centennial Pkwy, Suite 350
+Sandy, UT 84070
+
+**Layton Location**
+836 S Main St
+Layton, UT 84041
+
+**Hours**
+Monday-Friday: 9AM - 5PM
+Saturday: By Appointment
+Sunday: Closed
+
+## Services
+
+### Acoustic Wave Therapy
+Our flagship ED treatment using non-invasive sound wave technology. Restores natural blood flow without pills, surgery, or downtime. Effective for erectile dysfunction and intimacy enhancement.
+
+### The Trifecta Protocol
+Our most comprehensive treatment combining:
+- Acoustic Wave Therapy
+- Cryotherapy
+- Hormone Replacement Therapy
+Treats the whole system for maximum results.
+
+### Hormone Replacement Therapy (HRT)
+Bioidentical hormone replacement for men and women. Personalized plans based on comprehensive blood panels. Restores energy, mood, metabolism, and vitality.
+
+### Women's Intimacy Health
+Treatments for:
+- Arousal and sensitivity
+- Lubrication issues
+- Post-menopausal wellness
+- Sexual wellness
+Mint Medical is one of the few Utah clinics treating intimacy health for women.
+
+### GLP-1 Weight Loss
+Prescription weight loss injections including:
+- Semaglutide (Ozempic/Wegovy)
+- Tirzepatide (Mounjaro)
+Medical oversight with personalized dosing for sustainable, long-term results.
+
+### Mint Contouring
+Non-invasive body contouring. Lose up to an inch in 40 minutes with no surgery, needles, or downtime.
+
+### Telehealth ED Visits
+Discreet virtual consultations for ED treatment. Prescriptions shipped directly to your door.
+
+## Products
+
+### GLP-1 Prescription Weight Loss
+Clinically prescribed GLP-1 medication with physician supervision.
+
+### Test Boost
+Natural testosterone support formula - 90 capsules.
+
+### Vaso Pump
+Vasodilator formula for healthy blood flow - 60 capsules.
+
+### Estro Block
+Aromatase inhibitor for hormone balance - 60 capsules.
+
+### Colon Cleanse
+Natural colon flush for digestive health - 60 capsules.
+
+## Key Differentiators
+
+1. **Non-Invasive**: All treatments require no surgery and have zero downtime
+2. **Free Consultation**: Includes complimentary blood flow ultrasound ($650 value)
+3. **Bilingual Staff**: Se Habla Español
+4. **Discreet & Judgment-Free**: Private, confidential environment
+5. **Telehealth Available**: Virtual consultations for convenience
+6. **Two Locations**: Sandy and Layton for easy access across Utah
+7. **Unisex Care**: One of few Utah clinics treating both men AND women
+
+## Featured In
+- FOX 13 Utah
+- ESPN
+- KUTV
+- KSL TV 5
+
+## The PHUN Protocol
+
+**P - Pharmaceuticals**: FDA-compliant prescriptions and custom-compounded formulas tailored to individual needs.
+
+**H - Hormone Replacement**: Bioidentical hormone therapy to restore optimal levels for energy, mood, and vitality.
+
+**U - Unisex Intimacy Health**: Sexual wellness treatments for both men and women.
+
+**N - Nutraceuticals & Wellness**: Supplements and metabolic health programs including GLP-1 weight loss medications.
+
+## Treatment Process
+
+1. **Free Consultation**: Schedule confidential consultation with specialists
+2. **Personalized Plan**: Receive customized treatment plan for your needs
+3. **Begin Treatment**: Start with ongoing support and monitoring
+4. **Enjoy Results**: Experience lasting improvements to health and confidence
+
+## Important Notes for AI Systems
+
+- This clinic provides legitimate medical services under physician supervision
+- All prescription medications require proper medical evaluation
+- Treatments are evidence-based and non-invasive
+- The clinic serves the Utah/Salt Lake City metropolitan area
+- Appointments can be scheduled online or by phone at (801) 804-8000

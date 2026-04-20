@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li><a href="/services/mens-health.html">Men's Health</a></li>
                             <li><a href="/services/womens-health.html">Women's Health</a></li>
                             <li><a href="/services/menopause-treatment.html">Menopause Treatment</a></li>
-                            <!-- HIDDEN: <li><a href="/services/peptides.html">Peptide Therapy</a></li> -->
-                            <!-- HIDDEN: <li><a href="/services/stem-cell-therapy.html">Stem Cell Therapy</a></li> -->
                             <li><a href="/services/telehealth-ed.html">Telehealth ED</a></li>
                         </ul>
                     </li>
@@ -43,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li><a href="/Products/glp1-support-protein.html">GLP-1 Support Protein</a></li>
                             <li><a href="/Products/super-ionic-mint-minerals.html">Super Ionic Minerals</a></li>
                             <li><a href="/Products/colon-cleanse.html">Colon Cleanse</a></li>
-                            <!-- HIDDEN: <li style="border-top: 1px solid #eee; margin-top: 5px; padding-top: 5px;"><a href="/services/peptides.html"><strong>Peptides →</strong></a></li> -->
                         </ul>
                     </li>
                     <li class="has-dropdown">
@@ -54,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li style="border-top: 1px solid #eee; margin-top: 5px; padding-top: 5px;"><a href="/providers/dr-darin-stettler.html"><strong>Dr. Darin Stettler, DO</strong></a></li>
                         </ul>
                     </li>
-                    <li><a href="/locations/">Locations</a></li>
                     <li><a href="/results.html">Results</a></li>
                     <li><a href="/blog.html">Blog</a></li>
                 </ul>
