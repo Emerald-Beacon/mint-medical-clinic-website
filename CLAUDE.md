@@ -29,7 +29,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Mint Medical Clinic is a static HTML website for a Utah-based intimacy health and wellness clinic. The site uses Netlify for hosting with serverless functions for blog management and admin authentication.
 
-**Live URL:** https://mintmedicalclinic.com
+**Live URL:** https://www.mintmedicalclinic.com
 **Locations:** Sandy and Layton, Utah
 
 ## Architecture
@@ -73,6 +73,13 @@ Uses `@netlify/blobs` for persistent storage:
 - `admin-users` - User credentials
 - `admin-sessions` - Active sessions
 - `blog-categories` - Dynamic blog categories
+
+Functions use a fallback pattern for local development:
+```javascript
+// Automatically uses Netlify context in production
+// Falls back to manual config with NETLIFY_AUTH_TOKEN + SITE_ID in dev
+getStore(name) || getStore({ name, siteID, token })
+```
 
 ### Client-Side JavaScript
 
@@ -156,6 +163,22 @@ Configured in `netlify.toml`:
 - `/api/blog-webhook` → Netlify function
 - `/api/admin-auth` → Netlify function
 - `/blog/:slug` → `/blog/article.html?slug=:slug` (pretty URLs)
+
+## Security Headers
+
+Configured in `netlify.toml`:
+- `X-Frame-Options: DENY` - Prevents clickjacking on HTML pages
+- `X-Content-Type-Options: nosniff` - Prevents MIME sniffing
+- `Referrer-Policy: strict-origin-when-cross-origin` - Controls referrer info
+- `X-Robots-Tag: noindex` on `/api/*` - Prevents API endpoint indexing
+
+## Testing
+
+No automated test suite. Manual testing approach:
+- Run `netlify dev` for local development (serves at `http://localhost:8888`)
+- Test API endpoints at `/api/blog-webhook` (GET public, POST requires token) and `/api/admin-auth`
+- Access admin dashboard by clicking the logo 7 times on any page
+- Verify Netlify Blobs work locally by setting `NETLIFY_AUTH_TOKEN` environment variable
 
 ## Service Information
 
