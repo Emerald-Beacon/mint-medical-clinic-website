@@ -491,18 +491,21 @@ ul {
     position: absolute;
     bottom: 16px;
     right: 16px;
+    width: 73px;
+    height: 79px;
     line-height: 0;
     z-index: 2;
 }
 
-.hero-image .hero-legitscript img {
-    display: block;
-    width: 73px;
-    height: 79px;
-    max-width: 73px;
-    object-fit: contain;
-    border-radius: 0;
-    box-shadow: none;
+.hero-image .hero-legitscript img,
+.hero-legitscript img {
+    display: block !important;
+    width: 73px !important;
+    height: 79px !important;
+    max-width: 73px !important;
+    object-fit: contain !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
 }
 
 /* ===== KSL Offer Popup ===== */
