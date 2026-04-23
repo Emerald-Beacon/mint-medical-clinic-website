@@ -1819,6 +1819,17 @@ ul {
     color: var(--mint);
 }
 
+.footer-legitscript {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 0;
+    border-top: 1px solid var(--gray-200, rgba(255, 255, 255, 0.1));
+}
+
+.footer-legitscript img {
+    display: block;
+}
+
 /* ===== Responsive ===== */
 
 /* Tablet - 1024px */
