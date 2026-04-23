@@ -487,6 +487,24 @@ ul {
     box-shadow: 0 24px 48px rgba(62, 180, 137, 0.15), 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
+.hero-legitscript {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    line-height: 0;
+    z-index: 2;
+}
+
+.hero-legitscript img {
+    display: block;
+    width: 73px;
+    height: 79px;
+}
+
 /* ===== KSL Offer Popup ===== */
 .ksl-offer-popup {
     position: fixed;
