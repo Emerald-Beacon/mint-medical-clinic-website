@@ -1527,6 +1527,18 @@ ul {
     background: var(--gray-50);
 }
 
+.cherry-widget-section {
+    padding: 60px 0;
+}
+
+.cherry-widget-section [id="hero"],
+.cherry-widget-section [id="calculator"],
+.cherry-widget-section [id="howitworks"],
+.cherry-widget-section [id="testimony"],
+.cherry-widget-section [id="faq"] {
+    margin-bottom: 40px;
+}
+
 .financing-cta-box {
     display: grid;
     grid-template-columns: 1fr auto;
