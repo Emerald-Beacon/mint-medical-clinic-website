@@ -127,16 +127,58 @@ exports.handler = async (event, context) => {
         };
     }
 
-    // GET request - return all articles
+    // GET request - return articles
     if (event.httpMethod === 'GET') {
         try {
+            const params = event.queryStringParameters || {};
+            const slug = params.slug;
+            const summary = params.summary === '1' || params.summary === 'true';
+
+            // Single-article lookup by slug (fast path for article pages)
+            if (slug) {
+                if (!/^[a-z0-9-]+$/.test(slug) || slug.length > 128) {
+                    return {
+                        statusCode: 400,
+                        headers,
+                        body: JSON.stringify({ error: 'Invalid slug' })
+                    };
+                }
+                const article = await store.get(slug, { type: 'json' });
+                if (!article) {
+                    return {
+                        statusCode: 404,
+                        headers: { ...headers, 'Cache-Control': 'public, max-age=60' },
+                        body: JSON.stringify({ error: 'Article not found' })
+                    };
+                }
+                return {
+                    statusCode: 200,
+                    headers: { ...headers, 'Cache-Control': 'public, max-age=300, stale-while-revalidate=600' },
+                    body: JSON.stringify({ article })
+                };
+            }
+
             const { blobs } = await store.list();
             const articles = [];
 
             for (const blob of blobs) {
                 const article = await store.get(blob.key, { type: 'json' });
                 if (article) {
-                    articles.push(article);
+                    if (summary) {
+                        articles.push({
+                            slug: article.slug,
+                            title: article.title,
+                            excerpt: article.excerpt,
+                            category: article.category,
+                            author: article.author,
+                            featuredImage: article.featuredImage,
+                            tags: article.tags,
+                            publishedAt: article.publishedAt,
+                            updatedAt: article.updatedAt
+                        });
+                    } else {
+                        articles.push(article);
+                    }
                 }
             }
 
@@ -145,7 +187,7 @@ exports.handler = async (event, context) => {
 
             return {
                 statusCode: 200,
-                headers,
+                headers: { ...headers, 'Cache-Control': 'public, max-age=120, stale-while-revalidate=600' },
                 body: JSON.stringify({ articles, lastUpdated: new Date().toISOString() })
             };
         } catch (error) {

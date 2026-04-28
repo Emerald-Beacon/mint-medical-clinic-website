@@ -15,6 +15,23 @@
         div.textContent = str;
         return div.innerHTML;
     }
+
+    // Add width/quality params to known CDN URLs for faster loads
+    function optimizeImageUrl(url, width) {
+        if (!url || typeof url !== 'string') return url;
+        try {
+            // Unsplash: ?w=&q=&auto=format&fit=crop
+            if (url.includes('images.unsplash.com')) {
+                const u = new URL(url);
+                u.searchParams.set('w', String(width));
+                u.searchParams.set('q', '75');
+                u.searchParams.set('auto', 'format');
+                if (!u.searchParams.has('fit')) u.searchParams.set('fit', 'crop');
+                return u.toString();
+            }
+        } catch (e) { /* fall through */ }
+        return url;
+    }
     let filteredArticles = [];
     let currentPage = 1;
     let currentCategory = 'all';
@@ -69,7 +86,7 @@
             // Load categories first, then articles
             await loadCategories();
 
-            const response = await fetch(ARTICLES_URL);
+            const response = await fetch(ARTICLES_URL + '?summary=1');
             const data = await response.json();
             allArticles = data.articles || [];
 
@@ -198,10 +215,11 @@
 
         const safeSlug = encodeURIComponent(article.slug);
         const safeImageUrl = (imageUrl && (imageUrl.startsWith('https://') || imageUrl.startsWith('/'))) ? imageUrl : '/images/Patient-Consult-scaled-1.jpg';
+        const cardImageUrl = optimizeImageUrl(safeImageUrl, 600);
         return `
             <article class="blog-card">
                 <a href="/blog/article.html?slug=${safeSlug}" class="blog-card-image">
-                    <img src="${escapeHtml(safeImageUrl)}" alt="${escapeHtml(article.title)} - Mint Medical Clinic Blog" loading="lazy">
+                    <img src="${escapeHtml(cardImageUrl)}" alt="${escapeHtml(article.title)} - Mint Medical Clinic Blog" loading="lazy" decoding="async">
                     <span class="blog-card-category">${escapeHtml(categoryLabel)}</span>
                 </a>
                 <div class="blog-card-content">
@@ -235,14 +253,21 @@
         }
 
         try {
-            // Load categories first, then articles
-            await loadCategories();
+            // Fetch single article + summary list in parallel
+            const [articleRes, listRes] = await Promise.all([
+                fetch(ARTICLES_URL + '?slug=' + encodeURIComponent(slug)),
+                fetch(ARTICLES_URL + '?summary=1')
+            ]);
 
-            const response = await fetch(ARTICLES_URL);
-            const data = await response.json();
-            allArticles = data.articles || [];
+            // Load categories after critical fetches kick off
+            loadCategories();
 
-            const article = allArticles.find(a => a.slug === slug);
+            if (!articleRes.ok) {
+                showArticleError('Article not found');
+                return;
+            }
+            const articleData = await articleRes.json();
+            const article = articleData.article;
 
             if (!article) {
                 showArticleError('Article not found');
@@ -250,10 +275,18 @@
             }
 
             renderArticle(article);
-            renderRelatedArticles(article);
             updateMetaTags(article);
             updateShareButtons(article);
             updateSchema(article);
+
+            // Related articles use the summary list
+            try {
+                const listData = await listRes.json();
+                allArticles = listData.articles || [];
+                renderRelatedArticles(article);
+            } catch (e) {
+                console.error('Error loading related articles:', e);
+            }
         } catch (error) {
             console.error('Error loading article:', error);
             showArticleError('Error loading article');
@@ -290,9 +323,12 @@
             ? article.featuredImage : '';
         if (imgUrl) {
             const img = document.createElement('img');
-            img.src = imgUrl;
+            img.src = optimizeImageUrl(imgUrl, 1400);
             img.alt = article.title + ' - Mint Medical Clinic';
             img.title = article.title;
+            img.loading = 'eager';
+            img.fetchPriority = 'high';
+            img.decoding = 'async';
             imageContainer.innerHTML = '';
             imageContainer.appendChild(img);
         } else {
