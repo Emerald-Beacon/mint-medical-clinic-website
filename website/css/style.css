@@ -1531,6 +1531,107 @@ ul {
     padding: 60px 0;
 }
 
+/* ===== Payment Plans Static Fallback ===== */
+.payment-plans-overview {
+    padding: 80px 0 40px;
+    background: var(--gray-50);
+}
+
+.payment-plans-intro {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.payment-plans-intro h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: var(--dark);
+}
+
+.payment-plans-intro p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--gray-700);
+    margin-bottom: 30px;
+}
+
+.payment-plans-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.payment-plans-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.payment-plans-feature {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border-top: 4px solid var(--primary, #3EB489);
+}
+
+.payment-plans-feature h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--dark);
+}
+
+.payment-plans-feature p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--gray-700);
+    margin: 0;
+}
+
+.payment-plans-steps {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.payment-plans-steps h3 {
+    font-size: 24px;
+    margin-bottom: 24px;
+    color: var(--dark);
+    text-align: center;
+}
+
+.payment-plans-steps ol {
+    padding-left: 24px;
+}
+
+.payment-plans-steps li {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--gray-700);
+    margin-bottom: 16px;
+}
+
+.payment-plans-note {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+    color: var(--gray-600, #666);
+    line-height: 1.6;
+}
+
+.payment-plans-note a {
+    color: var(--primary, #3EB489);
+    font-weight: 600;
+}
+
 .cherry-widget-section [id="hero"],
 .cherry-widget-section [id="calculator"],
 .cherry-widget-section [id="howitworks"],
