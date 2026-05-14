@@ -772,28 +772,181 @@
     color: rgba(255,255,255,0.45);
   }
 
+  /* Sticky mobile CTA bar */
+  .mobile-sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: #fff;
+    padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+    box-shadow: 0 -8px 24px rgba(26,43,39,0.12);
+    border-top: 1px solid var(--gray-200);
+    gap: 10px;
+  }
+  .mobile-sticky-cta .btn {
+    flex: 1;
+    padding: 15px 16px;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+  .mobile-sticky-cta .btn.call {
+    flex: 0 0 auto;
+    background: var(--ink);
+    color: #fff;
+    width: 52px;
+    padding: 15px 0;
+  }
+
   /* Responsive */
   @media (max-width: 900px) {
-    section { padding: 70px 0; }
-    .hero { padding: 48px 0 70px; }
+    section { padding: 64px 0; }
+    .section-head { margin-bottom: 40px; }
+    .hero { padding: 36px 0 60px; }
     .hero-grid,
     .solution-grid,
     .trust-grid,
     .compare-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hero-image { height: 420px; }
+    .hero-image { height: 380px; }
     .hero-card { left: 0; bottom: -20px; }
-    .stack-list { padding: 16px 24px 8px; }
-    .stack-list li { grid-template-columns: 28px 1fr; }
-    .stack-value { grid-column: 2; }
+    .stack-list { padding: 8px 24px 4px; }
+    .stack-list li {
+      grid-template-columns: 28px 1fr;
+      padding: 18px 0;
+      gap: 14px;
+    }
+    .stack-value { grid-column: 2; font-size: 18px; }
     .stack-card-head, .stack-total, .stack-footer { padding-left: 24px; padding-right: 24px; }
-    .compare-card { padding: 32px 26px; }
+    .stack-card-head { padding-top: 28px; padding-bottom: 28px; }
+    .compare-card { padding: 32px 24px; }
+    .mid-cta { padding: 56px 0; }
+    .final-cta { padding: 70px 0; }
+    .hero-ctas .btn,
+    .final-cta-ctas .btn { flex: 1 1 100%; }
+    .hero-ctas, .final-cta-ctas { gap: 12px; }
   }
-  @media (max-width: 540px) {
-    .hero-proof { gap: 18px; }
-    .hero-proof-item .num { font-size: 26px; }
-    .btn { padding: 16px 26px; font-size: 15px; }
-    .btn-lg { padding: 18px 30px; font-size: 16px; }
-    .stat .num { font-size: 48px; }
+  @media (max-width: 640px) {
+    body { font-size: 16px; padding-bottom: 76px; }
+    .container { padding: 0 18px; }
+    section { padding: 52px 0; }
+    .section-head { margin-bottom: 32px; }
+    .section-head p { font-size: 16px; }
+    h1 { font-size: 2.1rem; line-height: 1.18; }
+    h2 { font-size: 1.85rem; }
+    h3 { font-size: 1.25rem; }
+
+    /* Trust bar — keep brief */
+    .trust-bar { font-size: 12px; padding: 8px 14px; line-height: 1.4; }
+    .logo-bar { padding: 16px 0; }
+    .logo-bar img { height: 34px; }
+    .logo-bar .phone { font-size: 14px; }
+
+    /* Hero */
+    .hero { padding: 28px 0 50px; }
+    .hero .lede { font-size: 16.5px; margin-bottom: 24px; }
+    .hero-tag { font-size: 12px; padding: 7px 13px; margin-bottom: 18px; }
+    .hero-image { height: 320px; border-radius: 18px; }
+    .hero-image-wrap { margin-top: 8px; }
+    .hero-card {
+      bottom: -16px;
+      left: 12px;
+      right: 12px;
+      max-width: none;
+      padding: 16px 18px;
+    }
+    .hero-card-text { font-size: 13.5px; }
+    .hero-card-text span { font-size: 11.5px; }
+    .hero-social-proof {
+      padding: 10px 14px 10px 10px;
+      gap: 10px;
+      border-radius: 999px;
+    }
+    .hero-avatars .avatar { width: 28px; height: 28px; }
+    .hero-social-text { font-size: 13px; }
+    .hero-proof {
+      gap: 14px;
+      padding-top: 22px;
+      justify-content: space-between;
+    }
+    .hero-proof-item { flex: 1 1 30%; min-width: 0; }
+    .hero-proof-item .num { font-size: 24px; }
+    .hero-proof-item .lbl { font-size: 11.5px; }
+
+    /* Buttons */
+    .btn { padding: 14px 22px; font-size: 15px; width: 100%; }
+    .btn-lg { padding: 16px 24px; font-size: 16px; }
+    .hero-ctas, .final-cta-ctas { flex-direction: column; }
+
+    /* Pain */
+    .pain-card { padding: 28px 22px; border-radius: 16px; }
+    .pain-card h3 { font-size: 1.15rem; }
+    .pain-card p { font-size: 14.5px; }
+
+    /* Solution */
+    .solution-bullets li { font-size: 15px; padding: 12px 0; }
+
+    /* Value stack */
+    .stack-card { border-radius: 18px; }
+    .stack-card-head h3 { font-size: 1.55rem; }
+    .stack-card-head p { font-size: 13.5px; }
+    .stack-list { padding: 4px 20px 0; }
+    .stack-list li { padding: 16px 0; gap: 12px; }
+    .stack-item-title { font-size: 15px; }
+    .stack-item-desc { font-size: 13.5px; }
+    .stack-value { font-size: 16px; margin-top: 4px; }
+    .stack-total { padding: 22px 20px; }
+    .stack-total .total-row { font-size: 15px; }
+    .stack-total .total-row.final { font-size: 19px; }
+    .stack-footer { padding: 22px 20px 28px; }
+
+    /* Stats */
+    .stat .num { font-size: 44px; }
+    .stat h3 { font-size: 1.05rem; }
+    .stat p { font-size: 13.5px; }
+    .stats-grid { gap: 28px; }
+
+    /* Compare */
+    .compare-grid { gap: 36px; margin-top: 28px; }
+    .compare-card h3 { font-size: 1.5rem; }
+    .compare-card .sub { font-size: 13.5px; }
+    .compare-spec { font-size: 14px; padding: 9px 0; }
+    .compare-best { font-size: 13.5px; padding: 12px 14px; }
+    .compare-tag { left: 22px; font-size: 10.5px; }
+
+    /* Process */
+    .step { padding: 30px 24px; border-radius: 16px; }
+    .step-num { width: 42px; height: 42px; font-size: 20px; margin-bottom: 14px; }
+
+    /* Trust list */
+    .trust-list li { padding: 16px 0; gap: 14px; }
+    .trust-icon { width: 40px; height: 40px; border-radius: 10px; }
+    .trust-list h4 { font-size: 1rem; }
+    .trust-list p { font-size: 14px; }
+
+    /* Mid CTA */
+    .mid-cta { padding: 48px 0; }
+    .mid-cta p { font-size: 16px; }
+
+    /* FAQ */
+    details.faq-item summary { padding: 18px 20px; font-size: 15.5px; gap: 12px; }
+    details.faq-item .answer { padding: 0 20px 20px; font-size: 14.5px; }
+
+    /* Final CTA */
+    .final-cta { padding: 60px 0; }
+    .final-cta p { font-size: 16.5px; margin-bottom: 28px; }
+    .final-cta-fineprint { margin-top: 28px; font-size: 12px; }
+
+    /* Show sticky bottom CTA */
+    .mobile-sticky-cta { display: flex; }
+  }
+  @media (max-width: 380px) {
+    h1 { font-size: 1.85rem; }
+    .hero-image { height: 280px; }
+    .hero-proof-item .num { font-size: 22px; }
+    .hero-proof-item .lbl { font-size: 11px; }
+    .stat .num { font-size: 40px; }
   }
 </style>
 </head>
@@ -1250,6 +1403,14 @@
     </div>
   </div>
 </footer>
+
+<!-- Sticky mobile CTA bar -->
+<div class="mobile-sticky-cta" role="region" aria-label="Quick contact">
+  <a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-primary">Book Free Consultation</a>
+  <a href="tel:8018048000" class="btn call" aria-label="Call (801) 804-8000">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+</div>
 
 </body>
 </html>
