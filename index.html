@@ -322,35 +322,100 @@
     <div class="mobile-menu-backdrop"></div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
+  <!-- Hero Section (v2) -->
+  <section class="hero-v2">
+    <div class="hero-v2-bg" aria-hidden="true"></div>
     <div class="container">
-      <div class="hero-content">
-        <span class="hero-badge">Utah's Premier Intimacy & Wellness Clinic</span>
-        <h1>Get Back to <span class="text-mint">Mint Condition</span></h1>
-        <p>Personalized treatments that restore confidence, energy, and vitality — no surgery, no downtime. Whether you're dealing with intimacy challenges, hormonal imbalance, or weight management, our team is here with cutting-edge solutions that actually work.</p>
-        <div class="hero-ctas">
-          <a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Book Your Free Consultation</a>
-          <a href="tel:8018048000" class="btn btn-outline btn-lg">Call (801) 804-8000</a>
-        </div>
-        <div class="hero-trust">
-          <div class="trust-item">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zm-2 15l-5-5 1.41-1.41L8 12.17l7.59-7.59L17 6l-9 9z" fill="#3EB489"/></svg>
-            <span>2 Utah Locations — Sandy & Layton</span>
-          </div>
-          <div class="trust-item">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zm-2 15l-5-5 1.41-1.41L8 12.17l7.59-7.59L17 6l-9 9z" fill="#3EB489"/></svg>
-            <span>Se Habla Español</span>
-          </div>
-          <div class="trust-item">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zm-2 15l-5-5 1.41-1.41L8 12.17l7.59-7.59L17 6l-9 9z" fill="#3EB489"/></svg>
-            <span>Free Consultation + Ultrasound ($650 Value)</span>
-          </div>
+      <div class="hero-v2-content">
+        <span class="hero-v2-pill">
+          <span class="hero-v2-pill-dot"></span>
+          Utah's Premier Intimacy & Wellness Clinic
+        </span>
+        <h1 class="hero-v2-headline">
+          Wellness,<br>
+          <span class="text-mint">redefined</span> for real life.
+        </h1>
+        <p class="hero-v2-sub">
+          Personalized, physician-led treatments for intimacy, hormones, and weight — no surgery, no downtime, no judgment. Built for how you actually live.
+        </p>
+        <div class="hero-v2-ctas">
+          <a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Book Free Consultation</a>
+          <a href="tel:8018048000" class="btn btn-ghost btn-lg">Call (801) 804-8000</a>
         </div>
       </div>
-      <div class="hero-image">
-        <img src="images/micah-sammie-chaffin-KWVJevJ_sVw-unsplash.jpg" alt="Happy couple enjoying intimacy and wellness after ED treatment at Mint Medical Clinic Utah" title="Restored intimacy and confidence with Mint Medical treatments">
+
+      <!-- Category card row -->
+      <div class="category-cards" aria-label="Browse services">
+        <a href="/services/ed-treatment.html" class="category-card">
+          <div class="category-card-media">
+            <picture>
+              <source type="image/webp" srcset="images/card-mens-health.webp">
+              <img src="images/card-mens-health.jpg" alt="ED treatment and intimacy care for men at Mint Medical Clinic" width="800" height="600" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="category-card-body">
+            <span class="category-card-title">Men's Health & ED</span>
+            <span class="category-card-arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+        <a href="/services/hormone-therapy.html" class="category-card">
+          <div class="category-card-media">
+            <picture>
+              <source type="image/webp" srcset="images/card-hormone-therapy.webp">
+              <img src="images/card-hormone-therapy.jpg" alt="Hormone replacement therapy for men and women at Mint Medical Clinic" width="800" height="600" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="category-card-body">
+            <span class="category-card-title">Hormone Therapy</span>
+            <span class="category-card-arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+        <a href="/services/glp1-weight-loss.html" class="category-card">
+          <div class="category-card-media">
+            <picture>
+              <source type="image/webp" srcset="images/card-weight-loss.webp">
+              <img src="images/card-weight-loss.jpg" alt="GLP-1 medical weight loss program at Mint Medical Clinic" width="800" height="600" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="category-card-body">
+            <span class="category-card-title">Weight Loss</span>
+            <span class="category-card-arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+        <a href="/services/womens-health.html" class="category-card">
+          <div class="category-card-media">
+            <picture>
+              <source type="image/webp" srcset="images/card-womens-health.webp">
+              <img src="images/card-womens-health.jpg" alt="Women's intimacy and wellness care at Mint Medical Clinic" width="800" height="600" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="category-card-body">
+            <span class="category-card-title">Women's Health</span>
+            <span class="category-card-arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
       </div>
+
+      <!-- Trust strip -->
+      <ul class="trust-strip" aria-label="Why patients choose Mint Medical">
+        <li><span class="trust-strip-icon" aria-hidden="true">●</span> Licensed Medical Providers</li>
+        <li><span class="trust-strip-icon" aria-hidden="true">●</span> Free Consultation + Ultrasound</li>
+        <li><span class="trust-strip-icon" aria-hidden="true">●</span> In-Clinic & Telehealth</li>
+        <li><span class="trust-strip-icon" aria-hidden="true">●</span> Sandy & Layton, Utah</li>
+        <li><span class="trust-strip-icon" aria-hidden="true">●</span> Se Habla Español</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Statement band -->
+  <section class="statement-band">
+    <div class="container">
+      <span class="statement-band-eyebrow">Doctor-guided. Real life ready.</span>
+      <h2 class="statement-band-title">
+        Your wellness <span class="statement-band-accent">breakthrough</span> starts here.
+      </h2>
+      <p class="statement-band-sub">From acoustic wave therapy to GLP-1 weight loss — every protocol is built around your body, your goals, and your pace.</p>
+      <a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-white btn-lg">Find Your Plan</a>
     </div>
   </section>
 
