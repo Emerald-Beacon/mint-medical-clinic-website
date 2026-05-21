@@ -1028,6 +1028,151 @@
     .hero-proof-item .lbl { font-size: 11px; }
     .stat .num { font-size: 40px; }
   }
+
+  /* Qualification quiz */
+  .book-modal-body { min-height: 0; }
+  .quiz-screen, .qualified-screen { padding: 28px 32px 32px; }
+  .quiz-progress {
+    height: 6px;
+    background: var(--gray-100);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  .quiz-progress-bar {
+    height: 100%;
+    background: var(--mint);
+    border-radius: 999px;
+    width: 0;
+    transition: width .3s ease;
+  }
+  .quiz-step-count {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mint-deep);
+    margin-bottom: 18px;
+  }
+  .quiz-question h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 18px;
+    line-height: 1.22;
+  }
+  .quiz-options {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all .15s ease;
+    background: #fff;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .quiz-option:hover { border-color: var(--mint); background: var(--mint-pale); }
+  .quiz-option .radio {
+    width: 20px; height: 20px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    transition: all .15s;
+  }
+  .quiz-option.selected {
+    border-color: var(--mint);
+    background: var(--mint-pale);
+  }
+  .quiz-option.selected .radio { border-color: var(--mint); }
+  .quiz-option.selected .radio::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: var(--mint);
+    border-radius: 50%;
+  }
+  .quiz-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    border-top: 1px solid var(--gray-200);
+    padding-top: 18px;
+    align-items: center;
+  }
+  .quiz-actions .btn { padding: 14px 22px; font-size: 14.5px; min-width: 110px; }
+  .quiz-actions .btn-back {
+    background: transparent;
+    color: var(--gray-700);
+    border: 1.5px solid var(--gray-200);
+  }
+  .quiz-actions .btn-back:hover { background: var(--gray-100); color: var(--ink); }
+  .quiz-actions .btn-back[hidden] { display: none; }
+  .quiz-actions .spacer { flex: 1; }
+  .quiz-actions .btn-primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+  .qualified-banner {
+    text-align: center;
+    background: linear-gradient(135deg, var(--mint-pale), #fff);
+    border: 1px solid var(--mint-light);
+    border-radius: 16px;
+    padding: 26px 22px;
+    margin-bottom: 18px;
+  }
+  .qualified-icon {
+    width: 56px; height: 56px;
+    background: var(--mint);
+    color: #fff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 12px;
+    box-shadow: 0 8px 20px rgba(62,180,137,0.35);
+  }
+  .qualified-banner h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .qualified-banner p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin: 0 auto;
+    max-width: 520px;
+  }
+  .calendar-wrap iframe {
+    width: 100%;
+    min-height: 720px;
+    border: none;
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  @media (max-width: 640px) {
+    .quiz-screen, .qualified-screen { padding: 20px 18px 22px; }
+    .quiz-question h4 { font-size: 1.35rem; }
+    .quiz-option { padding: 12px 14px; font-size: 14.5px; }
+    .quiz-actions .btn { font-size: 14px; padding: 12px 16px; min-width: 0; flex: 1; }
+    .quiz-actions .btn-back { flex: 0 0 auto; padding: 12px 14px; }
+    .qualified-banner { padding: 22px 16px; }
+    .qualified-banner h4 { font-size: 1.45rem; }
+    .calendar-wrap iframe { min-height: calc(100vh - 260px); }
+  }
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -1501,20 +1646,41 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
   </div>
 </footer>
 
-<!-- Booking modal -->
+<!-- Booking modal with qualification quiz -->
 <div class="book-modal" id="bookModal" role="dialog" aria-modal="true" aria-labelledby="bookModalTitle" aria-hidden="true">
   <div class="book-modal-dialog">
     <div class="book-modal-head">
       <div>
-        <h3 id="bookModalTitle">Schedule Your Free Consultation</h3>
-        <p>Select a time that works for you — confidential &amp; no obligation.</p>
+        <h3 id="bookModalTitle">Quick Qualification</h3>
+        <p id="bookModalSub">Answer 6 short questions to see if you qualify.</p>
       </div>
       <button class="book-modal-close" type="button" aria-label="Close" data-book-close>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
     <div class="book-modal-body">
-      <iframe id="bookIframe" data-src="https://api.leadconnectorhq.com/widget/booking/DtQf9JBVro6j8PxKIso7" title="Book Your Free Consultation" scrolling="no" loading="lazy"></iframe>
+      <div class="quiz-screen" id="quizScreen">
+        <div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgressBar"></div></div>
+        <div class="quiz-step-count" id="quizStepCount"></div>
+        <div id="quizQuestionContainer"></div>
+        <div class="quiz-actions">
+          <button type="button" class="btn btn-back" id="quizBack" hidden>← Back</button>
+          <div class="spacer"></div>
+          <button type="button" class="btn btn-primary" id="quizNext" disabled>Next →</button>
+        </div>
+      </div>
+      <div class="qualified-screen" id="qualifiedScreen" hidden>
+        <div class="qualified-banner">
+          <div class="qualified-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h4>Congratulations — you qualify!</h4>
+          <p>Based on your responses, you're a strong candidate for our GLP-1 program. Select a time below to lock in your complimentary consultation.</p>
+        </div>
+        <div class="calendar-wrap">
+          <iframe id="bookIframe" data-src="https://api.leadconnectorhq.com/widget/booking/DtQf9JBVro6j8PxKIso7" title="Book Your Free Consultation" scrolling="no" loading="lazy"></iframe>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1523,18 +1689,95 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
   (function() {
     var modal = document.getElementById('bookModal');
     var iframe = document.getElementById('bookIframe');
+    var titleEl = document.getElementById('bookModalTitle');
+    var subEl = document.getElementById('bookModalSub');
+    var quizScreen = document.getElementById('quizScreen');
+    var qualifiedScreen = document.getElementById('qualifiedScreen');
+    var nextBtn = document.getElementById('quizNext');
+    var backBtn = document.getElementById('quizBack');
     var embedLoaded = false;
 
-    function openModal(e) {
-      if (e) e.preventDefault();
+    var quizQuestions = [
+      { q: "What's your primary weight-loss goal?", options: ["Lose 20–40 lbs", "Lose 40–80 lbs", "Lose 80+ lbs", "Maintain & optimize my current weight"] },
+      { q: "How long have you struggled with your weight?", options: ["Less than 1 year", "1–5 years", "5–10 years", "10+ years"] },
+      { q: "What have you tried in the past?", options: ["Diet & exercise alone", "Other weight-loss medications", "Supplements or fad programs", "Bariatric surgery", "Nothing yet — this is new for me"] },
+      { q: "Do you have any weight-related conditions?", options: ["Type 2 diabetes or pre-diabetes", "High blood pressure or high cholesterol", "Sleep apnea", "Other (PCOS, fatty liver, joint pain)", "None of these"] },
+      { q: "Are you currently on a GLP-1 medication?", options: ["No, I've never taken one", "I tried one previously and stopped", "Yes, I'm currently taking one"] },
+      { q: "How soon would you like to start?", options: ["This week", "Within the next 30 days", "Just exploring my options"] }
+    ];
+    var currentStep = 0;
+    var answers = [];
+
+    function renderQuestion() {
+      var q = quizQuestions[currentStep];
+      var html = '<div class="quiz-question"><h4>' + q.q + '</h4>';
+      html += '<div class="quiz-options" role="radiogroup">';
+      q.options.forEach(function(opt, i) {
+        var selected = answers[currentStep] === i ? ' selected' : '';
+        html += '<label class="quiz-option' + selected + '" data-idx="' + i + '"><span class="radio"></span><span>' + opt + '</span></label>';
+      });
+      html += '</div></div>';
+      document.getElementById('quizQuestionContainer').innerHTML = html;
+      document.getElementById('quizStepCount').textContent = 'Question ' + (currentStep + 1) + ' of ' + quizQuestions.length;
+      document.getElementById('quizProgressBar').style.width = (currentStep / quizQuestions.length * 100) + '%';
+      backBtn.hidden = currentStep === 0;
+      nextBtn.textContent = currentStep === quizQuestions.length - 1 ? 'See If I Qualify →' : 'Next →';
+      nextBtn.disabled = typeof answers[currentStep] === 'undefined';
+
+      document.querySelectorAll('.quiz-option').forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          var idx = parseInt(opt.dataset.idx, 10);
+          answers[currentStep] = idx;
+          document.querySelectorAll('.quiz-option').forEach(function(o) { o.classList.remove('selected'); });
+          opt.classList.add('selected');
+          nextBtn.disabled = false;
+        });
+      });
+    }
+
+    function finishQuiz() {
+      document.getElementById('quizProgressBar').style.width = '100%';
+      quizScreen.hidden = true;
+      qualifiedScreen.hidden = false;
+      titleEl.textContent = 'You Qualify — Pick a Time';
+      subEl.textContent = 'Confidential & no obligation.';
       if (!iframe.src) iframe.src = iframe.dataset.src;
       if (!embedLoaded) {
         var s = document.createElement('script');
-        s.src = 'https://api.leadconnectorhq.com/js/form_embed.js';
+        s.src = 'https://link.msgsndr.com/js/form_embed.js';
         s.async = true;
         document.body.appendChild(s);
         embedLoaded = true;
       }
+      try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(e) {}
+    }
+
+    function resetQuiz() {
+      currentStep = 0;
+      answers = [];
+      quizScreen.hidden = false;
+      qualifiedScreen.hidden = true;
+      titleEl.textContent = 'Quick Qualification';
+      subEl.textContent = 'Answer 6 short questions to see if you qualify.';
+      renderQuestion();
+    }
+
+    nextBtn.addEventListener('click', function() {
+      if (typeof answers[currentStep] === 'undefined') return;
+      if (currentStep === quizQuestions.length - 1) {
+        finishQuiz();
+      } else {
+        currentStep++;
+        renderQuestion();
+      }
+    });
+    backBtn.addEventListener('click', function() {
+      if (currentStep > 0) { currentStep--; renderQuestion(); }
+    });
+
+    function openModal(e) {
+      if (e) e.preventDefault();
+      resetQuiz();
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
       document.body.classList.add('modal-open');
