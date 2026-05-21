@@ -34,6 +34,21 @@
   to = "/lp/glp1.html"
   status = 200
 
+[[redirects]]
+  from = "/awt"
+  to = "/lp/acoustic-wave-therapy.html"
+  status = 200
+
+[[redirects]]
+  from = "/acoustic-wave-therapy"
+  to = "/lp/acoustic-wave-therapy.html"
+  status = 200
+
+[[redirects]]
+  from = "/mens-performance"
+  to = "/lp/acoustic-wave-therapy.html"
+  status = 200
+
 # Headers for security and caching
 [[headers]]
   for = "/data/articles.json"
