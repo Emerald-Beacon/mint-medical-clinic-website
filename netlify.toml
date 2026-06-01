@@ -68,15 +68,18 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# CSS/JS use ?v= cache-busting in the HTML, so browsers must revalidate
+# rather than trust a stale 1-year "immutable" copy. ETag makes this cheap
+# (304 Not Modified) while guaranteeing updated styles always load.
 [[headers]]
   for = "/css/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/js/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/llms.txt"
