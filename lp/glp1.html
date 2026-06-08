@@ -1124,6 +1124,64 @@
     box-shadow: none;
     transform: none;
   }
+  .contact-intro {
+    text-align: center;
+    margin-bottom: 22px;
+  }
+  .contact-intro h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .contact-intro p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin: 0 auto;
+    max-width: 460px;
+  }
+  .lead-form { display: grid; gap: 14px; }
+  .lead-field { display: grid; gap: 6px; text-align: left; }
+  .lead-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+  .lead-field input {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--ink);
+    background: #fff;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .lead-field input:focus {
+    outline: none;
+    border-color: var(--mint);
+    box-shadow: 0 0 0 3px var(--mint-pale);
+  }
+  .btn-block { width: 100%; justify-content: center; margin-top: 4px; }
+  .lead-error {
+    background: #fdecec;
+    border: 1px solid #f5c2c2;
+    color: #a13030;
+    border-radius: 10px;
+    padding: 10px 13px;
+    font-size: 13.5px;
+  }
+  .lead-privacy {
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    text-align: center;
+    line-height: 1.5;
+    margin: 2px auto 0;
+    max-width: 440px;
+  }
   .qualified-banner {
     text-align: center;
     background: linear-gradient(135deg, var(--mint-pale), #fff);
@@ -1669,6 +1727,36 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
           <button type="button" class="btn btn-primary" id="quizNext" disabled>Next →</button>
         </div>
       </div>
+      <div class="contact-screen" id="contactScreen" hidden>
+        <div class="contact-intro">
+          <div class="qualified-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h4>Great news — you pre-qualify!</h4>
+          <p>Enter your details to secure your spot. We'll hold your place so we can follow up even if you don't finish scheduling.</p>
+        </div>
+        <form name="weight-loss-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="leadForm" class="lead-form">
+          <input type="hidden" name="form-name" value="weight-loss-lead">
+          <input type="hidden" name="quiz-answers" id="quizAnswersInput">
+          <input type="hidden" name="source-page" value="weight-loss-landing">
+          <p class="lead-hp" hidden aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <div class="lead-field">
+            <label for="leadName">Full name</label>
+            <input type="text" id="leadName" name="name" autocomplete="name" required>
+          </div>
+          <div class="lead-field">
+            <label for="leadEmail">Email address</label>
+            <input type="email" id="leadEmail" name="email" autocomplete="email" required>
+          </div>
+          <div class="lead-field">
+            <label for="leadPhone">Phone number</label>
+            <input type="tel" id="leadPhone" name="phone" autocomplete="tel" inputmode="tel" required>
+          </div>
+          <div class="lead-error" id="leadError" role="alert" hidden></div>
+          <button type="submit" class="btn btn-primary btn-block" id="leadSubmit">Continue to Scheduling →</button>
+          <p class="lead-privacy">Your information is confidential and never sold. By continuing you agree to be contacted about your complimentary consultation.</p>
+        </form>
+      </div>
       <div class="qualified-screen" id="qualifiedScreen" hidden>
         <div class="qualified-banner">
           <div class="qualified-icon">
@@ -1692,7 +1780,12 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
     var titleEl = document.getElementById('bookModalTitle');
     var subEl = document.getElementById('bookModalSub');
     var quizScreen = document.getElementById('quizScreen');
+    var contactScreen = document.getElementById('contactScreen');
     var qualifiedScreen = document.getElementById('qualifiedScreen');
+    var leadForm = document.getElementById('leadForm');
+    var leadSubmit = document.getElementById('leadSubmit');
+    var leadError = document.getElementById('leadError');
+    var quizAnswersInput = document.getElementById('quizAnswersInput');
     var nextBtn = document.getElementById('quizNext');
     var backBtn = document.getElementById('quizBack');
     var embedLoaded = false;
@@ -1735,13 +1828,88 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
       });
     }
 
-    function finishQuiz() {
+    // Quiz complete -> collect contact details before showing the calendar
+    function showContact() {
       document.getElementById('quizProgressBar').style.width = '100%';
+      quizScreen.hidden = true;
+      contactScreen.hidden = false;
+      qualifiedScreen.hidden = true;
+      titleEl.textContent = 'You Pre-Qualify — Almost Done';
+      subEl.textContent = 'Enter your details to secure your consultation.';
+      // Store readable quiz answers so they're captured alongside the lead
+      var summary = quizQuestions.map(function(q, i) {
+        var a = typeof answers[i] === 'number' ? q.options[answers[i]] : '(no answer)';
+        return (i + 1) + '. ' + q.q + ' — ' + a;
+      }).join('\n');
+      quizAnswersInput.value = summary;
+      var nameField = document.getElementById('leadName');
+      if (nameField) nameField.focus();
+    }
+
+    function encodeForm(data) {
+      return Object.keys(data).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
+      }).join('&');
+    }
+
+    // Submit lead to Netlify Forms, then advance to scheduling (with prefill)
+    leadForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!leadForm.checkValidity()) { leadForm.reportValidity(); return; }
+      leadError.hidden = true;
+      leadSubmit.disabled = true;
+      leadSubmit.textContent = 'Securing your spot…';
+
+      var name = document.getElementById('leadName').value.trim();
+      var email = document.getElementById('leadEmail').value.trim();
+      var phone = document.getElementById('leadPhone').value.trim();
+
+      var payload = {
+        'form-name': 'weight-loss-lead',
+        'name': name,
+        'email': email,
+        'phone': phone,
+        'source-page': 'weight-loss-landing',
+        'quiz-answers': quizAnswersInput.value,
+        'bot-field': ''
+      };
+
+      function proceed() {
+        try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(err) {}
+        finishQuiz({ name: name, email: email, phone: phone });
+      }
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeForm(payload)
+      }).then(function() {
+        proceed();
+      }).catch(function() {
+        // Never block a qualified lead from booking if capture fails
+        proceed();
+      });
+    });
+
+    function finishQuiz(contact) {
+      contact = contact || {};
+      contactScreen.hidden = true;
       quizScreen.hidden = true;
       qualifiedScreen.hidden = false;
       titleEl.textContent = 'You Qualify — Pick a Time';
       subEl.textContent = 'Confidential & no obligation.';
-      if (!iframe.src) iframe.src = iframe.dataset.src;
+      if (!iframe.src) {
+        var src = iframe.dataset.src;
+        // Prefill the GoHighLevel booking widget so they don't re-type
+        var parts = (contact.name || '').trim().split(/\s+/);
+        var params = [];
+        if (parts[0]) params.push('first_name=' + encodeURIComponent(parts[0]));
+        if (parts.length > 1) params.push('last_name=' + encodeURIComponent(parts.slice(1).join(' ')));
+        if (contact.email) params.push('email=' + encodeURIComponent(contact.email));
+        if (contact.phone) params.push('phone=' + encodeURIComponent(contact.phone));
+        if (params.length) src += (src.indexOf('?') === -1 ? '?' : '&') + params.join('&');
+        iframe.src = src;
+      }
       if (!embedLoaded) {
         var s = document.createElement('script');
         s.src = 'https://link.msgsndr.com/js/form_embed.js';
@@ -1749,14 +1917,17 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
         document.body.appendChild(s);
         embedLoaded = true;
       }
-      try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(e) {}
     }
 
     function resetQuiz() {
       currentStep = 0;
       answers = [];
       quizScreen.hidden = false;
+      contactScreen.hidden = true;
       qualifiedScreen.hidden = true;
+      leadError.hidden = true;
+      leadSubmit.disabled = false;
+      leadSubmit.textContent = 'Continue to Scheduling →';
       titleEl.textContent = 'Quick Qualification';
       subEl.textContent = 'Answer 6 short questions to see if you qualify.';
       renderQuestion();
@@ -1765,7 +1936,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
     nextBtn.addEventListener('click', function() {
       if (typeof answers[currentStep] === 'undefined') return;
       if (currentStep === quizQuestions.length - 1) {
-        finishQuiz();
+        showContact();
       } else {
         currentStep++;
         renderQuestion();
