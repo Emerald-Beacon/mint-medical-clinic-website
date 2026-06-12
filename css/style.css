@@ -86,8 +86,16 @@
     text-decoration: none;
 }
 
-.promo-bar-offer:hover .promo-banner-arrow {
-    transform: translateX(4px);
+.promo-bar-offer:hover strong {
+    text-decoration: underline;
+}
+
+.promo-bar-divider {
+    color: var(--gray-400);
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1;
+    user-select: none;
 }
 
 .promo-bar .promo-wl-btn {
@@ -116,7 +124,8 @@
         padding: 7px 12px;
     }
 
-    .promo-bar .promo-wl-btn {
+    .promo-bar .promo-wl-btn,
+    .promo-bar-divider {
         display: none;
     }
 

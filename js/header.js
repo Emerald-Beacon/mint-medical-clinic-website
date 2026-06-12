@@ -199,8 +199,8 @@ document.addEventListener('DOMContentLoaded', function() {
         promoBar.innerHTML = `
             <a href="${offerHref}" target="_blank" rel="noopener" class="promo-bar-offer">
                 <strong>Click Here to Claim Your FREE Intimacy Gift</strong>
-                <span class="promo-banner-arrow">→</span>
             </a>
+            <span class="promo-bar-divider" aria-hidden="true">/</span>
             <a href="https://vitality-core-copy-3f928588.base44.app/" target="_blank" rel="noopener" class="btn btn-weight-loss promo-wl-btn">Get My Personalized Weight Loss Plan</a>
         `;
         promoBanner.replaceWith(promoBar);
