@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     <li class="mobile-contact"><a href="tel:8018048000"><svg class="mobile-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(801) 804-8000</a></li>
                 </ul>
                 <div class="nav-right">
-                    <a href="https://vitality-core-copy-3f928588.base44.app/" target="_blank" rel="noopener" class="btn btn-weight-loss nav-wl-btn">Get My Personalized Weight Loss Plan</a>
                     <a href="tel:8018048000" class="phone">(801) 804-8000</a>
                     <button class="snipcart-checkout cart-btn" aria-label="Shopping cart">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -189,5 +188,21 @@ document.addEventListener('DOMContentLoaded', function() {
             <a href="https://vitality-core-copy-3f928588.base44.app/" target="_blank" rel="noopener" class="btn btn-weight-loss">Get My Personalized Weight Loss Plan</a>
         `;
         footerInner.insertBefore(wlCta, footerInner.firstChild);
+    }
+
+    // Restructure the top promo bar: shortened offer (left) + weight-loss CTA (right)
+    const promoBanner = document.querySelector('a.promo-banner');
+    if (promoBanner) {
+        const offerHref = promoBanner.getAttribute('href') || 'https://new-consultation.zohobookings.com/#/mintmedicalclinic';
+        const promoBar = document.createElement('div');
+        promoBar.className = 'promo-banner promo-bar';
+        promoBar.innerHTML = `
+            <a href="${offerHref}" target="_blank" rel="noopener" class="promo-bar-offer">
+                <strong>Click Here to Claim Your FREE Intimacy Gift</strong>
+                <span class="promo-banner-arrow">→</span>
+            </a>
+            <a href="https://vitality-core-copy-3f928588.base44.app/" target="_blank" rel="noopener" class="btn btn-weight-loss promo-wl-btn">Get My Personalized Weight Loss Plan</a>
+        `;
+        promoBanner.replaceWith(promoBar);
     }
 });

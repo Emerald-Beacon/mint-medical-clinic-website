@@ -65,6 +65,38 @@
     transform: translateX(4px);
 }
 
+/* Top bar with offer (center) + weight-loss CTA (right) */
+.promo-bar {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 4px 24px;
+    cursor: default;
+}
+
+.promo-bar:hover {
+    background: linear-gradient(135deg, #1C1C1C 0%, #2D2D2D 100%);
+}
+
+.promo-bar-offer {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.promo-bar-offer:hover .promo-banner-arrow {
+    transform: translateX(4px);
+}
+
+.promo-bar .promo-wl-btn {
+    padding: 6px 18px;
+    font-size: 12.5px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
 @media (max-width: 768px) {
     .promo-banner {
         flex-direction: column;
@@ -75,6 +107,16 @@
     }
 
     .promo-banner-arrow {
+        display: none;
+    }
+
+    /* On mobile the CTA lives in the slide-out menu, so keep the bar compact */
+    .promo-bar {
+        gap: 6px;
+        padding: 7px 12px;
+    }
+
+    .promo-bar .promo-wl-btn {
         display: none;
     }
 
@@ -426,18 +468,10 @@ ul {
     color: var(--mint);
 }
 
-.nav-right .btn-primary,
-.nav-right .btn-weight-loss {
+.nav-right .btn-primary {
     padding: 10px 18px;
     font-size: 13px;
     white-space: nowrap;
-}
-
-/* Free up horizontal space for the weight-loss CTA on mid-width screens */
-@media (max-width: 1280px) {
-    .nav-right .phone {
-        display: none;
-    }
 }
 
 .mobile-menu-btn {
