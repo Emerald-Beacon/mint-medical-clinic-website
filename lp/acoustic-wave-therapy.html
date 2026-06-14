@@ -1622,8 +1622,11 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
     ];
     var currentStep = 0;
     var answers = [];
+    var advanceTimer = null;
 
     function renderQuestion() {
+      // Cancel any pending auto-advance from a previous selection
+      clearTimeout(advanceTimer);
       var q = quizQuestions[currentStep];
       var html = '<div class="quiz-question"><h4>' + q.q + '</h4>';
       html += '<div class="quiz-options" role="radiogroup">';
@@ -1646,8 +1649,25 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
           document.querySelectorAll('.quiz-option').forEach(function(o) { o.classList.remove('selected'); });
           opt.classList.add('selected');
           nextBtn.disabled = false;
+          // Auto-advance for a smooth flow; the visible Next button is the
+          // fallback if this timer-based progression ever fails to fire.
+          clearTimeout(advanceTimer);
+          advanceTimer = setTimeout(goNext, 350);
         });
       });
+    }
+
+    // Single source of truth for moving forward — used by both the
+    // auto-advance timer and the always-visible Next button.
+    function goNext() {
+      clearTimeout(advanceTimer);
+      if (typeof answers[currentStep] === 'undefined') return;
+      if (currentStep === quizQuestions.length - 1) {
+        finishQuiz();
+      } else {
+        currentStep++;
+        renderQuestion();
+      }
     }
 
     function finishQuiz() {
@@ -1677,15 +1697,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
       renderQuestion();
     }
 
-    nextBtn.addEventListener('click', function() {
-      if (typeof answers[currentStep] === 'undefined') return;
-      if (currentStep === quizQuestions.length - 1) {
-        finishQuiz();
-      } else {
-        currentStep++;
-        renderQuestion();
-      }
-    });
+    nextBtn.addEventListener('click', goNext);
     backBtn.addEventListener('click', function() {
       if (currentStep > 0) { currentStep--; renderQuestion(); }
     });
