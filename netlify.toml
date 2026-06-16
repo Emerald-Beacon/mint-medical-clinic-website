@@ -1,6 +1,11 @@
 [build]
   publish = "."
   functions = "netlify/functions"
+  # Function deps live in netlify/functions/package.json (a subdir), but Netlify's
+  # dependency install runs at the repo root. Install them explicitly so esbuild can
+  # resolve @netlify/blobs when bundling. Without this, every git-triggered build fails
+  # with "Could not resolve @netlify/blobs" (exit 2).
+  command = "npm install --prefix netlify/functions"
 
 [functions]
   node_bundler = "esbuild"
