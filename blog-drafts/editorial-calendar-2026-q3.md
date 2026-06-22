@@ -30,8 +30,8 @@
 | Date | Day | Cluster | Title | Template | Primary Keyword | GEO / AI-query target | Status |
 |------|-----|---------|-------|----------|-----------------|------------------------|--------|
 | Jun 18 | Thu | B | Low Testosterone in Men: 9 Signs You Should Get a Blood Panel | listicle | low testosterone symptoms men | "I'm 38, tired, low sex drive, belly fat — could it be low T?" | ✅ Published |
-| Jun 23 | Tue | A | Does Shockwave Therapy for ED Actually Work? What 2024–2026 Research Shows | data-research | does shockwave therapy for ED work | "What does the research actually say about shockwave therapy for ED in 2026?" | Idea |
-| Jun 25 | Thu | E | The Best Men's Health Clinic Near You: How to Choose in Salt Lake, Sandy & Layton | how-to (local) | best men's health clinic Salt Lake City | "What's the best men's health clinic in the Salt Lake City area?" | Idea |
+| Jun 23 | Tue | A | Does Shockwave Therapy for ED Actually Work? What 2024–2026 Research Shows | data-research | does shockwave therapy for ED work | "What does the research actually say about shockwave therapy for ED in 2026?" | Draft ready for review |
+| Jun 25 | Thu | E | The Best Men's Health Clinic Near You: How to Choose in Salt Lake, Sandy & Layton | how-to (local) | best men's health clinic Salt Lake City | "What's the best men's health clinic in the Salt Lake City area?" | Draft ready for review |
 | Jun 30 | Tue | C | Semaglutide vs. Tirzepatide: Which Wins for Weight Loss in 2026? (Utah Doctor's Guide) | comparison (pillar) | semaglutide vs tirzepatide | "Compare how much weight people lose on semaglutide vs tirzepatide." | Idea |
 
 ---
