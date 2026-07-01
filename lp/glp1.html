@@ -1221,7 +1221,146 @@
     border-radius: 12px;
     overflow: hidden;
   }
+  /* Act-Now value-stack offer screen */
+  .offer-screen { padding: 24px 28px 26px; }
+  .offer-timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    background: linear-gradient(135deg, #b3261e, #d63a2f);
+    color: #fff;
+    border-radius: 14px;
+    padding: 12px 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 22px rgba(198,42,32,0.32);
+    animation: offerPulse 1.4s ease-in-out infinite;
+  }
+  @keyframes offerPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 8px 22px rgba(198,42,32,0.32); }
+    50% { transform: scale(1.015); box-shadow: 0 10px 28px rgba(198,42,32,0.45); }
+  }
+  .offer-timer-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    opacity: 0.95;
+  }
+  .offer-timer-clock {
+    font-size: 2.1rem;
+    font-weight: 800;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .offer-hero { text-align: center; margin-bottom: 18px; }
+  .offer-flag {
+    display: inline-block;
+    background: var(--mint-light);
+    color: var(--mint-deep);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .offer-hero h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    line-height: 1.15;
+    color: var(--ink);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .offer-hero p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin: 0 auto;
+    max-width: 500px;
+    line-height: 1.55;
+  }
+  .offer-stack {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--mint-pale);
+    border: 1px solid var(--mint-light);
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+  }
+  .offer-product {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    flex: 0 0 auto;
+    filter: drop-shadow(0 8px 16px rgba(31,107,80,0.18));
+  }
+  .offer-stack-list { list-style: none; margin: 0; padding: 0; flex: 1; }
+  .offer-stack-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--ink);
+    border-bottom: 1px dashed var(--mint-light);
+  }
+  .offer-stack-list li:last-child { border-bottom: none; }
+  .offer-check {
+    flex: 0 0 auto;
+    width: 20px; height: 20px;
+    background: var(--mint);
+    color: #fff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .offer-item-name { flex: 1; }
+  .offer-item-val { flex: 0 0 auto; font-weight: 600; color: var(--gray-700); }
+  .offer-item-val s { color: var(--gray-500); }
+  .offer-stack-list li.offer-total {
+    padding-top: 12px;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .offer-total .offer-item-name { padding-left: 30px; }
+  .offer-total .offer-item-val strong { color: var(--mint-deep); font-size: 1.05rem; }
+  .offer-call {
+    font-size: 1.05rem;
+    padding: 16px 22px;
+    gap: 10px;
+    box-shadow: 0 10px 24px rgba(62,180,137,0.35);
+  }
+  .offer-fineprint {
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-align: center;
+    margin: 10px auto 0;
+    max-width: 420px;
+  }
+  .offer-skip {
+    display: block;
+    margin: 14px auto 0;
+    background: none;
+    border: none;
+    color: var(--gray-500);
+    font-size: 13px;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 4px 8px;
+  }
+  .offer-skip:hover { color: var(--ink-soft); }
   @media (max-width: 640px) {
+    .offer-screen { padding: 20px 18px 22px; }
+    .offer-hero h4 { font-size: 1.4rem; }
+    .offer-stack { flex-direction: column; text-align: left; gap: 12px; }
+    .offer-product { width: 84px; height: 84px; }
+    .offer-timer-clock { font-size: 1.9rem; }
     .quiz-screen, .qualified-screen { padding: 20px 18px 22px; }
     .quiz-question h4 { font-size: 1.35rem; }
     .quiz-option { padding: 12px 14px; font-size: 14.5px; }
@@ -1761,6 +1900,47 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
           <p class="lead-privacy">Your information is confidential and never sold. By continuing you agree to be contacted about your complimentary consultation.</p>
         </form>
       </div>
+      <div class="offer-screen" id="offerScreen" hidden>
+        <div class="offer-timer" id="offerTimer" role="timer" aria-live="assertive">
+          <span class="offer-timer-label">This exclusive offer expires in</span>
+          <span class="offer-timer-clock" id="offerClock">1:00</span>
+        </div>
+        <div class="offer-hero">
+          <span class="offer-flag">🎁 Act-Now Bonus — Callers Only</span>
+          <h4>Wait! Call in the next 60 seconds and your first bottle is on us.</h4>
+          <p>Patients who pair their GLP-1 with our <strong>Ionic Mineral GLP-1 Accelerator</strong> replenish the electrolytes and trace minerals lost during rapid weight loss — so they feel better and see results faster. Claim yours <strong>free</strong> when you call to book right now.</p>
+        </div>
+        <div class="offer-stack">
+          <img class="offer-product" src="../images/super-ionic-mint-minerals.png" alt="Super Ionic Mint Minerals — Ionic Mineral GLP-1 Accelerator" loading="lazy">
+          <ul class="offer-stack-list">
+            <li>
+              <span class="offer-check">✓</span>
+              <span class="offer-item-name">FREE bottle — Ionic Mineral GLP-1 Accelerator</span>
+              <span class="offer-item-val"><s>$89</s></span>
+            </li>
+            <li>
+              <span class="offer-check">✓</span>
+              <span class="offer-item-name">Priority consultation scheduling</span>
+              <span class="offer-item-val">Included</span>
+            </li>
+            <li>
+              <span class="offer-check">✓</span>
+              <span class="offer-item-name">Personalized GLP-1 accelerator dosing plan</span>
+              <span class="offer-item-val">Included</span>
+            </li>
+            <li class="offer-total">
+              <span class="offer-item-name">Total value today</span>
+              <span class="offer-item-val"><s>$89</s> <strong>FREE</strong></span>
+            </li>
+          </ul>
+        </div>
+        <a href="tel:8018048000" class="btn btn-primary btn-block offer-call" id="offerCall">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Now to Claim: (801) 804-8000
+        </a>
+        <p class="offer-fineprint">Offer valid for callers only. Mention this page to claim your free bottle.</p>
+        <button type="button" class="offer-skip" id="offerSkip">No thanks, just book my consultation online →</button>
+      </div>
       <div class="qualified-screen" id="qualifiedScreen" hidden>
         <div class="qualified-banner">
           <div class="qualified-icon">
@@ -1785,7 +1965,13 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
     var subEl = document.getElementById('bookModalSub');
     var quizScreen = document.getElementById('quizScreen');
     var contactScreen = document.getElementById('contactScreen');
+    var offerScreen = document.getElementById('offerScreen');
     var qualifiedScreen = document.getElementById('qualifiedScreen');
+    var offerClock = document.getElementById('offerClock');
+    var offerCall = document.getElementById('offerCall');
+    var offerSkip = document.getElementById('offerSkip');
+    var offerTimer = null;
+    var pendingContact = null;
     var leadForm = document.getElementById('leadForm');
     var leadSubmit = document.getElementById('leadSubmit');
     var leadError = document.getElementById('leadError');
@@ -1900,7 +2086,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
 
       function proceed() {
         try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(err) {}
-        finishQuiz({ name: name, email: email, phone: phone });
+        showOffer({ name: name, email: email, phone: phone });
       }
 
       fetch('/', {
@@ -1915,10 +2101,59 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
       });
     });
 
+    // Stop the countdown; safe to call repeatedly.
+    function stopOfferTimer() {
+      if (offerTimer) { clearInterval(offerTimer); offerTimer = null; }
+    }
+
+    // Act-Now offer: show the value stack + 60s countdown before scheduling.
+    // Calling in this window is the reward path; if the timer expires (or they
+    // skip), we fall back to the calendar so no qualified lead is ever lost.
+    function showOffer(contact) {
+      pendingContact = contact || {};
+      quizScreen.hidden = true;
+      contactScreen.hidden = true;
+      offerScreen.hidden = false;
+      qualifiedScreen.hidden = true;
+      titleEl.textContent = 'One More Thing — Act Now';
+      subEl.textContent = 'A free gift if you call in the next 60 seconds.';
+
+      var remaining = 60;
+      function fmt(s) {
+        var m = Math.floor(s / 60);
+        var sec = s % 60;
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+      }
+      offerClock.textContent = fmt(remaining);
+      stopOfferTimer();
+      offerTimer = setInterval(function() {
+        remaining -= 1;
+        if (remaining <= 0) {
+          stopOfferTimer();
+          offerClock.textContent = '0:00';
+          finishQuiz(pendingContact);
+          return;
+        }
+        offerClock.textContent = fmt(remaining);
+      }, 1000);
+    }
+
+    // Tapping call is the conversion; keep the offer on screen (dialer opens
+    // over it) and let the timer keep running as the calendar fallback.
+    offerCall.addEventListener('click', function() {
+      try { if (typeof fbq === 'function') fbq('track', 'Contact'); } catch(err) {}
+    });
+    offerSkip.addEventListener('click', function() {
+      stopOfferTimer();
+      finishQuiz(pendingContact);
+    });
+
     function finishQuiz(contact) {
-      contact = contact || {};
+      stopOfferTimer();
+      contact = contact || pendingContact || {};
       contactScreen.hidden = true;
       quizScreen.hidden = true;
+      offerScreen.hidden = true;
       qualifiedScreen.hidden = false;
       titleEl.textContent = 'You Qualify — Pick a Time';
       subEl.textContent = 'Confidential & no obligation.';
@@ -1944,10 +2179,13 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
     }
 
     function resetQuiz() {
+      stopOfferTimer();
+      pendingContact = null;
       currentStep = 0;
       answers = [];
       quizScreen.hidden = false;
       contactScreen.hidden = true;
+      offerScreen.hidden = true;
       qualifiedScreen.hidden = true;
       leadError.hidden = true;
       leadSubmit.disabled = false;
@@ -1970,6 +2208,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
       document.body.classList.add('modal-open');
     }
     function closeModal() {
+      stopOfferTimer();
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('modal-open');
