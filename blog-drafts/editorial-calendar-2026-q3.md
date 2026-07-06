@@ -41,8 +41,8 @@
 | Date | Day | Cluster | Title | Template | Primary Keyword | GEO / AI-query target | Status |
 |------|-----|---------|-------|----------|-----------------|------------------------|--------|
 | Jul 2 | Thu | D | Women's Intimacy Health in Utah: Discreet, Judgment-Free Care in Sandy & Layton | local landing | women's sexual health clinic near me | "Is there a clinic that treats women's sexual wellness discreetly near me?" | Idea |
-| Jul 7 | Tue | A | How Much Does Shockwave Therapy for ED Cost in Utah? (2026 Pricing Guide) | how-to / cost | shockwave therapy for ED cost | "How much should I expect to pay for shockwave therapy for ED in Utah?" | Idea |
-| Jul 9 | Thu | C | Do You Qualify for GLP-1 Weight Loss? BMI & Eligibility Explained | how-to | how to qualify for semaglutide | "I have a BMI of 31 — am I eligible for tirzepatide?" | Idea |
+| Jul 7 | Tue | A | How Much Does Shockwave Therapy for ED Cost in Utah? (2026 Pricing Guide) | how-to / cost | shockwave therapy for ED cost | "How much should I expect to pay for shockwave therapy for ED in Utah?" | Draft ready for review |
+| Jul 9 | Thu | C | Do You Qualify for GLP-1 Weight Loss? BMI & Eligibility Explained | how-to | how to qualify for semaglutide | "I have a BMI of 31 — am I eligible for tirzepatide?" | Draft ready for review |
 | Jul 14 | Tue | E | Whole Body Cryotherapy in Utah: Benefits, Cost, and What to Expect | how-to | cryotherapy near me / cost Utah | "Best place near me to get cryotherapy and weight loss treatment together?" | Idea |
 | Jul 16 | Thu | B | How Much Does TRT Cost in Utah? A Transparent 2026 Price Breakdown | data-research / cost | how much does TRT cost | "How much should I expect to pay for hormone therapy without insurance in Utah?" | Idea |
 | Jul 21 | Tue | A | Shockwave vs. Acoustic Wave Therapy for ED: Does the Machine Actually Matter? | comparison | shockwave vs acoustic wave therapy | "What's the difference between acoustic wave and shockwave therapy — which works?" | Idea |
