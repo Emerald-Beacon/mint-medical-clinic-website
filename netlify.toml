@@ -40,10 +40,13 @@
   to = "/affiliate"
   status = 301
 
+# force = true is required: the file affiliate.html exists, and Netlify serves an
+# existing static file in preference to a redirect rule unless the rule is forced.
 [[redirects]]
   from = "/affiliate.html"
   to = "/affiliate"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/partners"
