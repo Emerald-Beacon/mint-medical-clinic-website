@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#3EB489">
+    <link rel="icon" type="image/png" href="images/Untitled design (1).png">
+    <link rel="apple-touch-icon" href="images/Untitled design (1).png">
+    <title>Affiliate Program | Earn Cash for GLP-1 Referrals | Mint Medical Clinic</title>
+    <meta name="description" content="Join the Mint Medical Clinic affiliate program. Earn $25-$75 cash on every approved GLP-1 sale you refer, plus free GLP-1 product after your first 10 approved sales.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mintmedicalclinic.com/affiliate.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=20260613">
+    <style>
+        /* ===== Affiliate Page ===== */
+        .page-hero-affiliate {
+            background: linear-gradient(135deg, rgba(26, 37, 32, 0.95), rgba(62, 180, 137, 0.85)),
+                        url('images/Patient-Consult-scaled-1.jpg') center/cover;
+        }
+        .page-hero-affiliate h1,
+        .page-hero-affiliate p { color: #fff; }
+
+        .affiliate-commissions { padding: 80px 0; background: var(--gray-50); }
+
+        /* This page has 4 steps; the shared .financing-steps grid is built for 3. */
+        .affiliate-steps { grid-template-columns: repeat(4, 1fr); }
+        @media (max-width: 900px) {
+            .affiliate-steps { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 560px) {
+            .affiliate-steps { grid-template-columns: 1fr; }
+        }
+
+        .commission-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto 32px;
+        }
+        .commission-card {
+            background: var(--white);
+            border: 1px solid rgba(62, 180, 137, 0.25);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .commission-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .commission-amount {
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--mint);
+            line-height: 1;
+        }
+        .commission-card p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--gray-600, #666);
+        }
+        .commission-note {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 14px;
+            color: var(--gray-600, #666);
+        }
+
+        .affiliate-terms { padding: 80px 0; }
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .terms-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200, #e5e7eb);
+            border-radius: 16px;
+            padding: 28px;
+        }
+        .terms-card h3 { font-size: 18px; margin-bottom: 10px; color: var(--dark); }
+        .terms-card p { font-size: 15px; line-height: 1.6; }
+
+        .affiliate-rules { padding: 80px 0; background: var(--gray-50); }
+        .rules-list {
+            max-width: 800px;
+            margin: 0 auto;
+            list-style: none;
+            padding: 0;
+        }
+        .rules-list li {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--gray-200, #e5e7eb);
+            line-height: 1.6;
+        }
+        .rules-list li:last-child { border-bottom: none; }
+        .rules-list svg { flex-shrink: 0; margin-top: 3px; }
+
+        /* Signup form */
+        .affiliate-signup { padding: 80px 0; }
+        .affiliate-form-box {
+            max-width: 720px;
+            margin: 0 auto;
+            background: var(--white);
+            border: 1px solid rgba(62, 180, 137, 0.25);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+        }
+        .affiliate-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .affiliate-form .form-field { margin-bottom: 18px; }
+        .affiliate-form label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+        .affiliate-form input[type="text"],
+        .affiliate-form input[type="email"],
+        .affiliate-form input[type="tel"],
+        .affiliate-form input[type="url"],
+        .affiliate-form select,
+        .affiliate-form textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--gray-200, #e5e7eb);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 15px;
+            background: var(--white);
+            color: var(--dark);
+        }
+        .affiliate-form input:focus,
+        .affiliate-form select:focus,
+        .affiliate-form textarea:focus {
+            outline: none;
+            border-color: var(--mint);
+            box-shadow: 0 0 0 3px rgba(62, 180, 137, 0.15);
+        }
+        .affiliate-form textarea { min-height: 110px; resize: vertical; }
+        .checkbox-field {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin-bottom: 18px;
+            font-size: 14px;
+            line-height: 1.55;
+        }
+        .checkbox-field input { margin-top: 3px; flex-shrink: 0; }
+        .checkbox-field label { font-weight: 400; font-size: 14px; margin: 0; }
+        .affiliate-form .btn { width: 100%; }
+        .form-note {
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--gray-600, #666);
+            text-align: center;
+        }
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .form-success h3 { color: var(--mint); margin-bottom: 10px; }
+        .form-error {
+            display: none;
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: #fdecec;
+            color: #a32020;
+            font-size: 14px;
+        }
+        .affiliate-legal {
+            padding: 40px 0 60px;
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--gray-600, #666);
+        }
+        .affiliate-legal .container { max-width: 900px; }
+
+        @media (max-width: 640px) {
+            .affiliate-form .form-row { grid-template-columns: 1fr; gap: 0; }
+            .affiliate-form-box { padding: 26px 20px; }
+            .commission-amount { font-size: 38px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">
+                    <img src="images/mint-medical-logo.png" alt="Mint Medical Clinic">
+                </a>
+                <ul class="nav-links">
+                    <li class="mobile-cta"><a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-primary">Book Consultation</a></li>
+                    <li class="has-dropdown">
+                        <a href="/services.html">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/services/acoustic-wave-therapy.html">Acoustic Wave Therapy</a></li>
+                            <li><a href="/services/ed-treatment.html">ED Treatment</a></li>
+                            <li><a href="/services/low-testosterone.html">Low Testosterone</a></li>
+                            <li><a href="/services/trt-clinic.html">TRT Clinic</a></li>
+                            <li><a href="/services/hormone-therapy.html">Hormone Therapy</a></li>
+                            <li><a href="/services/glp1-weight-loss.html">GLP-1 Weight Loss</a></li>
+                            <li><a href="/services/medical-weight-loss.html">Medical Weight Loss</a></li>
+                            <li><a href="/services/mens-health.html">Men's Health</a></li>
+                            <li><a href="/services/womens-health.html">Women's Health</a></li>
+                            <li><a href="/services/menopause-treatment.html">Menopause Treatment</a></li>
+                            <li><a href="/services/telehealth-ed.html">Telehealth ED</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="/products.html">Products</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Products/test-boost.html">Test Boost</a></li>
+                            <li><a href="/Products/vaso-pump.html">Vaso Pump</a></li>
+                            <li><a href="/Products/estro-block.html">Estro Block</a></li>
+                            <li><a href="/Products/glp1-support-protein.html">GLP-1 Support Protein</a></li>
+                            <li><a href="/Products/super-ionic-mint-minerals.html">Super Ionic Minerals</a></li>
+                            <li><a href="/Products/colon-cleanse.html">Colon Cleanse</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/process.html">Our Process</a></li>
+                    <li><a href="/results.html">Results</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li class="mobile-contact"><a href="tel:8018048000"><svg class="mobile-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(801) 804-8000</a></li>
+                </ul>
+                <div class="nav-right">
+                    <a href="tel:8018048000" class="phone">(801) 804-8000</a>
+                    <a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-primary">Book Consultation</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+        <div class="mobile-menu-backdrop"></div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero page-hero-affiliate">
+        <div class="container">
+            <div class="page-hero-content">
+                <span class="page-badge">Affiliate Program</span>
+                <h1>Get Paid to Refer GLP-1 Patients</h1>
+                <p>Earn cash on every approved GLP-1 sale you send to Mint Medical Clinic — starting with your very first one. Hit 10 approved sales and you become eligible for free GLP-1 product of your own.</p>
+                <a href="#apply" class="btn btn-white btn-lg" style="margin-top: 24px;">Apply to the Program</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commission Schedule -->
+    <section class="affiliate-commissions">
+        <div class="container">
+            <div class="section-header">
+                <h2>What You Earn</h2>
+                <p>A flat cash commission for each approved sale — no tiers to climb, no minimum before you get paid.</p>
+            </div>
+            <div class="commission-cards">
+                <div class="commission-card">
+                    <h3>Semaglutide</h3>
+                    <div class="commission-amount">$25</div>
+                    <p>per approved sale</p>
+                </div>
+                <div class="commission-card">
+                    <h3>Tirzepatide</h3>
+                    <div class="commission-amount">$50</div>
+                    <p>per approved sale</p>
+                </div>
+                <div class="commission-card">
+                    <h3>Retatrutide</h3>
+                    <div class="commission-amount">$75</div>
+                    <p>per approved sale</p>
+                </div>
+            </div>
+            <p class="commission-note">Commissions are paid on <strong>every</strong> approved sale beginning with the first. An approved sale is one that came through your tracking link or referral code, was clinically approved and fulfilled by our licensed providers, was paid in full, and was not later refunded, charged back, cancelled, or returned.</p>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="financing-process">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Four steps from application to your first commission check.</p>
+            </div>
+            <div class="financing-steps affiliate-steps">
+                <div class="financing-step">
+                    <div class="step-number">1</div>
+                    <h3>Apply</h3>
+                    <p>Submit the application below. We review your audience and channels, then send you the Affiliate Services Agreement to sign.</p>
+                </div>
+                <div class="financing-step">
+                    <div class="step-number">2</div>
+                    <h3>Get Your Link</h3>
+                    <p>Once you're approved, we issue your tracking link and referral code, plus the marketing materials you're cleared to use.</p>
+                </div>
+                <div class="financing-step">
+                    <div class="step-number">3</div>
+                    <h3>Refer Patients</h3>
+                    <p>Share your link. Every patient who comes through it is tracked to you automatically. Our providers handle all clinical work and fulfillment.</p>
+                </div>
+                <div class="financing-step">
+                    <div class="step-number">4</div>
+                    <h3>Get Paid</h3>
+                    <p>Commissions are calculated monthly and paid within 30 days of the close of each period for all sales approved in that period.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Terms -->
+    <section class="affiliate-terms">
+        <div class="container">
+            <div class="section-header">
+                <h2>Program Terms at a Glance</h2>
+                <p>The essentials from the Affiliate Services Agreement. The signed agreement is what governs — this is the plain-English summary.</p>
+            </div>
+            <div class="terms-grid">
+                <div class="terms-card">
+                    <h3>Free GLP-1 Product After 10 Units</h3>
+                    <p>Once you've generated your first 10 approved sales (counted across all GLP-1 products), you become eligible for free GLP-1 product in addition to your cash commissions. The product, dosage, quantity, and cadence are determined by the clinic, and it's subject to our standard clinical intake, eligibility screening, and approval by a licensed provider.</p>
+                </div>
+                <div class="terms-card">
+                    <h3>GLP-1 Exclusivity</h3>
+                    <p>While you're in the program, you promote GLP-1 products exclusively for Mint Medical Clinic. That means no promoting, endorsing, or referring for any other provider that sells or prescribes GLP-1 or competing weight-management medications — including your own brands and social channels. Disclose any existing arrangement up front and end it before you start.</p>
+                </div>
+                <div class="terms-card">
+                    <h3>Monthly Payment</h3>
+                    <p>Commissions are calculated and paid monthly, within 30 days after the close of each period, for all sales that became approved during that period. You're responsible for providing accurate payment and tax information, and for all taxes on what you earn. We issue a 1099 where the law requires it.</p>
+                </div>
+                <div class="terms-card">
+                    <h3>Chargebacks &amp; Adjustments</h3>
+                    <p>If a sale is refunded, charged back, cancelled, or returned after we've already paid you the commission, we may deduct that amount from a future commission payment or invoice you for it. No commission is payable on quotes, unpaid orders, or orders declined for clinical or other reasons.</p>
+                </div>
+                <div class="terms-card">
+                    <h3>Independent Contractor</h3>
+                    <p>You're an independent contractor, not an employee. Nothing in the program creates an employment, partnership, joint venture, agency, or franchise relationship. You're responsible for your own expenses, taxes, and insurance.</p>
+                </div>
+                <div class="terms-card">
+                    <h3>Term &amp; Termination</h3>
+                    <p>The agreement runs until either side ends it. Either party can terminate for convenience on 15 days' written notice. We can terminate immediately for a breach, a violation of law, or conduct that could harm the clinic or its patients. Commissions earned before termination are still paid in the ordinary course.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules of the Road -->
+    <section class="affiliate-rules">
+        <div class="container">
+            <div class="section-header">
+                <h2>What We Ask of Affiliates</h2>
+                <p>GLP-1 medications are prescription products, so their promotion carries real legal and regulatory obligations. These aren't optional.</p>
+            </div>
+            <ul class="rules-list">
+                <li>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3EB489" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>Promote lawfully and truthfully, using only marketing materials and claims we've approved in writing.</span>
+                </li>
+                <li>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3EB489" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>Make no false, misleading, or unsubstantiated claims about the products, their safety, efficacy, or results — and never guarantee a medical outcome.</span>
+                </li>
+                <li>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3EB489" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>Comply with all federal, state, and local laws covering advertising, telehealth, consumer protection, privacy, and the marketing of prescription products.</span>
+                </li>
+                <li>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3EB489" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>Don't give medical advice, diagnose, or represent yourself as a licensed healthcare provider unless you actually are one and are acting within your scope.</span>
+                </li>
+                <li>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3EB489" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>Use only the tracking links, referral codes, and attribution methods we approve, so approved sales can be verified and credited to you.</span>
+                </li>
+                <li>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3EB489" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>No spam, deceptive advertising, trademark bidding, or anything that could damage the clinic's reputation or violate a platform's terms.</span>
+                </li>
+                <li>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3EB489" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>Keep our non-public information confidential — patient data, pricing, business methods, and marketing materials — and follow all applicable privacy laws.</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Signup Form -->
+    <section class="affiliate-signup" id="apply">
+        <div class="container">
+            <div class="section-header">
+                <h2>Apply to Become an Affiliate</h2>
+                <p>Tell us about your audience. We review every application and follow up with next steps and the agreement.</p>
+            </div>
+            <div class="affiliate-form-box">
+                <div class="form-success" id="formSuccess">
+                    <h3>Application received</h3>
+                    <p>Thanks for applying to the Mint Medical Clinic affiliate program. We'll review your application and follow up by email with next steps and the Affiliate Services Agreement. Questions in the meantime? Call us at <a href="tel:8018048000">(801) 804-8000</a>.</p>
+                </div>
+
+                <form
+                    class="affiliate-form"
+                    id="affiliateForm"
+                    name="affiliate-application"
+                    method="POST"
+                    data-netlify="true"
+                    netlify-honeypot="bot-field"
+                >
+                    <input type="hidden" name="form-name" value="affiliate-application">
+                    <p hidden>
+                        <label>Don't fill this out: <input name="bot-field"></label>
+                    </p>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(801) 555-1234" required>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="businessName">Business or Brand Name</label>
+                        <input type="text" id="businessName" name="businessName" placeholder="If you're applying as a business">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="website">Website, Social Profiles, or Channels *</label>
+                        <input type="text" id="website" name="website" placeholder="mysite.com, @myhandle on Instagram/TikTok, etc." required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="audienceSize">Approximate Audience Size *</label>
+                            <select id="audienceSize" name="audienceSize" required>
+                                <option value="">Select one</option>
+                                <option value="Under 1,000">Under 1,000</option>
+                                <option value="1,000 - 10,000">1,000 - 10,000</option>
+                                <option value="10,000 - 50,000">10,000 - 50,000</option>
+                                <option value="50,000 - 250,000">50,000 - 250,000</option>
+                                <option value="250,000+">250,000+</option>
+                                <option value="No public audience - personal referrals">No public audience — personal referrals</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="primaryChannel">Primary Channel *</label>
+                            <select id="primaryChannel" name="primaryChannel" required>
+                                <option value="">Select one</option>
+                                <option value="Instagram">Instagram</option>
+                                <option value="TikTok">TikTok</option>
+                                <option value="YouTube">YouTube</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="Blog or website">Blog or website</option>
+                                <option value="Email list">Email list</option>
+                                <option value="Podcast">Podcast</option>
+                                <option value="Gym, studio, or clinic">Gym, studio, or clinic</option>
+                                <option value="Word of mouth">Word of mouth</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="promoPlan">How do you plan to promote the program? *</label>
+                        <textarea id="promoPlan" name="promoPlan" placeholder="Tell us about your audience and how you'd introduce them to Mint Medical Clinic." required></textarea>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="competingProvider">Do you currently promote GLP-1 or weight-management medications for any other provider? *</label>
+                        <select id="competingProvider" name="competingProvider" required>
+                            <option value="">Select one</option>
+                            <option value="No">No</option>
+                            <option value="Yes - willing to end it before starting">Yes — and I'm willing to end it before starting</option>
+                            <option value="Yes - not able to end it">Yes — and I'm not able to end it</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox-field">
+                        <input type="checkbox" id="exclusivityAck" name="exclusivityAck" value="Yes" required>
+                        <label for="exclusivityAck">I understand that affiliates promote GLP-1 products exclusively for Mint Medical Clinic during the term of the agreement, and that I must disclose and end any arrangement with a competing provider before promoting. *</label>
+                    </div>
+
+                    <div class="checkbox-field">
+                        <input type="checkbox" id="termsAck" name="termsAck" value="Yes" required>
+                        <label for="termsAck">I've read the program terms summarized on this page and understand that participation requires signing the Mint Medical Clinic Affiliate Services Agreement, and that commissions are earned only on approved sales. *</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg" id="affiliateSubmit">Submit Application</button>
+                    <div class="form-error" id="formError"></div>
+                    <p class="form-note">Applying does not create an affiliate relationship. Approval and a signed agreement are required before you can promote or earn.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Questions Before You Apply?</h2>
+                <p>Our team is happy to walk you through the program, the tracking, and how payouts work.</p>
+                <div class="cta-buttons">
+                    <a href="#apply" class="btn btn-white btn-lg">Apply Now</a>
+                    <a href="tel:8018048000" class="btn btn-outline-white btn-lg">Call (801) 804-8000</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal -->
+    <section class="affiliate-legal">
+        <div class="container">
+            <p><strong>Important:</strong> This page summarizes the Mint Medical Clinic Affiliate Services Agreement for convenience and is not the agreement itself. If anything here conflicts with the signed agreement, the signed agreement controls. Commission rates and program terms may be updated on 30 days' written notice. Compensation under the program is for lawful, bona fide marketing and referral services. All GLP-1 products are prescription medications; all clinical decisions, prescribing, and fulfillment are made solely by Mint Medical Clinic and its licensed providers. Affiliates do not prescribe, dispense, fulfill, or provide medical advice, and have no authority to make representations or commitments on behalf of the clinic. Free product is subject to clinical intake, eligibility screening, and provider approval, and may be substituted, limited, or declined where clinically inappropriate or legally restricted. The agreement is governed by the laws of the State of Utah.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <img src="images/Logo-white-1024x152-1.png" alt="Mint Medical Clinic" class="footer-logo">
+                    <p>Back to Mint Condition™</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="/about.html">About Us</a></li>
+                            <li><a href="/services.html">Services</a></li>
+                            <li><a href="/financing.html">Financing</a></li>
+                            <li><a href="/affiliate.html">Affiliate Program</a></li>
+                            <li><a href="/services/telehealth-ed.html">Telehealth</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="/services/acoustic-wave-therapy.html">Acoustic Wave Therapy</a></li>
+                            <li><a href="/services/trifecta-protocol.html">Trifecta Protocol</a></li>
+                            <li><a href="/services/hormone-therapy.html">Hormone Therapy</a></li>
+                            <li><a href="/services/womens-health.html">Women's Health</a></li>
+                            <li><a href="/services/glp1-weight-loss.html">GLP-1 Weight Loss</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Sandy Location</h4>
+                        <ul>
+                            <li>10011 S. Centennial Pkwy</li>
+                            <li>Suite 350</li>
+                            <li>Sandy, UT 84070</li>
+                        </ul>
+                        <h4 style="margin-top: 20px;">Layton Location</h4>
+                        <ul>
+                            <li>836 S Main St</li>
+                            <li>Layton, UT 84041</li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="tel:8018048000">(801) 804-8000</a></li>
+                            <li>Se Habla Español</li>
+                        </ul>
+                        <h4 style="margin-top: 20px;">Hours</h4>
+                        <ul>
+                            <li>Mon-Fri: 9AM - 5PM</li>
+                            <li>Sat: By Appointment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mint Medical Clinic. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="/privacy-policy.html">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">HIPAA Notice</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/header.js?v=20260613"></script>
+    <script src="js/script.js?v=20260613"></script>
+    <script>
+        // Submit to Netlify Forms via AJAX so we can show an inline confirmation
+        // instead of bouncing to Netlify's default success page. Without JS the
+        // form still posts natively and Netlify captures it.
+        (function () {
+            var form = document.getElementById('affiliateForm');
+            if (!form) return;
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var button = document.getElementById('affiliateSubmit');
+                var errorBox = document.getElementById('formError');
+                errorBox.style.display = 'none';
+                button.disabled = true;
+                button.textContent = 'Submitting...';
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(new FormData(form)).toString()
+                })
+                    .then(function (res) {
+                        if (!res.ok) throw new Error('Submission failed');
+                        form.style.display = 'none';
+                        document.getElementById('formSuccess').style.display = 'block';
+                        document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        if (window.fbq) fbq('track', 'Lead', { content_name: 'Affiliate Application' });
+                    })
+                    .catch(function () {
+                        errorBox.textContent = 'Something went wrong submitting your application. Please try again, or call us at (801) 804-8000.';
+                        errorBox.style.display = 'block';
+                        button.disabled = false;
+                        button.textContent = 'Submit Application';
+                    });
+            });
+        })();
+    </script>
+</body>
+</html>
