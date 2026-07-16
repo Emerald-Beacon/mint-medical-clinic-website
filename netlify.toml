@@ -28,6 +28,38 @@
   to = "/blog/article.html?slug=:slug"
   status = 200
 
+# Affiliate program. /affiliate already resolves to affiliate.html via pretty URLs;
+# these catch the variants people actually type or get told over the phone.
+[[redirects]]
+  from = "/affiliates"
+  to = "/affiliate"
+  status = 301
+
+[[redirects]]
+  from = "/affiliate-program"
+  to = "/affiliate"
+  status = 301
+
+[[redirects]]
+  from = "/affiliate.html"
+  to = "/affiliate"
+  status = 301
+
+[[redirects]]
+  from = "/partners"
+  to = "/affiliate"
+  status = 301
+
+[[redirects]]
+  from = "/partner"
+  to = "/affiliate"
+  status = 301
+
+[[redirects]]
+  from = "/referral"
+  to = "/affiliate"
+  status = 301
+
 # Clean URLs for ad landing pages
 [[redirects]]
   from = "/glp1"
