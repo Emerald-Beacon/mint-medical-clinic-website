@@ -3401,6 +3401,108 @@ ul {
     background: linear-gradient(135deg, #e8f5f0 0%, #f0faf6 50%, #e0f2ea 100%);
 }
 
+/* Product package / plan selector */
+.plan-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.plan-option {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 18px;
+    background: var(--white);
+    border: 2px solid var(--gray-200);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.plan-option:hover {
+    border-color: var(--mint);
+}
+
+.plan-option.is-selected {
+    border-color: var(--mint);
+    box-shadow: 0 6px 20px rgba(62, 180, 137, 0.18);
+}
+
+.plan-option input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.plan-badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--white);
+    background: var(--mint);
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+}
+
+.plan-badge-intro {
+    background: var(--dark);
+}
+
+.plan-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.plan-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.plan-price-was {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--gray-400);
+    text-decoration: line-through;
+    margin-right: 4px;
+}
+
+.plan-note {
+    font-size: 13px;
+    color: var(--gray-600);
+}
+
+.product-hero-secondary {
+    font-size: 14px;
+    color: var(--gray-600);
+    margin-top: 16px;
+}
+
+.product-hero-secondary a {
+    color: var(--mint);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.product-hero-secondary a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+    .plan-selector {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Prescription Info Section */
 .product-prescription-info {
     padding: 60px 0;

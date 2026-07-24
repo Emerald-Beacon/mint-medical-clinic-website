@@ -62,8 +62,11 @@
                     "name": "Mint Medical Clinic"
                 },
                 "offers": {
-                    "@type": "Offer",
+                    "@type": "AggregateOffer",
                     "priceCurrency": "USD",
+                    "lowPrice": "197.00",
+                    "highPrice": "297.00",
+                    "offerCount": 2,
                     "availability": "https://schema.org/InStock",
                     "url": "https://mintmedicalclinic.com/Products/mint-mints"
                 }
@@ -270,10 +273,62 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
                             <span>Ships discreetly in plain packaging</span>
                         </li>
                     </ul>
-                    <div class="product-hero-ctas">
-                        <a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Start Your Online Visit</a>
-                        <a href="tel:8018048000" class="btn btn-outline btn-lg">Call (801) 804-8000</a>
+                    <!-- Package selector -->
+                    <div class="plan-selector" role="radiogroup" aria-label="Choose your Mint Mints package">
+                        <label class="plan-option is-selected">
+                            <input type="radio" name="mint-mints-plan" value="full" checked
+                                data-item-id="mint-mints-full"
+                                data-item-name="Mint Mints — Full Batch"
+                                data-item-price="297.00"
+                                data-item-weight="100"
+                                data-item-description="Mint Mints Full Batch — fast-acting ED lozenges">
+                            <span class="plan-badge">On Sale · Save $100</span>
+                            <span class="plan-name">Full Batch</span>
+                            <span class="plan-price"><span class="plan-price-was">$397</span> $297</span>
+                            <span class="plan-note">Our best value — full supply</span>
+                        </label>
+                        <label class="plan-option">
+                            <input type="radio" name="mint-mints-plan" value="half"
+                                data-item-id="mint-mints-half"
+                                data-item-name="Mint Mints — Half Batch (First-Time Intro)"
+                                data-item-price="197.00"
+                                data-item-weight="60"
+                                data-item-description="Mint Mints Half Batch — first-time introductory offer">
+                            <span class="plan-badge plan-badge-intro">First-Time Intro</span>
+                            <span class="plan-name">Half Batch</span>
+                            <span class="plan-price">$197</span>
+                            <span class="plan-note">Try it — introductory offer</span>
+                        </label>
                     </div>
+
+                    <div class="product-hero-ctas">
+                        <button class="snipcart-add-item btn btn-primary btn-lg" id="mint-mints-add"
+                            data-item-id="mint-mints-full"
+                            data-item-name="Mint Mints — Full Batch"
+                            data-item-price="297.00"
+                            data-item-url="https://mintmedicalclinic.com/products/mint-mints"
+                            data-item-description="Mint Mints Full Batch — fast-acting ED lozenges"
+                            data-item-image="https://mintmedicalclinic.com/Products/MN-MINTMINTS-FRONT@3x.png"
+                            data-item-weight="100"
+                            data-item-quantity="1"
+                            data-item-max-quantity="10">
+                            Add to Cart — $297
+                        </button>
+                        <button class="snipcart-checkout btn btn-outline btn-lg">View Cart</button>
+                    </div>
+                    <p class="product-hero-secondary">Prefer to talk to a provider first? <a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener">Start your online visit</a> or call <a href="tel:8018048000">(801) 804-8000</a>.</p>
+
+                    <!-- Hidden Snipcart definition so the Half Batch price validates during checkout -->
+                    <button type="button" class="snipcart-add-item" hidden aria-hidden="true" tabindex="-1"
+                        data-item-id="mint-mints-half"
+                        data-item-name="Mint Mints — Half Batch (First-Time Intro)"
+                        data-item-price="197.00"
+                        data-item-url="https://mintmedicalclinic.com/products/mint-mints"
+                        data-item-description="Mint Mints Half Batch — first-time introductory offer"
+                        data-item-image="https://mintmedicalclinic.com/Products/MN-MINTMINTS-FRONT@3x.png"
+                        data-item-weight="60"
+                        data-item-quantity="1"
+                        data-item-max-quantity="10"></button>
                 </div>
             </div>
         </div>
@@ -573,6 +628,33 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
             </div>
         </div>
     </footer>
+
+    <!-- Sync the Add to Cart button with the selected package -->
+    <script>
+        (function () {
+            var addBtn = document.getElementById('mint-mints-add');
+            if (!addBtn) return;
+            var radios = document.querySelectorAll('input[name="mint-mints-plan"]');
+            function fmtPrice(p) {
+                var n = parseFloat(p);
+                return '$' + (n % 1 === 0 ? n.toFixed(0) : n.toFixed(2));
+            }
+            function select(radio) {
+                addBtn.setAttribute('data-item-id', radio.dataset.itemId);
+                addBtn.setAttribute('data-item-name', radio.dataset.itemName);
+                addBtn.setAttribute('data-item-price', radio.dataset.itemPrice);
+                addBtn.setAttribute('data-item-description', radio.dataset.itemDescription);
+                addBtn.setAttribute('data-item-weight', radio.dataset.itemWeight);
+                addBtn.textContent = 'Add to Cart — ' + fmtPrice(radio.dataset.itemPrice);
+                document.querySelectorAll('.plan-option').forEach(function (el) { el.classList.remove('is-selected'); });
+                var card = radio.closest('.plan-option');
+                if (card) card.classList.add('is-selected');
+            }
+            radios.forEach(function (r) {
+                r.addEventListener('change', function () { if (r.checked) select(r); });
+            });
+        })();
+    </script>
 
     <script src="../js/header.js?v=20260613"></script>
     <script src="../js/script.js?v=20260613"></script>
