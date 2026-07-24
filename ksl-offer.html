@@ -9,7 +9,7 @@
     <title>Exclusive KSL Offer | Mint Medical Clinic | FREE Gifts + Hawaii Trip</title>
     <meta name="description" content="KSL Viewers & Listeners: Claim your exclusive offer - FREE electrolytes, FREE medical assessment, FREE telehealth visit, 1 month FREE GLP-1s, and a FREE 5-night Hawaii hotel stay!">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://mintmedicalclinic.com/ksl-offer.html">
+    <link rel="canonical" href="https://mintmedicalclinic.com/ksl-offer">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -886,6 +886,16 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
                         </div>
                         <button type="submit" class="submit-btn">Claim My Free Gifts Now</button>
                     </form>
+                    <!-- Hidden detection form so Netlify captures KSL leads in the dashboard.
+                         The visible form keeps its Zoho action as the no-JS fallback; the
+                         submit handler also POSTs these fields to Netlify Forms. -->
+                    <form name="ksl-offer-lead" data-netlify="true" netlify-honeypot="bot-field" hidden>
+                        <input type="text" name="name">
+                        <input type="email" name="email">
+                        <input type="tel" name="phone">
+                        <input type="text" name="source">
+                        <input name="bot-field">
+                    </form>
                     <div class="form-divider"><span>OR</span></div>
                     <a href="tel:8018048000" class="call-btn">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -1111,6 +1121,22 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
             // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
+
+            // Capture the lead in Netlify Forms (non-blocking — never delays the booking redirect)
+            try {
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({
+                        'form-name': 'ksl-offer-lead',
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        source: 'KSL Offer Landing Page',
+                        'bot-field': ''
+                    }).toString()
+                }).catch(function() {});
+            } catch (err) {}
 
             // Send to Zapier webhook
             fetch('https://hooks.zapier.com/hooks/catch/10471566/u0u849x/', {

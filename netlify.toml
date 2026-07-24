@@ -63,14 +63,9 @@
   to = "/affiliate"
   status = 301
 
-# Contact page. /contact resolves to contact.html via pretty URLs; force the
-# .html variant to the clean URL (Netlify serves an existing static file in
-# preference to a redirect unless the rule is forced).
-[[redirects]]
-  from = "/contact.html"
-  to = "/contact"
-  status = 301
-  force = true
+# Note: stripping ".html" from page URLs site-wide is handled by the
+# netlify/edge-functions/strip-html.js edge function (one rule covers every
+# page). Per-page redirects here are only for vanity/alias slugs.
 
 # Clean URLs for ad landing pages
 [[redirects]]

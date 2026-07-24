@@ -200,15 +200,15 @@
         const safeImageUrl = (imageUrl && (imageUrl.startsWith('https://') || imageUrl.startsWith('/'))) ? imageUrl : '/images/Patient-Consult-scaled-1.jpg';
         return `
             <article class="blog-card">
-                <a href="/blog/article.html?slug=${safeSlug}" class="blog-card-image">
+                <a href="/blog/${safeSlug}" class="blog-card-image">
                     <img src="${escapeHtml(safeImageUrl)}" alt="${escapeHtml(article.title)} - Mint Medical Clinic Blog" loading="lazy">
                     <span class="blog-card-category">${escapeHtml(categoryLabel)}</span>
                 </a>
                 <div class="blog-card-content">
                     <span class="blog-card-date">${escapeHtml(date)}</span>
-                    <h3><a href="/blog/article.html?slug=${safeSlug}">${escapeHtml(article.title)}</a></h3>
+                    <h3><a href="/blog/${safeSlug}">${escapeHtml(article.title)}</a></h3>
                     <p>${escapeHtml(article.excerpt || '')}</p>
-                    <a href="/blog/article.html?slug=${safeSlug}" class="blog-card-link">Read More <span>→</span></a>
+                    <a href="/blog/${safeSlug}" class="blog-card-link">Read More <span>→</span></a>
                 </div>
             </article>
         `;

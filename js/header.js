@@ -17,45 +17,45 @@ document.addEventListener('DOMContentLoaded', function() {
                     <li class="mobile-cta"><a href="https://vitality-core-copy-3f928588.base44.app/" target="_blank" rel="noopener" class="btn btn-weight-loss">Get My Personalized Weight Loss Plan</a></li>
                     <li class="mobile-cta"><a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-primary">Book Consultation</a></li>
                     <li class="has-dropdown">
-                        <a href="/services.html">Services</a>
+                        <a href="/services">Services</a>
                         <ul class="dropdown-menu">
-                            <li><a href="/services/trifecta-protocol.html"><strong>Trifecta Protocol</strong></a></li>
-                            <li><a href="/services/acoustic-wave-therapy.html">Acoustic Wave Therapy</a></li>
-                            <li><a href="/services/ed-treatment.html">ED Treatment</a></li>
-                            <li><a href="/services/low-testosterone.html">Low Testosterone</a></li>
-                            <li><a href="/services/trt-clinic.html">TRT Clinic</a></li>
-                            <li><a href="/services/hormone-therapy.html">Hormone Therapy</a></li>
-                            <li><a href="/services/glp1-weight-loss.html">GLP-1 Weight Loss</a></li>
-                            <li><a href="/services/medical-weight-loss.html">Medical Weight Loss</a></li>
-                            <li><a href="/services/mens-health.html">Men's Health</a></li>
-                            <li><a href="/services/womens-health.html">Women's Health</a></li>
-                            <li><a href="/services/menopause-treatment.html">Menopause Treatment</a></li>
-                            <li><a href="/services/stem-cell-therapy.html">Stem Cell Therapy</a></li>
-                            <li><a href="/services/telehealth-ed.html">Telehealth ED</a></li>
+                            <li><a href="/services/trifecta-protocol"><strong>Trifecta Protocol</strong></a></li>
+                            <li><a href="/services/acoustic-wave-therapy">Acoustic Wave Therapy</a></li>
+                            <li><a href="/services/ed-treatment">ED Treatment</a></li>
+                            <li><a href="/services/low-testosterone">Low Testosterone</a></li>
+                            <li><a href="/services/trt-clinic">TRT Clinic</a></li>
+                            <li><a href="/services/hormone-therapy">Hormone Therapy</a></li>
+                            <li><a href="/services/glp1-weight-loss">GLP-1 Weight Loss</a></li>
+                            <li><a href="/services/medical-weight-loss">Medical Weight Loss</a></li>
+                            <li><a href="/services/mens-health">Men's Health</a></li>
+                            <li><a href="/services/womens-health">Women's Health</a></li>
+                            <li><a href="/services/menopause-treatment">Menopause Treatment</a></li>
+                            <li><a href="/services/stem-cell-therapy">Stem Cell Therapy</a></li>
+                            <li><a href="/services/telehealth-ed">Telehealth ED</a></li>
                         </ul>
                     </li>
                     <li class="has-dropdown">
-                        <a href="/products.html">Products</a>
+                        <a href="/products">Products</a>
                         <ul class="dropdown-menu">
-                            <li><a href="/Products/mint-mints.html"><strong>Mint Mints</strong></a></li>
-                            <li><a href="/Products/test-boost.html">Test Boost</a></li>
-                            <li><a href="/Products/vaso-pump.html">Vaso Pump</a></li>
-                            <li><a href="/Products/estro-block.html">Estro Block</a></li>
-                            <li><a href="/Products/glp1-support-protein.html">GLP-1 Support Protein</a></li>
-                            <li><a href="/Products/super-ionic-mint-minerals.html">Super Ionic Minerals</a></li>
-                            <li><a href="/Products/colon-cleanse.html">Colon Cleanse</a></li>
+                            <li><a href="/Products/mint-mints"><strong>Mint Mints</strong></a></li>
+                            <li><a href="/Products/test-boost">Test Boost</a></li>
+                            <li><a href="/Products/vaso-pump">Vaso Pump</a></li>
+                            <li><a href="/Products/estro-block">Estro Block</a></li>
+                            <li><a href="/Products/glp1-support-protein">GLP-1 Support Protein</a></li>
+                            <li><a href="/Products/super-ionic-mint-minerals">Super Ionic Minerals</a></li>
+                            <li><a href="/Products/colon-cleanse">Colon Cleanse</a></li>
                         </ul>
                     </li>
                     <li class="has-dropdown">
-                        <a href="/about.html">About</a>
+                        <a href="/about">About</a>
                         <ul class="dropdown-menu">
-                            <li><a href="/about.html">About Mint Medical</a></li>
-                            <li><a href="/process.html">Our Process</a></li>
-                            <li style="border-top: 1px solid #eee; margin-top: 5px; padding-top: 5px;"><a href="/providers/dr-darin-stettler.html"><strong>Dr. Darin Stettler, DO</strong></a></li>
+                            <li><a href="/about">About Mint Medical</a></li>
+                            <li><a href="/process">Our Process</a></li>
+                            <li style="border-top: 1px solid #eee; margin-top: 5px; padding-top: 5px;"><a href="/providers/dr-darin-stettler"><strong>Dr. Darin Stettler, DO</strong></a></li>
                         </ul>
                     </li>
-                    <li><a href="/results.html">Results</a></li>
-                    <li><a href="/blog.html">Blog</a></li>
+                    <li><a href="/results">Results</a></li>
+                    <li><a href="/blog">Blog</a></li>
                     <li><a href="/contact">Contact</a></li>
                     <li class="mobile-contact"><a href="tel:8018048000"><svg class="mobile-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(801) 804-8000</a></li>
                 </ul>

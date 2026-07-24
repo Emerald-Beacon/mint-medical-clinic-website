@@ -558,3 +558,17 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ===== LeadConnector Chat Widget (site-wide) =====
+// Injected once on every page. Mirrors the standard embed <script> tag with its
+// data-* attributes so the loader picks up its configuration.
+(function loadLeadConnectorChatWidget() {
+    if (document.getElementById('lc-chat-widget-loader')) return;
+    var s = document.createElement('script');
+    s.id = 'lc-chat-widget-loader';
+    s.src = 'https://widgets.leadconnectorhq.com/loader.js';
+    s.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+    s.setAttribute('data-widget-id', '6a63bf8dc4dda61f3f84033d');
+    s.setAttribute('data-source', 'WEB_USER');
+    document.body.appendChild(s);
+})();
