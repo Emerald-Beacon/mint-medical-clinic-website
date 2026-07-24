@@ -3380,6 +3380,10 @@ ul {
     background: linear-gradient(135deg, #fdf5f0 0%, #faf0e8 50%, #fdf5f0 100%);
 }
 
+.product-hero-mint-mints {
+    background: linear-gradient(135deg, #e8f5f0 0%, #f0faf6 50%, #e0f2ea 100%);
+}
+
 /* Prescription Info Section */
 .product-prescription-info {
     padding: 60px 0;

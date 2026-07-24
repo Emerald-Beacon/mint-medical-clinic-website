@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <li class="has-dropdown">
                         <a href="/products.html">Products</a>
                         <ul class="dropdown-menu">
+                            <li><a href="/Products/mint-mints.html"><strong>Mint Mints</strong></a></li>
                             <li><a href="/Products/test-boost.html">Test Boost</a></li>
                             <li><a href="/Products/vaso-pump.html">Vaso Pump</a></li>
                             <li><a href="/Products/estro-block.html">Estro Block</a></li>
