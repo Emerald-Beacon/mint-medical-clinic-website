@@ -63,6 +63,15 @@
   to = "/affiliate"
   status = 301
 
+# Contact page. /contact resolves to contact.html via pretty URLs; force the
+# .html variant to the clean URL (Netlify serves an existing static file in
+# preference to a redirect unless the rule is forced).
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
+  force = true
+
 # Clean URLs for ad landing pages
 [[redirects]]
   from = "/glp1"
