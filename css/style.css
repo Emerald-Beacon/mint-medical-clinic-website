@@ -1506,6 +1506,23 @@ ul {
     line-height: 1.6;
 }
 
+/* 3-step process rows (product pages) — 3 balanced, centered columns.
+   The base .process-steps grid is repeat(4, 1fr), which leaves an empty
+   4th column and shifts three steps off-center. This overrides that. */
+.process-steps.process-steps--3 {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    .process-steps.process-steps--3 {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+    }
+}
+
 /* ===== Testimonials Section ===== */
 .testimonials {
     padding: 100px 0;
