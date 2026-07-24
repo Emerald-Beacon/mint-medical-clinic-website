@@ -3976,6 +3976,132 @@ ul {
     text-decoration: underline;
 }
 
+/* Contact Page */
+.contact-section {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 56px;
+    align-items: start;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.contact-method-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px 24px;
+    background: var(--warm-cream);
+    border: 1px solid var(--gray-200);
+    border-radius: 14px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.contact-method-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.contact-method-icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--mint-pale);
+    border-radius: 12px;
+}
+
+.contact-method-text h4 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray-600);
+    margin-bottom: 4px;
+}
+
+.contact-method-text p {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.contact-locations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.contact-locations .location-card {
+    padding: 28px;
+    text-align: left;
+    border-radius: 14px;
+}
+
+.contact-locations .location-card h3 {
+    font-size: 20px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+}
+
+.contact-locations .location-details p {
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.contact-form-wrap {
+    background: var(--warm-cream);
+    border: 1px solid var(--gray-200);
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.contact-form-embed {
+    width: 100%;
+    min-height: 700px;
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.contact-form-embed iframe {
+    width: 100%;
+    min-height: 700px;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-form-wrap {
+        padding: 28px 20px;
+    }
+}
+
+@media (max-width: 560px) {
+    .contact-locations {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Process Page */
 .process-detailed {
     padding: 80px 0;
