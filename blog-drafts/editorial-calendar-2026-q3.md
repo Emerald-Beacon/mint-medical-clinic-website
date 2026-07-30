@@ -48,7 +48,7 @@
 | Jul 21 | Tue | A | Shockwave vs. Acoustic Wave Therapy for ED: Does the Machine Actually Matter? | comparison | shockwave vs acoustic wave therapy | "What's the difference between acoustic wave and shockwave therapy — which works?" | ✅ Published |
 | Jul 23 | Thu | C | How Much Does Tirzepatide Cost Without Insurance in Utah? (2026 Price Breakdown) | cost guide | tirzepatide cost without insurance | "Is it cheaper to get Zepbound from LillyDirect or compounded tirzepatide?" | ✅ Published |
 | Jul 28 | Tue | D | Lost Your Sex Drive After Menopause? You're Not Broken — and It's Treatable | reassurance / explainer | low sex drive after menopause | "I'm 48 with no desire anymore — is this normal and what can I do?" | ✅ Published |
-| Jul 30 | Thu | E | Lose an Inch in 40 Minutes? How Mint's Non-Invasive Body Contouring Actually Works | explainer / brand | non-invasive body contouring Utah | "Where can I get non-invasive body contouring near Sandy or Layton?" | Idea |
+| Jul 30 | Thu | E | Lose an Inch in 40 Minutes? How Mint's Non-Invasive Body Contouring Actually Works | explainer / brand | non-invasive body contouring Utah | "Where can I get non-invasive body contouring near Sandy or Layton?" | ✅ Published |
 
 ---
 
