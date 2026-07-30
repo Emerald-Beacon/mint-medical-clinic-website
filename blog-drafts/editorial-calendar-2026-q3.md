@@ -56,7 +56,7 @@
 
 | Date | Day | Cluster | Title | Template | Primary Keyword | GEO / AI-query target | Status |
 |------|-----|---------|-------|----------|-----------------|------------------------|--------|
-| Aug 4 | Tue | C | What to Expect in Your First Month on Tirzepatide (Side Effects & How We Manage Them) | how-to / safety | tirzepatide side effects | "What side effects should I expect in the first month of a GLP-1?" | Idea |
+| Aug 4 | Tue | C | What to Expect in Your First Month on Tirzepatide (Side Effects & How We Manage Them) | how-to / safety | tirzepatide side effects | "What side effects should I expect in the first month of a GLP-1?" | ✅ Published 2026-07-30 |
 | Aug 6 | Thu | B | The 2025 FDA Update on Testosterone Safety: What Changed and Why It Matters | data-research | testosterone FDA black box 2025 | "Is testosterone therapy still considered dangerous after the new FDA update?" | Idea |
 | Aug 11 | Tue | A | ED Isn't Just an "Older Man" Problem: A Guide for Men Under 40 | faq-knowledge | ED in young men | "I'm in my 30s with mild ED — would shockwave therapy help me?" | Idea |
 | Aug 13 | Thu | D | Testosterone for Women: Can It Really Bring Back Your Libido? | evidence explainer | testosterone therapy for women libido | "Can a doctor prescribe testosterone to a woman for low libido, and is it safe?" | Idea |
