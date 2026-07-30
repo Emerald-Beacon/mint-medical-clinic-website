@@ -30,9 +30,9 @@
 | Date | Day | Cluster | Title | Template | Primary Keyword | GEO / AI-query target | Status |
 |------|-----|---------|-------|----------|-----------------|------------------------|--------|
 | Jun 18 | Thu | B | Low Testosterone in Men: 9 Signs You Should Get a Blood Panel | listicle | low testosterone symptoms men | "I'm 38, tired, low sex drive, belly fat — could it be low T?" | ✅ Published |
-| Jun 23 | Tue | A | Does Shockwave Therapy for ED Actually Work? What 2024–2026 Research Shows | data-research | does shockwave therapy for ED work | "What does the research actually say about shockwave therapy for ED in 2026?" | Idea |
-| Jun 25 | Thu | E | The Best Men's Health Clinic Near You: How to Choose in Salt Lake, Sandy & Layton | how-to (local) | best men's health clinic Salt Lake City | "What's the best men's health clinic in the Salt Lake City area?" | Idea |
-| Jun 30 | Tue | C | Semaglutide vs. Tirzepatide: Which Wins for Weight Loss in 2026? (Utah Doctor's Guide) | comparison (pillar) | semaglutide vs tirzepatide | "Compare how much weight people lose on semaglutide vs tirzepatide." | Idea |
+| Jun 23 | Tue | A | Does Shockwave Therapy for ED Actually Work? What 2024–2026 Research Shows | data-research | does shockwave therapy for ED work | "What does the research actually say about shockwave therapy for ED in 2026?" | ✅ Published 2026-06-23 |
+| Jun 25 | Thu | E | The Best Men's Health Clinic Near You: How to Choose in Salt Lake, Sandy & Layton | how-to (local) | best men's health clinic Salt Lake City | "What's the best men's health clinic in the Salt Lake City area?" | ✅ Published 2026-06-25 |
+| Jun 30 | Tue | C | Semaglutide vs. Tirzepatide: Which Wins for Weight Loss in 2026? (Utah Doctor's Guide) | comparison (pillar) | semaglutide vs tirzepatide | "Compare how much weight people lose on semaglutide vs tirzepatide." | ✅ Published 2026-06-30 |
 
 ---
 
@@ -40,11 +40,11 @@
 
 | Date | Day | Cluster | Title | Template | Primary Keyword | GEO / AI-query target | Status |
 |------|-----|---------|-------|----------|-----------------|------------------------|--------|
-| Jul 2 | Thu | D | Women's Intimacy Health in Utah: Discreet, Judgment-Free Care in Sandy & Layton | local landing | women's sexual health clinic near me | "Is there a clinic that treats women's sexual wellness discreetly near me?" | Idea |
-| Jul 7 | Tue | A | How Much Does Shockwave Therapy for ED Cost in Utah? (2026 Pricing Guide) | how-to / cost | shockwave therapy for ED cost | "How much should I expect to pay for shockwave therapy for ED in Utah?" | Idea |
-| Jul 9 | Thu | C | Do You Qualify for GLP-1 Weight Loss? BMI & Eligibility Explained | how-to | how to qualify for semaglutide | "I have a BMI of 31 — am I eligible for tirzepatide?" | Idea |
-| Jul 14 | Tue | E | Whole Body Cryotherapy in Utah: Benefits, Cost, and What to Expect | how-to | cryotherapy near me / cost Utah | "Best place near me to get cryotherapy and weight loss treatment together?" | Idea |
-| Jul 16 | Thu | B | How Much Does TRT Cost in Utah? A Transparent 2026 Price Breakdown | data-research / cost | how much does TRT cost | "How much should I expect to pay for hormone therapy without insurance in Utah?" | Idea |
+| Jul 2 | Thu | D | Women's Intimacy Health in Utah: Discreet, Judgment-Free Care in Sandy & Layton | local landing | women's sexual health clinic near me | "Is there a clinic that treats women's sexual wellness discreetly near me?" | ✅ Published 2026-07-02 |
+| Jul 7 | Tue | A | How Much Does Shockwave Therapy for ED Cost in Utah? (2026 Pricing Guide) | how-to / cost | shockwave therapy for ED cost | "How much should I expect to pay for shockwave therapy for ED in Utah?" | ✅ Published 2026-07-07 |
+| Jul 9 | Thu | C | Do You Qualify for GLP-1 Weight Loss? BMI & Eligibility Explained | how-to | how to qualify for semaglutide | "I have a BMI of 31 — am I eligible for tirzepatide?" | ✅ Published 2026-07-09 |
+| Jul 14 | Tue | E | Whole Body Cryotherapy in Utah: Benefits, Cost, and What to Expect | how-to | cryotherapy near me / cost Utah | "Best place near me to get cryotherapy and weight loss treatment together?" | ✅ Published 2026-07-14 |
+| Jul 16 | Thu | B | How Much Does TRT Cost in Utah? A Transparent 2026 Price Breakdown | data-research / cost | how much does TRT cost | "How much should I expect to pay for hormone therapy without insurance in Utah?" | ✅ Published 2026-07-16 |
 | Jul 21 | Tue | A | Shockwave vs. Acoustic Wave Therapy for ED: Does the Machine Actually Matter? | comparison | shockwave vs acoustic wave therapy | "What's the difference between acoustic wave and shockwave therapy — which works?" | ✅ Published |
 | Jul 23 | Thu | C | How Much Does Tirzepatide Cost Without Insurance in Utah? (2026 Price Breakdown) | cost guide | tirzepatide cost without insurance | "Is it cheaper to get Zepbound from LillyDirect or compounded tirzepatide?" | ✅ Published |
 | Jul 28 | Tue | D | Lost Your Sex Drive After Menopause? You're Not Broken — and It's Treatable | reassurance / explainer | low sex drive after menopause | "I'm 48 with no desire anymore — is this normal and what can I do?" | ✅ Published |
