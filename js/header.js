@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <a href="/products">Products</a>
                         <ul class="dropdown-menu">
                             <li><a href="/Products/mint-mints"><strong>Mint Mints</strong></a></li>
-                            <li><a href="/Products/opti-mint-shot"><strong>Opti-Mint Shot</strong></a></li>
+                            <li><a href="/products/opti-mint-shot"><strong>Opti-Mint Shot</strong></a></li>
                             <li><a href="/Products/test-boost">Test Boost</a></li>
                             <li><a href="/Products/vaso-pump">Vaso Pump</a></li>
                             <li><a href="/Products/estro-block">Estro Block</a></li>
