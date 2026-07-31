@@ -3401,6 +3401,17 @@ ul {
     background: linear-gradient(135deg, #e8f5f0 0%, #f0faf6 50%, #e0f2ea 100%);
 }
 
+.product-hero-opti-mint-shot {
+    background: linear-gradient(135deg, #e8f5f0 0%, #f4faf7 50%, #e4f2ec 100%);
+}
+
+/* The Opti-Mint Shot hero column is unusually tall, so the default centred
+   alignment drops the bottle well below the fold. Top-align this page's hero
+   only, so the product sits level with the badge and headline. */
+.product-hero-opti-mint-shot .product-hero-grid {
+    align-items: start;
+}
+
 /* Product package / plan selector */
 .plan-selector {
     display: grid;
