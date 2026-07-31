@@ -121,7 +121,9 @@
 
   /* HERO */
   .hero { background: linear-gradient(170deg, var(--mint-pale) 0%, #fff 68%); position: relative; overflow: hidden; }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
+  /* Top-aligned, not centred: the copy column is tall enough that centring
+     drops the bottle well below the headline. */
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(36px, 5vw, 72px); align-items: start; }
   .hero-tag {
     display: inline-flex; align-items: center; gap: 9px; background: #fff;
     border: 1px solid var(--gray-200); border-radius: 999px; padding: 8px 18px;
