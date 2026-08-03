@@ -3541,6 +3541,39 @@ ul {
     }
 }
 
+/* Product benefits / ingredients graphic — sits directly under the hero.
+   Full container width: the artwork is a wide infographic and its labels are
+   unreadable if it's squeezed into the hero's image column. */
+.product-benefits-graphic {
+    padding: 60px 0 0;
+    background: var(--white);
+}
+
+.product-benefits-graphic picture {
+    display: block;
+}
+
+.product-benefits-graphic img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+/* On phones the graphic's labels are too small to read at full-shrink, so let
+   it scroll sideways at a legible minimum width instead. */
+@media (max-width: 768px) {
+    .product-benefits-graphic .container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .product-benefits-graphic img {
+        min-width: 700px;
+    }
+}
+
 /* Prescription Info Section */
 .product-prescription-info {
     padding: 60px 0;
