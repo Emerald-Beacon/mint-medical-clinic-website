@@ -3547,19 +3547,33 @@ ul {
     }
 }
 
-/* Product benefits / ingredients graphic — sits directly under the hero.
-   Full container width: the artwork is a wide infographic and its labels are
-   unreadable if it's squeezed into the hero's image column. */
-.product-benefits-graphic {
-    padding: 60px 0 0;
+/* Featured product graphic — a wide infographic given its own full-width band.
+   Squeezed into a half-width column its labels are unreadable. */
+.featured-graphic {
+    padding: 70px 0;
     background: var(--white);
+    text-align: center;
 }
 
-.product-benefits-graphic picture {
+.featured-graphic .section-header {
+    margin-bottom: 34px;
+}
+
+.featured-graphic picture {
     display: block;
 }
 
-.product-benefits-graphic img {
+.featured-graphic-link {
+    display: block;
+    border-radius: 16px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.featured-graphic-link:hover {
+    transform: translateY(-4px);
+}
+
+.featured-graphic img {
     display: block;
     width: 100%;
     height: auto;
@@ -3567,15 +3581,23 @@ ul {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
 }
 
+.featured-graphic-ctas {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 34px;
+}
+
 /* On phones the graphic's labels are too small to read at full-shrink, so let
    it scroll sideways at a legible minimum width instead. */
 @media (max-width: 768px) {
-    .product-benefits-graphic .container {
+    .featured-graphic-scroll {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
 
-    .product-benefits-graphic img {
+    .featured-graphic img {
         min-width: 700px;
     }
 }
