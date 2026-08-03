@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#3EB489">
-<title>The Opti-Mint Shot | One Shot, 30 Minutes Before | Mint Medical Clinic Utah</title>
-<meta name="description" content="A physician-prescribed intimacy shot for men and women. Taken 30 minutes before, it supports desire and blood flow together. Now $179 (reg. $249). Sandy & Layton, Utah.">
+<title>The Opti-Mint Shot | One Shot, 15 Minutes Before | Mint Medical Clinic Utah</title>
+<meta name="description" content="A physician-prescribed intimacy shot for men and women. Taken 15 minutes before, it supports desire and blood flow together. From $49.97 a shot — 5- and 10-packs available. Sandy &amp; Layton, Utah.">
 <meta name="robots" content="noindex, follow">
 <link rel="icon" type="image/png" href="../images/Untitled design (1).png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -139,6 +139,7 @@
   }
   .hero-price .now { font-size: 2.6rem; font-weight: 700; color: var(--ink); line-height: 1; }
   .hero-price .was { font-size: 1.3rem; color: var(--gray-500); text-decoration: line-through; }
+  .hero-price .unit { font-family: 'Inter', sans-serif; font-size: 15px; color: var(--gray-500); }
   .hero-price .save {
     font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700;
     letter-spacing: 0.1em; text-transform: uppercase; color: #fff;
@@ -231,6 +232,44 @@
   .process-item h3 { font-size: 1.25rem; margin-bottom: 8px; }
   .process-item p { font-size: 15px; }
 
+  /* PRICING */
+  .pricing { background: var(--mint-pale); }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 22px; margin-top: 50px; align-items: stretch;
+  }
+  .price-card {
+    position: relative; display: flex; flex-direction: column;
+    background: #fff; border: 2px solid var(--gray-200); border-radius: 18px;
+    padding: 34px 28px 30px; box-shadow: var(--shadow-card);
+    transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  }
+  .price-card:hover { border-color: var(--mint); transform: translateY(-3px); }
+  .price-card.featured { border-color: var(--mint); box-shadow: var(--shadow-elevated); }
+  .price-flag {
+    position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+    background: var(--mint); color: #fff; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 999px; white-space: nowrap;
+  }
+  .price-card.value .price-flag { background: var(--gold); }
+  .price-qty { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; }
+  .price-amount {
+    font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700;
+    line-height: 1; margin: 10px 0 6px;
+  }
+  .price-each { font-size: 14px; color: var(--gray-500); }
+  .price-save {
+    display: inline-block; margin-top: 14px; font-size: 12.5px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--mint-deep); background: var(--mint-light);
+    padding: 5px 12px; border-radius: 999px;
+  }
+  .price-blurb { font-size: 15px; margin-top: 16px; }
+  .price-card .btn { width: 100%; }
+  .price-card .price-cta-wrap { margin-top: auto; padding-top: 24px; }
+  .pricing-note { text-align: center; font-size: 14.5px; color: var(--gray-700); margin-top: 30px; }
+
   /* SAFETY */
   .safety { background: var(--cream); }
   .safety-card {
@@ -265,6 +304,7 @@
     .hero-grid { grid-template-columns: 1fr; }
     .hero-image-wrap { order: -1; }
     .hero-image { max-width: 320px; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
   }
   @media (max-width: 520px) {
     .btn { width: 100%; }
@@ -276,7 +316,7 @@
 <body>
 
 <div class="trust-bar">
-  <strong>Introductory pricing — $179 (reg. $249).</strong> Call <a href="tel:8018048000">(801) 804-8000</a> or book online.
+  <strong>$49.97 a shot — as low as $29.80 in a 10-pack.</strong> Call <a href="tel:8018048000">(801) 804-8000</a> or book online.
 </div>
 
 <!-- Minimal logo bar (NO site-wide header) -->
@@ -296,33 +336,22 @@
     <div class="hero-grid">
       <div>
         <span class="hero-tag"><span class="dot"></span> For men &amp; women · Sandy &amp; Layton, Utah</span>
-        <h1>One shot. <em>Thirty minutes.</em> And you're both actually in the mood.</h1>
-        <p class="lede">The Opti-Mint Shot is a physician-prescribed liquid formula you drink about half an hour before intimacy. It's built to handle the part most products ignore — the desire to want it in the first place — right alongside the blood flow to follow through.</p>
+        <h1>One shot. <em>Fifteen minutes.</em> And you're both actually in the mood.</h1>
+        <p class="lede">The Opti-Mint Shot is a patent-pending liquid formula you drink about fifteen minutes before intimacy. It's built to handle the part most products ignore — the desire to want it in the first place — right alongside the blood flow to follow through.</p>
 
         <div class="hero-price">
-          <span class="now">$179</span>
-          <span class="was">$249</span>
-          <span class="save">Save $70</span>
+          <span class="now">$49.97</span>
+          <span class="unit">per shot</span>
+          <span class="save">As low as $29.80</span>
         </div>
 
         <div class="hero-ctas">
-          <button class="snipcart-add-item btn btn-primary btn-lg"
-              data-item-id="opti-mint-shot"
-              data-item-name="Opti-Mint Shot"
-              data-item-price="179.00"
-              data-item-url="https://mintmedicalclinic.com/products/opti-mint-shot"
-              data-item-description="Opti-Mint Shot — fast-acting intimacy shot for men and women"
-              data-item-image="https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png"
-              data-item-weight="60"
-              data-item-quantity="1"
-              data-item-max-quantity="10">
-              Get the Opti-Mint Shot — $179
-          </button>
+          <a href="#pricing" class="btn btn-primary btn-lg">Choose Your Pack — from $49.97</a>
           <a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Talk to a Provider First</a>
         </div>
 
         <div class="hero-proof">
-          <div class="hero-proof-item"><span class="num">~30 min</span><span class="lbl">Take it before intimacy</span></div>
+          <div class="hero-proof-item"><span class="num">~15 min</span><span class="lbl">Take it before intimacy</span></div>
           <div class="hero-proof-item"><span class="num">Men &amp; Women</span><span class="lbl">Formulated for both</span></div>
           <div class="hero-proof-item"><span class="num">2</span><span class="lbl">Utah clinics — Sandy &amp; Layton</span></div>
         </div>
@@ -381,7 +410,7 @@
     <div class="narrow">
       <span class="eyebrow">The Opti-Mint Shot</span>
       <h2>Built for both halves of the moment</h2>
-      <p class="lede">One small vial, taken roughly 30 minutes ahead. It's a liquid, not a tablet, so there's nothing waiting to break down in your stomach first. And it's formulated for men <em>and</em> women — so it's something you can approach together instead of alone.</p>
+      <p class="lede">One small vial, taken roughly 15 minutes ahead. It's a liquid, not a tablet, so there's nothing waiting to break down in your stomach first. And it's formulated for men <em>and</em> women — so it's something you can approach together instead of alone.</p>
     </div>
     <div class="split-grid">
       <div class="split-card">
@@ -402,8 +431,8 @@
         <div class="ico">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
-        <h3>Roughly thirty minutes</h3>
-        <p>Drink the vial about half an hour before. No planning your evening around a dose taken hours earlier, and no waiting on a tablet to work its way through your system.</p>
+        <h3>Roughly fifteen minutes</h3>
+        <p>Drink the vial about fifteen minutes before. No planning your evening around a dose taken hours earlier, and no waiting on a tablet to work its way through your system.</p>
       </div>
     </div>
   </div>
@@ -419,7 +448,7 @@
     <div class="value-list">
       <div class="value-item">
         <span class="value-check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <div><strong>A single-serve, fast-absorbing liquid vial</strong><span>Drink the full vial about 30 minutes before intimacy, exactly as your provider directs.</span></div>
+        <div><strong>A single-serve, fast-absorbing liquid vial</strong><span>Drink the full vial about 15 minutes before intimacy, exactly as your provider directs.</span></div>
       </div>
       <div class="value-item">
         <span class="value-check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg></span>
@@ -427,7 +456,7 @@
       </div>
       <div class="value-item">
         <span class="value-check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <div><strong>A real provider review before anything ships</strong><span>A licensed Utah provider checks your health history and medications, then personalizes the formulation.</span></div>
+        <div><strong>A real provider review before anything ships</strong><span>A licensed medical provider checks your health history and medications, then personalizes the formulation.</span></div>
       </div>
       <div class="value-item">
         <span class="value-check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg></span>
@@ -510,21 +539,10 @@
 <!-- MID CTA -->
 <section class="mid-cta">
   <div class="container">
-    <h2>$179 today, regularly $249</h2>
-    <p>Introductory pricing while it lasts. Every order includes a provider review before anything ships.</p>
+    <h2>$49.97 a shot — less when you stock up</h2>
+    <p>One shot, five, or ten. Every order includes a provider review before anything ships.</p>
     <div class="hero-ctas">
-      <button class="snipcart-add-item btn btn-white btn-lg"
-          data-item-id="opti-mint-shot"
-          data-item-name="Opti-Mint Shot"
-          data-item-price="179.00"
-          data-item-url="https://mintmedicalclinic.com/products/opti-mint-shot"
-          data-item-description="Opti-Mint Shot — fast-acting intimacy shot for men and women"
-          data-item-image="https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png"
-          data-item-weight="60"
-          data-item-quantity="1"
-          data-item-max-quantity="10">
-          Get the Opti-Mint Shot — $179
-      </button>
+      <a href="#pricing" class="btn btn-white btn-lg">See Pricing &amp; Order</a>
       <a href="tel:8018048000" class="btn btn-outline-white btn-lg">Call (801) 804-8000</a>
     </div>
   </div>
@@ -546,18 +564,100 @@
       <div class="process-item">
         <div class="process-num">2</div>
         <h3>A provider reviews it</h3>
-        <p>A licensed Utah provider checks your health history and current medications, then personalizes your prescription if the Opti-Mint Shot is appropriate for you.</p>
+        <p>A licensed medical provider checks your health history and current medications, then personalizes your prescription if the Opti-Mint Shot is appropriate for you.</p>
       </div>
       <div class="process-item">
         <div class="process-num">3</div>
         <h3>It arrives discreetly</h3>
-        <p>Plain, unmarked packaging delivered to your door. Take it about 30 minutes before intimacy, as directed.</p>
+        <p>Plain, unmarked packaging delivered to your door. Take it about 15 minutes before intimacy, as directed.</p>
       </div>
     </div>
     <div class="hero-ctas" style="justify-content:center; margin-top:46px;">
       <a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Start Your Online Visit</a>
       <a href="/products/opti-mint-shot" class="btn btn-ghost btn-lg">See Full Product Details</a>
     </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="narrow" style="text-align:center;">
+      <span class="eyebrow">Pricing</span>
+      <h2>Buy one, or keep a few on hand</h2>
+      <p class="lede" style="margin:18px auto 0;">A single shot is $49.97. Stock up and the price per shot drops — same formula, same provider review, fewer reorders.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <span class="price-qty">1 Shot</span>
+        <span class="price-amount">$49.97</span>
+        <span class="price-each">$49.97 per shot</span>
+        <p class="price-blurb">Try it for one evening and see how it works for you.</p>
+        <div class="price-cta-wrap">
+          <button class="snipcart-add-item btn btn-ghost btn-lg"
+              data-item-id="opti-mint-shot-1"
+              data-item-name="Opti-Mint Shot — Single Shot"
+              data-item-price="49.97"
+              data-item-url="https://mintmedicalclinic.com/products/opti-mint-shot"
+              data-item-description="Opti-Mint Shot — single fast-acting intimacy shot"
+              data-item-image="https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png"
+              data-item-weight="60"
+              data-item-quantity="1"
+              data-item-max-quantity="10">
+              Add 1 Shot — $49.97
+          </button>
+        </div>
+      </div>
+
+      <div class="price-card featured">
+        <span class="price-flag">Most Popular</span>
+        <span class="price-qty">5 Shots</span>
+        <span class="price-amount">$197.95</span>
+        <span class="price-each">$39.59 per shot</span>
+        <span class="price-save">Save $51.90</span>
+        <p class="price-blurb">Enough to stop planning around a single vial. Our most-ordered pack.</p>
+        <div class="price-cta-wrap">
+          <button class="snipcart-add-item btn btn-primary btn-lg"
+              data-item-id="opti-mint-shot-5"
+              data-item-name="Opti-Mint Shot — 5 Pack"
+              data-item-price="197.95"
+              data-item-url="https://mintmedicalclinic.com/products/opti-mint-shot"
+              data-item-description="Opti-Mint Shot 5 Pack — fast-acting intimacy shots"
+              data-item-image="https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png"
+              data-item-weight="300"
+              data-item-quantity="1"
+              data-item-max-quantity="10">
+              Add 5 Shots — $197.95
+          </button>
+        </div>
+      </div>
+
+      <div class="price-card value">
+        <span class="price-flag">Best Value</span>
+        <span class="price-qty">10 Shots</span>
+        <span class="price-amount">$297.95</span>
+        <span class="price-each">$29.80 per shot</span>
+        <span class="price-save">Save $201.75</span>
+        <p class="price-blurb">The lowest price per shot. Order once and stop thinking about it.</p>
+        <div class="price-cta-wrap">
+          <button class="snipcart-add-item btn btn-ghost btn-lg"
+              data-item-id="opti-mint-shot-10"
+              data-item-name="Opti-Mint Shot — 10 Pack"
+              data-item-price="297.95"
+              data-item-url="https://mintmedicalclinic.com/products/opti-mint-shot"
+              data-item-description="Opti-Mint Shot 10 Pack — fast-acting intimacy shots"
+              data-item-image="https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png"
+              data-item-weight="600"
+              data-item-quantity="1"
+              data-item-max-quantity="10">
+              Add 10 Shots — $297.95
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <p class="pricing-note">Every pack is prescription-only and ships after a licensed medical provider reviews your health history. Prefer to talk first? <a href="tel:8018048000" style="color:var(--mint-deep); font-weight:600;">Call (801) 804-8000</a>.</p>
   </div>
 </section>
 
@@ -589,7 +689,7 @@
       </div>
       <div class="faq-item">
         <h3>How fast does it work?</h3>
-        <p>It's a liquid, so there's no tablet to break down in your stomach first. Most patients are directed to take it about 30 minutes before intimacy. Onset and duration vary by individual, formulation, and dose — your provider will walk you through what to expect.</p>
+        <p>It's a liquid, so there's no tablet to break down in your stomach first. Most patients are directed to take it about 15 minutes before intimacy. Onset and duration vary by individual, formulation, and dose — your provider will walk you through what to expect.</p>
       </div>
       <div class="faq-item">
         <h3>Do I need a prescription?</h3>
@@ -614,21 +714,10 @@
 <!-- FINAL CTA -->
 <section class="final-cta">
   <div class="container">
-    <h2>Thirty minutes from now could look a lot different</h2>
-    <p>Introductory pricing at $179, regularly $249. Start your confidential online visit and a licensed Mint Medical Clinic provider will take it from there.</p>
+    <h2>Fifteen minutes from now could look a lot different</h2>
+    <p>Shots start at $49.97, and drop to $29.80 each in a 10-pack. Start your confidential online visit and a licensed Mint Medical Clinic provider will take it from there.</p>
     <div class="hero-ctas">
-      <button class="snipcart-add-item btn btn-white btn-lg"
-          data-item-id="opti-mint-shot"
-          data-item-name="Opti-Mint Shot"
-          data-item-price="179.00"
-          data-item-url="https://mintmedicalclinic.com/products/opti-mint-shot"
-          data-item-description="Opti-Mint Shot — fast-acting intimacy shot for men and women"
-          data-item-image="https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png"
-          data-item-weight="60"
-          data-item-quantity="1"
-          data-item-max-quantity="10">
-          Get the Opti-Mint Shot — $179
-      </button>
+      <a href="#pricing" class="btn btn-white btn-lg">Choose Your Pack</a>
       <a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener" class="btn btn-outline-white btn-lg">Book a Free Consultation</a>
     </div>
   </div>

@@ -3420,6 +3420,33 @@ ul {
     margin-bottom: 24px;
 }
 
+/* Three-up variant (quantity packs) — tighter so three cards fit the hero column */
+.plan-selector--3 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.plan-selector--3 .plan-option {
+    padding: 14px 12px;
+}
+
+.plan-selector--3 .plan-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+}
+
+.plan-selector--3 .plan-name {
+    font-size: 15px;
+}
+
+.plan-selector--3 .plan-price {
+    font-size: 20px;
+}
+
+.plan-selector--3 .plan-note {
+    font-size: 12px;
+}
+
 .plan-option {
     position: relative;
     display: flex;
