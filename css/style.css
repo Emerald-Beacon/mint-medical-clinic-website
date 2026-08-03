@@ -3412,6 +3412,12 @@ ul {
     align-items: start;
 }
 
+/* This page's hero art is a vertical infographic rather than a bottle cutout,
+   so let it use the full column — its labels are too small at 400px. */
+.product-hero-opti-mint-shot .product-hero-image img {
+    max-width: 100%;
+}
+
 /* Product package / plan selector */
 .plan-selector {
     display: grid;
