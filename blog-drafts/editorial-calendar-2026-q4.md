@@ -2,7 +2,7 @@
 ## Q4 2026 (September 22 – December 31) · 3-Month Plan
 
 **Cadence:** 2 posts/week — every **Tuesday & Thursday**
-**Total content actions:** 28 (**18 new** · **10 freshness refreshes**)
+**Total content actions:** 27 (**17 new** · **10 freshness refreshes**)
 **Shift from Q3:** Q3 was greenfield cluster-building. Q4 moves to a **maintenance + expansion** mix — roughly 64% new / 36% refresh — because the Q3 pillars are the pages that will actually be ranking by October, and stale pillars decay fastest.
 **Optimization:** dual-optimized for **SEO** (rankings, topical authority, local intent) and **GEO** (AI citations in ChatGPT / Perplexity / Google AI Overviews) via answer-first formatting, FAQ-shaped H2/H3s, and named clinical sources.
 **Locations targeted:** Sandy & Layton, UT (+ Salt Lake metro)
@@ -92,7 +92,6 @@ The three `…-2026` pricing titles should be retitled to **2027** during their 
 | Oct 29 | Thu | New | B | Estrogen, Progesterone & Testosterone: A Woman's Guide to Which Hormones You Need | `womens-hormone-panel-estrogen-progesterone-testosterone` | how-to | women's hormone panel | "Which hormones should a woman get tested?" | Idea |
 | Nov 3 | Tue | New | E | Open Enrollment 2027: Using HSA & FSA Dollars for Weight Loss and Hormone Care | `hsa-fsa-weight-loss-hormone-care-2027` | how-to | HSA FSA weight loss | "Can I use my HSA or FSA for GLP-1 or TRT?" | Idea |
 | Nov 5 | Thu | New | A | Movember: 5 Men's Health Screenings Worth Doing Before 50 | `mens-health-screenings-before-50` | listicle | men's health screenings | "What health screenings should a man get in his 40s?" | Idea |
-| Nov 10 | Tue | New | C | Tirzepatide vs. Retatrutide: What's Coming Next in Weight Loss Medicine | `tirzepatide-vs-retatrutide-whats-next` | comparison | retatrutide | "Is retatrutide better than tirzepatide, and when can I get it?" | Idea |
 | Nov 12 | Thu | **Refresh** | E | ↻ `best-mens-health-clinic-salt-lake-sandy-layton` | `best-mens-health-clinic-salt-lake-sandy-layton` | — | best men's health clinic Salt Lake City | Refresh competitor set + service list | Idea |
 | Nov 17 | Tue | New | D | Low Libido in Your 30s: Why It Happens to Women Earlier Than You Think | `low-libido-in-your-30s-women` | explainer | low libido 30s women | "I'm 34 and have no sex drive — is that normal?" | Idea |
 | Nov 19 | Thu | **Refresh** | A | ↻ `shockwave-therapy-ed-cost-utah-2026` | `shockwave-therapy-ed-cost-utah-2026` | — | shockwave therapy for ED cost | Refresh pricing; retitle 2026→2027 | Idea |
@@ -122,17 +121,17 @@ The three `…-2026` pricing titles should be retitled to **2027** during their 
 
 ## Content Mix — Q4 totals
 
-- **New posts:** 18 (64%)
-- **Freshness refreshes:** 10 (36%)
+- **New posts:** 17 (63%)
+- **Freshness refreshes:** 10 (37%)
 - **Repurposed:** folded into new posts as derivative formats (FAQ/comparison) rather than tracked separately — the publishing pipeline writes full articles only.
 
-**Type diversity across the 18 new posts:** how-to/guides ×7, comparisons ×4, data-research ×3, explainer ×2, listicle ×1, faq-knowledge ×1.
+**Type diversity across the 17 new posts:** how-to/guides ×7, comparisons ×3, data-research ×3, explainer ×2, listicle ×1, faq-knowledge ×1.
 
 ---
 
 ## Quarterly Goals
 
-- [ ] Publish 18 new posts across all five clusters
+- [ ] Publish 17 new posts across all five clusters
 - [ ] Complete 10 freshness refreshes, all Q3 pillars and pricing pages included
 - [ ] Retitle the three `…-2026` pricing posts to 2027 (same slugs — no redirects needed)
 - [ ] Bring clusters A, C, and E to ~75%+ coverage
