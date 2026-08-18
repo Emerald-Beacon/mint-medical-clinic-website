@@ -61,7 +61,7 @@
 | Aug 11 | Tue | A | ED Isn't Just an "Older Man" Problem: A Guide for Men Under 40 | faq-knowledge | ED in young men | "I'm in my 30s with mild ED — would shockwave therapy help me?" | ✅ Published 2026-08-06 |
 | Aug 13 | Thu | D | Testosterone for Women: Can It Really Bring Back Your Libido? | evidence explainer | testosterone therapy for women libido | "Can a doctor prescribe testosterone to a woman for low libido, and is it safe?" | ✅ Published 2026-08-11 |
 | Aug 18 | Tue | C | Is Compounded Semaglutide Still Legal in 2026? What Utah Patients Need to Know | explainer / authority | compounded semaglutide legal 2026 | "Is compounded semaglutide still allowed in 2026 and how is it different from brand?" | ✅ Published 2026-08-13 |
-| Aug 20 | Thu | E | Clínica de Bienestar para Hombres en Utah: TRT, Pérdida de Peso y Más (en Español) | pillar (Spanish) | clínica de hombres Utah / TRT en español | "¿Hay una clínica de bienestar para hombres que hable español en Utah?" | Idea |
+| Aug 20 | Thu | E | Clínica de Bienestar para Hombres en Utah: TRT, Pérdida de Peso y Más (en Español) | pillar (Spanish) | clínica de hombres Utah / TRT en español | "¿Hay una clínica de bienestar para hombres que hable español en Utah?" | ✅ Published 2026-08-18 |
 | Aug 25 | Tue | C | Back-to-School Weight Loss Reset: Starting a GLP-1 This Fall | seasonal / conversion | weight loss clinic Layton Utah | "Restart weight loss when the kids go back to school — how do GLP-1 programs work?" | Idea |
 | Aug 27 | Thu | B | Bioidentical vs. Synthetic Hormones: What's Actually Different (and Safer)? | comparison | bioidentical vs synthetic hormones | "What's the real difference between bioidentical and synthetic HRT, and which is safer?" | Idea |
 
