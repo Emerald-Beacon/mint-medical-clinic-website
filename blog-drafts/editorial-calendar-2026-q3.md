@@ -71,7 +71,7 @@
 
 | Date | Day | Cluster | Title | Template | Primary Keyword | GEO / AI-query target | Status |
 |------|-----|---------|-------|----------|-----------------|------------------------|--------|
-| Sep 1 | Tue | A | The Trifecta Protocol Explained: Why Combining Shockwave, Cryotherapy & HRT Works Better | explainer | combination ED treatment protocol | "Does combining shockwave therapy with testosterone work better than either alone?" | Idea |
+| Sep 1 | Tue | A | The Trifecta Protocol Explained: Why Combining Shockwave, Cryotherapy & HRT Works Better | explainer | combination ED treatment protocol | "Does combining shockwave therapy with testosterone work better than either alone?" | ✅ Published 2026-09-01 |
 | Sep 3 | Thu | D | Vaginal Dryness After 40: Causes and What Actually Helps (Beyond Lubricant) | pillar / how-to | vaginal dryness treatment | "What are the real options for vaginal dryness besides over-the-counter lubricant?" | Idea |
 | Sep 8 | Tue | B | Perimenopause at 40+: Early Signs, Stages, and When to Consider HRT | how-to | perimenopause symptoms | "My periods are irregular with night sweats at 45 — is this perimenopause, what helps?" | Idea |
 | Sep 10 | Thu | D | Genitourinary Syndrome of Menopause: The Condition Half of Women Have but Few Discuss | educational / GEO | genitourinary syndrome of menopause | "What is genitourinary syndrome of menopause and how is it treated?" | Idea |
