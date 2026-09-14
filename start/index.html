@@ -174,6 +174,29 @@
   }
   .waitlist-note { color: var(--ink-soft); margin: 14px 0 24px; }
 
+  .cap-benefits { text-align: center; padding: 10px 0 26px; }
+  .cap-benefits li { list-style: none; color: var(--ink-soft); padding: 5px 0; font-size: 15px; }
+  .cap-sheet {
+    background: #fff; border-radius: 16px 16px 0 0;
+    padding: 26px 20px 28px; margin: 0 -16px -80px;
+    box-shadow: 0 -10px 40px rgba(26,43,39,.10);
+  }
+  .cap-field { margin-bottom: 14px; }
+  .cap-field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .cap-field input {
+    width: 100%; min-height: 52px; padding: 14px 16px;
+    font-family: inherit; font-size: 16px; /* 16px prevents iOS zoom on focus */
+    border: 1px solid var(--gray-200); border-radius: 10px; background: #fff;
+  }
+  .cap-field input:focus-visible { outline: 2px solid var(--mint-deep); outline-offset: 1px; }
+  .cap-consent { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; font-size: 13px; color: var(--gray-700); }
+  .cap-consent input { margin-top: 3px; min-width: 18px; min-height: 18px; }
+  .cap-expect {
+    background: var(--mint-pale); border-radius: 10px;
+    padding: 14px 16px; margin-top: 16px; font-size: 14px; color: var(--ink-soft);
+  }
+  .cap-error { color: #b3261e; font-size: 14px; margin-bottom: 12px; }
+
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   }
@@ -257,7 +280,55 @@
     </form>
   </section>
 
-  <section class="quiz-static" id="stepContact" data-quiz-static hidden></section>
+  <section class="quiz-static" id="stepContact" data-quiz-static hidden>
+    <ul class="cap-benefits">
+      <li>Harder, more reliable erections</li>
+      <li>A Utah-licensed provider, not an app</li>
+      <li>Discreet, unmarked delivery</li>
+    </ul>
+    <div class="cap-sheet">
+      <h1 class="quiz-question" data-quiz-heading style="font-size:1.6rem;margin-bottom:18px;">Let's start your visit.</h1>
+      <form name="mens-health-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="leadForm">
+        <input type="hidden" name="form-name" value="mens-health-lead">
+        <input type="hidden" name="quiz-answers" data-lead-answers value="">
+        <input type="hidden" name="recommended-product" data-lead-product value="">
+        <input type="hidden" name="utm-source" data-lead-utm-source value="">
+        <input type="hidden" name="utm-campaign" data-lead-utm-campaign value="">
+        <input type="hidden" name="fbclid" data-lead-fbclid value="">
+        <p hidden aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+        <div class="cap-field">
+          <label for="leadEmail">Email address</label>
+          <input type="email" id="leadEmail" name="email" autocomplete="email" required>
+        </div>
+        <div class="cap-field">
+          <label for="leadName">First name</label>
+          <input type="text" id="leadName" name="first-name" autocomplete="given-name" required>
+        </div>
+        <div class="cap-field">
+          <label for="leadPhone">Mobile number</label>
+          <input type="tel" id="leadPhone" name="phone" autocomplete="tel" inputmode="tel" required>
+        </div>
+
+        <label class="cap-consent">
+          <input type="checkbox" id="leadConsentTelehealth" required>
+          <span>I agree to the <a href="/privacy-policy">Privacy Policy</a> and consent to telehealth.</span>
+        </label>
+        <label class="cap-consent">
+          <input type="checkbox" id="leadConsentContact" required>
+          <span>I agree to receive calls and texts from Mint Medical Clinic about my consultation.</span>
+        </label>
+
+        <div class="cap-error" id="leadError" role="alert" hidden></div>
+        <button type="submit" class="quiz-btn quiz-btn-block" id="leadSubmit">Continue to scheduling</button>
+
+        <div class="cap-expect">
+          A Mint provider will call you from <strong>(801) 804-8000</strong> at the time you choose.
+          Save the number so you know it's us.
+        </div>
+      </form>
+    </div>
+  </section>
   <section class="quiz-static" id="stepSchedule" data-quiz-static hidden></section>
 </main>
 </div>
@@ -327,6 +398,69 @@
 
     root.querySelector('[data-rec-continue]').addEventListener('click', function () {
       QuizEngine.goTo('contact');
+    });
+
+    // --- attribution: capture on landing, carry into the lead record ---
+    var params = new URLSearchParams(window.location.search);
+    function attr(name) {
+      var fromUrl = params.get(name);
+      if (fromUrl) {
+        try { sessionStorage.setItem('mint_' + name, fromUrl); } catch (e) {}
+        return fromUrl;
+      }
+      try { return sessionStorage.getItem('mint_' + name) || ''; } catch (e) { return ''; }
+    }
+
+    function encode(data) {
+      return Object.keys(data)
+        .map(function (k) {
+          return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
+        })
+        .join('&');
+    }
+
+    var leadForm = document.getElementById('leadForm');
+    var leadError = document.getElementById('leadError');
+    var leadSubmit = document.getElementById('leadSubmit');
+
+    leadForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      leadError.hidden = true;
+
+      var state = QuizEngine.getState();
+      root.querySelector('[data-lead-answers]').value = JSON.stringify(state.answers);
+      root.querySelector('[data-lead-product]').value = state.recommendation || '';
+      root.querySelector('[data-lead-utm-source]').value = attr('utm_source');
+      root.querySelector('[data-lead-utm-campaign]').value = attr('utm_campaign');
+      root.querySelector('[data-lead-fbclid]').value = attr('fbclid');
+
+      var payload = {};
+      new FormData(leadForm).forEach(function (v, k) { payload[k] = v; });
+
+      leadSubmit.disabled = true;
+      leadSubmit.textContent = 'One moment…';
+
+      function advance() {
+        leadSubmit.disabled = false;
+        leadSubmit.textContent = 'Continue to scheduling';
+        QuizEngine.goTo('schedule');
+      }
+
+      // A booking is worth more than a form record: one retry, then advance
+      // regardless. Losing the booking because the form 500'd is the worst outcome.
+      function post(retriesLeft) {
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encode(payload)
+        })
+          .then(advance)
+          .catch(function () {
+            if (retriesLeft > 0) { post(retriesLeft - 1); return; }
+            advance();
+          });
+      }
+      post(1);
     });
 
     QuizEngine.mount(root, cfg, {
