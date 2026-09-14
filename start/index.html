@@ -394,6 +394,12 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
   (function () {
     var cfg = window.MensHealthQuiz;
     var root = document.getElementById('quizRoot');
+    // Dedupe GA4 quiz_step_* events within this page session: the engine's
+    // render() runs on forward nav, popstate (Back/Forward), and initial
+    // mount, so without this a Back-then-forward re-inflates a step's
+    // count. A real page reload starts a fresh session and is allowed to
+    // re-fire — that's a genuinely new session.
+    var reportedSteps = {};
 
     // Copy that references the user's own answers — the payoff for the
     // processing screen. Must reflect real input, never boilerplate.
@@ -534,7 +540,10 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 
     QuizEngine.mount(root, cfg, {
       onStep: function (stepId) {
-        if (window.gtag) gtag('event', 'quiz_step_' + stepId);
+        if (!reportedSteps[stepId]) {
+          reportedSteps[stepId] = true;
+          if (window.gtag) gtag('event', 'quiz_step_' + stepId);
+        }
         if (stepId === 'recommendation') {
           renderRecommendation(QuizEngine.getState().recommendation || 'mint-mints');
           // The engine focuses and announces the heading before this hook runs,
