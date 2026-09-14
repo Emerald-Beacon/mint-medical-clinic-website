@@ -93,6 +93,16 @@
   to = "/lp/acoustic-wave-therapy.html"
   status = 200
 
+[[redirects]]
+  from = "/mens-health"
+  to = "/lp/mens-health.html"
+  status = 200
+
+[[redirects]]
+  from = "/start"
+  to = "/start/index.html"
+  status = 200
+
 # Headers for security and caching
 [[headers]]
   for = "/data/articles.json"

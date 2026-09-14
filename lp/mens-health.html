@@ -12,6 +12,35 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','985745890592891');
+fbq('track','PageView');
+fbq('track','ViewContent');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></noscript>
+
+<!-- GA4: paste a real Measurement ID (format: G dash 10 alphanumeric chars) below to switch GA4 on for this page. -->
+<script>
+  var GA4_MEASUREMENT_ID = '';
+  if (GA4_MEASUREMENT_ID) {
+    var gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_MEASUREMENT_ID;
+    document.head.appendChild(gaScript);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', GA4_MEASUREMENT_ID);
+  }
+</script>
+
 <style>
   :root {
     --mint: #3EB489;
@@ -367,7 +396,7 @@
           <tr>
             <td>Reviewed live by a provider, not just an intake form</td>
             <td class="c yes">✓</td>
-            <td class="c no">—</td>
+            <td class="c yes">✓</td>
             <td class="c no">—</td>
           </tr>
           <tr>
