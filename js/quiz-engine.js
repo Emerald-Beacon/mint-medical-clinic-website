@@ -12,6 +12,7 @@ window.QuizEngine = (function () {
   var currentId = null;
   var recommendation = null;
   var storageKey = null;
+  var advancing = false;
 
   var reduceMotion =
     window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -145,6 +146,8 @@ window.QuizEngine = (function () {
 
       select.addEventListener('change', function () {
         if (!select.value) return;
+        if (advancing) return;
+        advancing = true;
         answer(step.key, select.value);
       });
 
@@ -163,6 +166,8 @@ window.QuizEngine = (function () {
         b.setAttribute('aria-checked', 'false');
         b.textContent = opt.label;
         b.addEventListener('click', function () {
+          if (advancing) return;
+          advancing = true;
           b.setAttribute('aria-checked', 'true');
           b.classList.add('is-selected');
           // Brief highlight so the tap registers visually before advancing.
@@ -228,6 +233,7 @@ window.QuizEngine = (function () {
 
     s.appendChild(wrap);
     announce(step.headline);
+    focusHeading();
 
     recommendation = cfg.recommend(answers);
     if (hooks.onComplete) hooks.onComplete(recommendation);
@@ -276,6 +282,7 @@ window.QuizEngine = (function () {
     var step = stepById(id);
     if (!step) return;
 
+    advancing = false;
     clearStage();
     hideAllStatic();
     currentId = id;
