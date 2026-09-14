@@ -135,6 +135,7 @@
 </head>
 <body>
 
+<div id="quizRoot">
 <header class="quiz-head">
   <div class="quiz-head-inner">
     <button class="quiz-back" type="button" data-quiz-back hidden aria-label="Go back">
@@ -148,7 +149,7 @@
   </div>
 </header>
 
-<main class="quiz-main" id="quizRoot">
+<main class="quiz-main">
   <div class="quiz-sr" data-quiz-live aria-live="polite" role="status"></div>
   <div class="quiz-stage" data-quiz-stage></div>
 
@@ -159,6 +160,7 @@
   <section class="quiz-static" id="stepContact" data-quiz-static hidden></section>
   <section class="quiz-static" id="stepSchedule" data-quiz-static hidden></section>
 </main>
+</div>
 
 <script src="../js/quiz-mens-health.js"></script>
 <script src="../js/quiz-engine.js"></script>
