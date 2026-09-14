@@ -189,8 +189,12 @@
     border: 1px solid var(--gray-200); border-radius: 10px; background: #fff;
   }
   .cap-field input:focus-visible { outline: 2px solid var(--mint-deep); outline-offset: 1px; }
-  .cap-consent { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; font-size: 13px; color: var(--gray-700); }
-  .cap-consent input { margin-top: 3px; min-width: 18px; min-height: 18px; }
+  .cap-consent {
+    display: flex; gap: 10px; align-items: center; min-height: 48px;
+    padding: 8px 0; box-sizing: border-box; margin-bottom: 10px;
+    font-size: 13px; color: var(--gray-700);
+  }
+  .cap-consent input { min-width: 18px; min-height: 18px; flex-shrink: 0; }
   .cap-expect {
     background: var(--mint-pale); border-radius: 10px;
     padding: 14px 16px; margin-top: 16px; font-size: 14px; color: var(--ink-soft);
@@ -454,7 +458,10 @@
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: encode(payload)
         })
-          .then(advance)
+          .then(function (response) {
+            if (!response.ok) { throw new Error('lead post failed: ' + response.status); }
+            advance();
+          })
           .catch(function () {
             if (retriesLeft > 0) { post(retriesLeft - 1); return; }
             advance();
