@@ -336,6 +336,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
         <input type="hidden" name="utm-source" data-lead-utm-source value="">
         <input type="hidden" name="utm-campaign" data-lead-utm-campaign value="">
         <input type="hidden" name="fbclid" data-lead-fbclid value="">
+        <input type="hidden" name="consent-version" value="mens-health-v1-2026-09-14">
         <p hidden aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 
         <div class="cap-field">
@@ -352,11 +353,11 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
         </div>
 
         <label class="cap-consent">
-          <input type="checkbox" id="leadConsentTelehealth" required>
+          <input type="checkbox" id="leadConsentTelehealth" name="consent-telehealth" required>
           <span>I agree to the <a href="/privacy-policy">Privacy Policy</a> and consent to telehealth.</span>
         </label>
         <label class="cap-consent">
-          <input type="checkbox" id="leadConsentContact" required>
+          <input type="checkbox" id="leadConsentContact" name="consent-contact" required>
           <span>I agree to receive calls and texts from Mint Medical Clinic about my consultation.</span>
         </label>
 
@@ -401,6 +402,12 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     // re-fire — that's a genuinely new session.
     var reportedSteps = {};
 
+    // Host-side record of the product actually shown on screen right now,
+    // independent of the engine's `recommendation` state. "See the other
+    // option" repaints the screen without touching the engine, so this is
+    // the source of truth for what gets recorded on the lead (B3).
+    var chosenProduct = null;
+
     // Copy that references the user's own answers — the payoff for the
     // processing screen. Must reflect real input, never boilerplate.
     var WHY = {
@@ -421,6 +428,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     function renderRecommendation(key) {
       var p = cfg.products[key];
       if (!p) return;
+      chosenProduct = key;
       var a = QuizEngine.getState().answers;
 
       root.querySelector('[data-rec-name]').textContent = p.name;
@@ -490,7 +498,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 
       var state = QuizEngine.getState();
       root.querySelector('[data-lead-answers]').value = JSON.stringify(state.answers);
-      root.querySelector('[data-lead-product]').value = state.recommendation || '';
+      root.querySelector('[data-lead-product]').value = chosenProduct || state.recommendation || '';
       root.querySelector('[data-lead-utm-source]').value = attr('utm_source');
       root.querySelector('[data-lead-utm-campaign]').value = attr('utm_campaign');
       root.querySelector('[data-lead-fbclid]').value = attr('fbclid');
@@ -521,8 +529,13 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
             if (!response.ok) { throw new Error('lead post failed: ' + response.status); }
             advance();
           })
-          .catch(function () {
+          .catch(function (err) {
             if (retriesLeft > 0) { post(retriesLeft - 1); return; }
+            console.warn('Mint lead POST failed after retry: ' + (err && err.message ? err.message : err));
+            if (window.gtag) gtag('event', 'quiz_lead_post_failed');
+            if (window.fbq) fbq('trackCustom', 'LeadPostFailed');
+            leadError.textContent = "We've got your details — we'll confirm by email.";
+            leadError.hidden = false;
             advance();
           });
       }
@@ -540,6 +553,23 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 
     QuizEngine.mount(root, cfg, {
       onStep: function (stepId) {
+        // Licensure gate (N2): browser history (Back/Forward), or a shared
+        // deep link, can land on these steps with stale, missing, or
+        // unlicensed-state answers. Re-check every time, host-side, since
+        // the engine itself accepts any hash naming a step.
+        if (stepId === 'recommendation' || stepId === 'contact' || stepId === 'schedule') {
+          var answers = QuizEngine.getState().answers;
+          // Guard against infinite loops: 'waitlist' and steps[0] are never
+          // in the set above, so redirecting to either cannot re-enter here.
+          if (!cfg.isLicensed(answers.state)) {
+            QuizEngine.goTo('waitlist');
+            return;
+          }
+          if (!answers.goal) {
+            QuizEngine.goTo(cfg.steps[0].id);
+            return;
+          }
+        }
         if (!reportedSteps[stepId]) {
           reportedSteps[stepId] = true;
           if (window.gtag) gtag('event', 'quiz_step_' + stepId);

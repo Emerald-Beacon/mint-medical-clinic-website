@@ -53,6 +53,26 @@ test('recommend: returns a valid product for empty answers', () => {
   assert.ok(result === 'mint-mints' || result === 'opti-mint-shot');
 });
 
+test('recommend: priority "fast" outranks tried "planning" (spec 6.1 ordering)', () => {
+  // If the "tried === planning" rule were ever moved above "priority === fast"
+  // in the config, this is the one reachable case that would flip and expose it.
+  assert.strictEqual(
+    quiz.recommend({ tried: 'planning', priority: 'fast' }),
+    'opti-mint-shot'
+  );
+});
+
+test('product priceLine copy is byte-exact', () => {
+  assert.strictEqual(
+    quiz.products['mint-mints'].priceLine,
+    'Half Batch $197 · Full Batch $297 (reg. $397)'
+  );
+  assert.strictEqual(
+    quiz.products['opti-mint-shot'].priceLine,
+    '$49.97 per shot · as low as $29.80 in a 10-pack'
+  );
+});
+
 // --- isLicensed() ---
 
 test('isLicensed: Utah is licensed', () => {

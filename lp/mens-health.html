@@ -23,6 +23,21 @@ fbq('init','985745890592891');
 fbq('track','PageView');
 fbq('track','ViewContent');
 </script>
+
+<!-- Attribution capture: persist UTM/fbclid params from the ad click so
+     /start (same origin) can read them back via its own attr() helper,
+     even though its CTAs are bare hrefs with no query string. -->
+<script>
+(function () {
+  try {
+    var params = new URLSearchParams(window.location.search);
+    ['utm_source', 'utm_campaign', 'fbclid'].forEach(function (name) {
+      var value = params.get(name);
+      if (value) sessionStorage.setItem('mint_' + name, value);
+    });
+  } catch (e) {}
+})();
+</script>
 <noscript><img height="1" width="1" style="display:none" alt=""
 src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></noscript>
 
@@ -351,7 +366,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
       <div class="process-item">
         <div class="process-num">1</div>
         <h3>Answer a few questions</h3>
-        <p>A short, confidential questionnaire about your health history — a couple of minutes, from your phone.</p>
+        <p>A few quick questions about your goals — a couple of minutes, from your phone. Your health history is covered with your provider on the visit.</p>
       </div>
       <div class="process-item">
         <div class="process-num">2</div>
@@ -394,7 +409,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
         </thead>
         <tbody>
           <tr>
-            <td>Reviewed live by a provider, not just an intake form</td>
+            <td>Always a live visit, never async-only</td>
             <td class="c yes">✓</td>
             <td class="c yes">✓</td>
             <td class="c no">—</td>

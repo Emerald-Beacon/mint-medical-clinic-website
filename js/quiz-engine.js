@@ -13,6 +13,8 @@ window.QuizEngine = (function () {
   var recommendation = null;
   var storageKey = null;
   var advancing = false;
+  var tapTimer = null;
+  var processingTimer = null;
 
   var reduceMotion =
     window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -171,7 +173,7 @@ window.QuizEngine = (function () {
           b.setAttribute('aria-checked', 'true');
           b.classList.add('is-selected');
           // Brief highlight so the tap registers visually before advancing.
-          window.setTimeout(function () {
+          tapTimer = window.setTimeout(function () {
             answer(step.key, opt.value);
           }, reduceMotion ? 0 : 180);
         });
@@ -238,7 +240,7 @@ window.QuizEngine = (function () {
     recommendation = cfg.recommend(answers);
     if (hooks.onComplete) hooks.onComplete(recommendation);
 
-    window.setTimeout(
+    processingTimer = window.setTimeout(
       function () {
         goTo(nextStepId(step.id));
       },
@@ -283,6 +285,8 @@ window.QuizEngine = (function () {
     if (!step) return;
 
     advancing = false;
+    if (tapTimer) { clearTimeout(tapTimer); tapTimer = null; }
+    if (processingTimer) { clearTimeout(processingTimer); processingTimer = null; }
     clearStage();
     hideAllStatic();
     currentId = id;
@@ -325,6 +329,13 @@ window.QuizEngine = (function () {
     hooks = h || {};
     storageKey = 'mint_quiz_' + config.id;
     load();
+
+    // A reload restores `answers` from sessionStorage but not `recommendation`
+    // (it was never persisted). Recompute it so a mid-flow reload doesn't
+    // show a stale/wrong product or blank it out (spec B4).
+    if (!recommendation && Object.keys(answers).length > 0) {
+      recommendation = cfg.recommend(answers);
+    }
 
     window.addEventListener('popstate', onPopState);
 
