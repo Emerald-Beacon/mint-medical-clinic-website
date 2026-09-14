@@ -201,6 +201,21 @@
   }
   .cap-error { color: #b3261e; font-size: 14px; margin-bottom: 12px; }
 
+  .sched-intro { margin-bottom: 20px; }
+  .sched-intro p { color: var(--ink-soft); margin-top: 8px; }
+  .sched-frame-wrap {
+    position: relative; border: 1px solid var(--gray-200);
+    border-radius: 12px; overflow: hidden; background: #fff; min-height: 620px;
+  }
+  .sched-frame { width: 100%; height: 620px; border: 0; display: block; }
+  .sched-fallback { padding: 26px 20px; text-align: center; }
+  .sched-fallback p { color: var(--ink-soft); margin-bottom: 18px; }
+  .sched-done {
+    display: block; width: 100%; text-align: center; margin-top: 16px;
+    font-size: 14px; color: var(--gray-500); background: none; border: 0;
+    cursor: pointer; text-decoration: underline;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   }
@@ -333,7 +348,32 @@
       </form>
     </div>
   </section>
-  <section class="quiz-static" id="stepSchedule" data-quiz-static hidden></section>
+  <section class="quiz-static" id="stepSchedule" data-quiz-static hidden>
+    <div class="sched-intro">
+      <h1 class="quiz-question" data-quiz-heading style="font-size:1.7rem;margin-bottom:0;">Pick a time with a Utah provider.</h1>
+      <p>
+        Fifteen minutes, by phone or video. No waiting room, no pharmacy counter.
+        Your provider confirms your dose and sends it discreetly.
+      </p>
+    </div>
+
+    <div class="sched-frame-wrap">
+      <iframe
+        class="sched-frame"
+        id="schedFrame"
+        data-src="https://new-consultation.zohobookings.com/#/mintmedicalclinic"
+        title="Book your consultation"
+        loading="lazy"></iframe>
+
+      <!-- Shown only if the embed is blocked. See step 2. -->
+      <div class="sched-fallback" id="schedFallback" hidden>
+        <p>Booking opens in a new tab. Pick your time, then come back here.</p>
+        <a class="quiz-btn quiz-btn-block" href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" target="_blank" rel="noopener">Choose your time</a>
+      </div>
+    </div>
+
+    <button type="button" class="sched-done" id="schedDone">I've booked my time →</button>
+  </section>
 </main>
 </div>
 
@@ -470,6 +510,10 @@
       post(1);
     });
 
+    document.getElementById('schedDone').addEventListener('click', function () {
+      window.location.href = '/start/confirmed.html';
+    });
+
     QuizEngine.mount(root, cfg, {
       onStep: function (stepId) {
         if (stepId === 'recommendation') {
@@ -487,6 +531,22 @@
         if (stepId === 'waitlist') {
           var s = root.querySelector('[data-waitlist-state]');
           if (s) s.value = QuizEngine.getState().answers.state || '';
+        }
+        if (stepId === 'schedule') {
+          // Lazy-load: the third-party embed must never block the quiz.
+          var f = document.getElementById('schedFrame');
+          if (f && !f.src && f.dataset.src) f.src = f.dataset.src;
+
+          // If the frame never reports a load, assume it was refused and swap
+          // in the new-tab fallback rather than showing the user a blank box.
+          window.setTimeout(function () {
+            var loaded = false;
+            try { loaded = !!(f.contentWindow && f.contentWindow.length >= 0); } catch (err) { loaded = true; }
+            if (!loaded) {
+              f.hidden = true;
+              document.getElementById('schedFallback').hidden = false;
+            }
+          }, 2500);
         }
       }
     });
