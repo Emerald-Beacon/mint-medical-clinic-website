@@ -163,11 +163,13 @@
     display: block; text-align: center; margin-top: 16px;
     font-size: 14px; color: var(--gray-500); background: none; border: 0;
     cursor: pointer; text-decoration: underline; width: 100%;
+    padding: 16px 0; box-sizing: border-box;
   }
+  .rec-switch:focus-visible { outline: 2px solid var(--mint-deep); outline-offset: 2px; }
   /* Sticky CTA must never cover the last element above it. */
   .rec-sticky {
     position: sticky; bottom: 0; background: var(--cream);
-    padding: 14px 0 18px; margin-top: 8px;
+    padding: 10px 0 12px; margin-top: 8px;
     box-shadow: 0 -12px 20px -12px rgba(26,43,39,.18);
   }
   .waitlist-note { color: var(--ink-soft); margin: 14px 0 24px; }
