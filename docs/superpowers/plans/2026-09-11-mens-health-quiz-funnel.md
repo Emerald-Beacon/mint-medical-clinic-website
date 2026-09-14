@@ -154,7 +154,7 @@ test('every step has a unique id', () => {
 
 - [ ] **Step 2: Run the test to verify it fails**
 
-Run: `node --test tests/`
+Run: `node --test tests/*.test.js`
 Expected: FAIL — `Cannot find module '../js/quiz-mens-health.js'`
 
 - [ ] **Step 3: Write the implementation**
@@ -320,7 +320,7 @@ Create `js/quiz-mens-health.js`:
 
 - [ ] **Step 4: Run the test to verify it passes**
 
-Run: `node --test tests/`
+Run: `node --test tests/*.test.js`
 Expected: PASS — 14 tests passing, 0 failing.
 
 - [ ] **Step 5: Commit**
@@ -706,7 +706,7 @@ Expected: prints `function`
 
 - [ ] **Step 3: Re-run the Task 1 tests to confirm nothing regressed**
 
-Run: `node --test tests/`
+Run: `node --test tests/*.test.js`
 Expected: PASS — all tests still passing.
 
 - [ ] **Step 4: Commit**
@@ -1776,7 +1776,7 @@ git commit -m "feat(funnel): add routes, Meta Pixel and GA4 tracking"
 
 Run after all tasks, at 360px and desktop widths, with `netlify dev`.
 
-- [ ] All five routing rules produce the expected product (`node --test tests/` plus a manual spot-check of two paths).
+- [ ] All five routing rules produce the expected product (`node --test tests/*.test.js` plus a manual spot-check of two paths).
 - [ ] Back button and refresh preserve answers at every step.
 - [ ] Private-browsing mode completes the quiz with no console error.
 - [ ] Keyboard-only completion works; screen reader announces each step change.
