@@ -128,6 +128,50 @@
     clip: rect(0 0 0 0); white-space: nowrap;
   }
 
+  .rec-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--mint-deep); display: block; margin-bottom: 6px;
+  }
+  .rec-name { font-size: clamp(2rem, 6vw, 2.8rem); margin-bottom: 10px; }
+  .rec-tagline { color: var(--ink-soft); margin-bottom: 24px; }
+  .rec-image { display: block; max-width: 240px; margin: 0 auto 26px; }
+  .rec-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .rec-chip {
+    font-size: 13px; padding: 8px 14px; border-radius: 999px;
+    background: var(--mint-light); color: var(--mint-deep);
+  }
+  .rec-why {
+    background: #fff; border: 1px solid var(--gray-200); border-radius: 10px;
+    padding: 18px 20px; margin-bottom: 24px; color: var(--ink-soft); font-size: 15px;
+  }
+  .rec-price { font-size: 15px; color: var(--gray-700); margin-bottom: 26px; }
+  .rec-faq { border-top: 1px solid var(--gray-200); margin-bottom: 26px; }
+  .rec-faq details { border-bottom: 1px solid var(--gray-200); }
+  .rec-faq summary {
+    padding: 16px 0; cursor: pointer; font-weight: 600; font-size: 15px; list-style: none;
+  }
+  .rec-faq summary::-webkit-details-marker { display: none; }
+  .rec-faq summary::after { content: '+'; float: right; color: var(--mint-deep); }
+  .rec-faq details[open] summary::after { content: '–'; }
+  .rec-faq p { padding: 0 0 16px; color: var(--ink-soft); font-size: 15px; }
+  .rec-quote {
+    background: var(--mint-pale); border-radius: 10px; padding: 20px; margin-bottom: 26px;
+    font-size: 15px; color: var(--ink-soft);
+  }
+  .rec-quote cite { display: block; margin-top: 10px; font-style: normal; color: var(--gray-500); font-size: 13px; }
+  .rec-switch {
+    display: block; text-align: center; margin-top: 16px;
+    font-size: 14px; color: var(--gray-500); background: none; border: 0;
+    cursor: pointer; text-decoration: underline; width: 100%;
+  }
+  /* Sticky CTA must never cover the last element above it. */
+  .rec-sticky {
+    position: sticky; bottom: 0; background: var(--cream);
+    padding: 14px 0 18px; margin-top: 8px;
+    box-shadow: 0 -12px 20px -12px rgba(26,43,39,.18);
+  }
+  .waitlist-note { color: var(--ink-soft); margin: 14px 0 24px; }
+
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   }
@@ -155,8 +199,62 @@
 
   <!-- Static steps. Filled in by Tasks 4-6. Present in the HTML at build time
        so Netlify Forms can detect the capture form. -->
-  <section class="quiz-static" id="stepWaitlist" data-quiz-static hidden></section>
-  <section class="quiz-static" id="stepRecommendation" data-quiz-static hidden></section>
+  <section class="quiz-static" id="stepRecommendation" data-quiz-static hidden>
+    <span class="rec-eyebrow">Your recommendation</span>
+    <h1 class="rec-name" data-quiz-heading data-rec-name></h1>
+    <p class="rec-tagline" data-rec-tagline></p>
+    <img class="rec-image" data-rec-image src="" alt="">
+    <div class="rec-chips" data-rec-chips></div>
+    <div class="rec-why" data-rec-why></div>
+    <p class="rec-price" data-rec-price></p>
+
+    <div class="rec-faq">
+      <details>
+        <summary>Do I need a prescription?</summary>
+        <p>Yes. A Utah-licensed provider reviews your consultation and prescribes only if it's appropriate for you. That's the visit you're about to book.</p>
+      </details>
+      <details>
+        <summary>What happens on the consultation?</summary>
+        <p>About fifteen minutes, by phone or video. Your provider asks about your health and goals, answers your questions, and confirms your dose. No waiting room.</p>
+      </details>
+      <details>
+        <summary>Will the packaging give it away?</summary>
+        <p>No. Everything ships in discreet, unmarked packaging, and it's billed discreetly too.</p>
+      </details>
+      <details>
+        <summary>What if this isn't the right fit for me?</summary>
+        <p>Your provider may recommend something different once they've talked with you. Nothing is locked in by this quiz.</p>
+      </details>
+    </div>
+
+    <blockquote class="rec-quote">
+      &ldquo;Booked it on a Tuesday, talked to an actual provider that week. No pharmacy counter, no awkward conversation.&rdquo;
+      <cite>Verified Mint Medical patient</cite>
+    </blockquote>
+
+    <div class="rec-sticky">
+      <button type="button" class="quiz-btn quiz-btn-block" data-rec-continue>Continue</button>
+      <button type="button" class="rec-switch" data-rec-switch></button>
+    </div>
+  </section>
+
+  <section class="quiz-static" id="stepWaitlist" data-quiz-static hidden>
+    <h1 class="quiz-question" data-quiz-heading>We're not licensed in your state yet.</h1>
+    <p class="waitlist-note">
+      Mint Medical providers can only treat patients in the states we're licensed in, and yours isn't one of them yet.
+      Leave your email and we'll tell you the moment that changes. No other emails, ever.
+    </p>
+    <form name="mens-health-waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="waitlistForm">
+      <input type="hidden" name="form-name" value="mens-health-waitlist">
+      <input type="hidden" name="state" data-waitlist-state value="">
+      <p hidden aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <label class="quiz-sr" for="waitlistEmail">Email address</label>
+      <input class="quiz-select" type="email" id="waitlistEmail" name="email" placeholder="you@example.com" autocomplete="email" required>
+      <div style="height:12px"></div>
+      <button type="submit" class="quiz-btn quiz-btn-block">Add me to the list</button>
+    </form>
+  </section>
+
   <section class="quiz-static" id="stepContact" data-quiz-static hidden></section>
   <section class="quiz-static" id="stepSchedule" data-quiz-static hidden></section>
 </main>
@@ -165,7 +263,91 @@
 <script src="../js/quiz-mens-health.js"></script>
 <script src="../js/quiz-engine.js"></script>
 <script>
-  QuizEngine.mount(document.getElementById('quizRoot'), window.MensHealthQuiz, {});
+  (function () {
+    var cfg = window.MensHealthQuiz;
+    var root = document.getElementById('quizRoot');
+
+    // Copy that references the user's own answers — the payoff for the
+    // processing screen. Must reflect real input, never boilerplate.
+    var WHY = {
+      goal: {
+        faster: 'you want things to start faster',
+        longer: 'you want to stay hard longer',
+        both: 'you want both speed and staying power',
+        confidence: 'you want to feel confident again'
+      },
+      tried: {
+        none: "you haven't tried a prescription yet",
+        'not-enough': "the blue pill hasn't done enough",
+        planning: "you're tired of planning around a pill",
+        stronger: 'you want something stronger than what you have tried'
+      }
+    };
+
+    function renderRecommendation(key) {
+      var p = cfg.products[key];
+      if (!p) return;
+      var a = QuizEngine.getState().answers;
+
+      root.querySelector('[data-rec-name]').textContent = p.name;
+      root.querySelector('[data-rec-tagline]').textContent = p.tagline;
+
+      var img = root.querySelector('[data-rec-image]');
+      img.src = p.image;
+      img.alt = p.name;
+
+      var chips = root.querySelector('[data-rec-chips]');
+      chips.innerHTML = '';
+      p.chips.forEach(function (text) {
+        var s = document.createElement('span');
+        s.className = 'rec-chip';
+        s.textContent = text;
+        chips.appendChild(s);
+      });
+
+      var bits = [];
+      if (WHY.goal[a.goal]) bits.push(WHY.goal[a.goal]);
+      if (WHY.tried[a.tried]) bits.push(WHY.tried[a.tried]);
+      root.querySelector('[data-rec-why]').textContent = bits.length
+        ? 'You told us ' + bits.join(', and ') + '. ' + p.name + ' is the option our providers start most men on for exactly that.'
+        : p.name + ' is the option our providers start most men on.';
+
+      root.querySelector('[data-rec-price]').textContent = p.priceLine;
+
+      // Two products means someone may want the other one without restarting.
+      var other = key === 'mint-mints' ? 'opti-mint-shot' : 'mint-mints';
+      var sw = root.querySelector('[data-rec-switch]');
+      sw.textContent = 'See ' + cfg.products[other].name + ' instead';
+      sw.onclick = function () {
+        renderRecommendation(other);
+      };
+    }
+
+    root.querySelector('[data-rec-continue]').addEventListener('click', function () {
+      QuizEngine.goTo('contact');
+    });
+
+    QuizEngine.mount(root, cfg, {
+      onStep: function (stepId) {
+        if (stepId === 'recommendation') {
+          renderRecommendation(QuizEngine.getState().recommendation || 'mint-mints');
+          // The engine focuses and announces the heading before this hook runs,
+          // so at that moment the product name is still empty. Re-announce now
+          // that it has been filled in, or screen readers hear nothing.
+          var h = root.querySelector('#stepRecommendation [data-quiz-heading]');
+          var live = root.querySelector('[data-quiz-live]');
+          if (h && live) {
+            live.textContent = 'Your recommendation: ' + h.textContent;
+            h.focus();
+          }
+        }
+        if (stepId === 'waitlist') {
+          var s = root.querySelector('[data-waitlist-state]');
+          if (s) s.value = QuizEngine.getState().answers.state || '';
+        }
+      }
+    });
+  })();
 </script>
 </body>
 </html>
