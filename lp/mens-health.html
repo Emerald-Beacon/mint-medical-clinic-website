@@ -74,6 +74,16 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     --shadow-soft: 0 10px 40px rgba(31, 107, 80, 0.08);
     --shadow-card: 0 4px 24px rgba(26, 43, 39, 0.06);
     --shadow-elevated: 0 24px 60px rgba(26, 43, 39, 0.12);
+
+    /* Dark surfaces. Taken from the Opti-Mint product graphic — the bottle is
+       photographed on near-black with mint callouts, so the page meets the
+       product rather than the product sitting on a foreign background. */
+    --void: #0a0d0c;
+    --void-2: #121816;
+    --void-line: rgba(62, 180, 137, 0.22);
+    --on-void: #f2f5f4;
+    --on-void-dim: #9aa8a4;
+    --mint-glow: rgba(62, 180, 137, 0.35);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -116,9 +126,54 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     outline-offset: 2px;
   }
 
+  /* ============================================================
+     DARK BANDS
+     The page alternates dark and cream. Dark carries the product
+     and the decisions; cream carries the reading. Sections inherit
+     their colour from the band, so nothing needs per-element overrides.
+     ============================================================ */
+  .band-dark {
+    background: var(--void);
+    color: var(--on-void);
+    position: relative;
+  }
+  .band-dark h1, .band-dark h2, .band-dark h3, .band-dark h4 { color: var(--on-void); }
+  .band-dark p { color: var(--on-void-dim); }
+  .band-dark .eyebrow { color: var(--mint); }
+  .band-dark a:focus-visible, .band-dark button:focus-visible {
+    outline: 3px solid var(--mint);
+    outline-offset: 3px;
+  }
+
+  /* Display voice for the dark bands — heavy, tight, set against the
+     Cormorant used on cream. The two voices are what give the page rhythm. */
+  .display {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    text-transform: none;
+  }
+  .display .lead-line { color: var(--mint); display: block; }
+
+  /* A hairline that ends in a mint node — used to open dark sections.
+     It marks where a section begins without adding another label. */
+  .rule-node {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 22px;
+  }
+  .rule-node::before {
+    content: ''; height: 1px; width: 56px; background: var(--void-line);
+  }
+  .rule-node::after {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--mint); box-shadow: 0 0 0 4px var(--mint-glow);
+  }
+
   /* OFFER BAR */
   .offer-bar {
-    background: var(--ink); color: #fff; text-align: center; font-size: 14px;
+    background: var(--void); color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.07); text-align: center; font-size: 14px;
     padding: 12px 44px 12px 16px; position: relative; line-height: 1.4;
   }
   .offer-bar span { font-weight: 500; }
@@ -151,16 +206,81 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 
   section { padding: clamp(64px, 8vw, 110px) 0; }
 
-  /* HERO */
-  .hero { background: linear-gradient(170deg, var(--mint-pale) 0%, #fff 68%); position: relative; overflow: hidden; }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(36px, 5vw, 72px); align-items: start; }
-  .hero p { font-size: clamp(1.05rem, 1.5vw, 1.2rem); margin-top: 22px; max-width: 34em; }
+  /* HERO
+     The photograph sits behind everything and is pulled down by a scrim that
+     is heaviest on the left, where the type sits, and thins to the right so the
+     image stays legible as an image rather than becoming wallpaper. */
+  .hero {
+    position: relative; overflow: hidden;
+    background: var(--void);
+    padding-top: clamp(64px, 9vw, 110px);
+    padding-bottom: clamp(64px, 9vw, 110px);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('../images/laughing-couple-enjoying-golden-hour-on-the-beach-2026-03-18-05-27-57-utc.jpg');
+    background-size: cover; background-position: 78% 30%;
+    filter: saturate(0.78) contrast(1.04) brightness(0.92);
+  }
+  .hero-scrim {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(100deg, rgba(10,13,12,0.97) 0%, rgba(10,13,12,0.90) 34%, rgba(10,13,12,0.58) 62%, rgba(10,13,12,0.44) 100%),
+      linear-gradient(to top, var(--void) 0%, rgba(10,13,12,0) 30%);
+  }
+  .hero .container { position: relative; z-index: 1; }
+  .hero-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
+  .hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.5rem);
+    max-width: 14ch;
+  }
+  .hero p { font-size: clamp(1.05rem, 1.5vw, 1.2rem); margin-top: 24px; max-width: 34em; }
   .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 34px; }
-  .hero-reassure { font-size: 14px; color: var(--gray-700); margin-top: 22px; max-width: none; }
+  .hero-reassure {
+    font-size: 14px; color: var(--on-void-dim); margin-top: 22px; max-width: none;
+  }
   .hero-image-wrap { position: relative; display: flex; justify-content: center; }
+  /* The bottle is already shot on black, so it is placed with a mint halo
+     rather than a card — a white panel here would cut a hole in the band. */
   .hero-image {
-    width: 100%; max-width: 420px; height: auto; border-radius: 20px;
-    background: #fff; box-shadow: var(--shadow-elevated);
+    width: 100%; max-width: 380px; height: auto;
+    filter: drop-shadow(0 30px 60px rgba(0,0,0,0.65));
+  }
+  .hero-image-wrap::before {
+    content: ''; position: absolute; width: 74%; aspect-ratio: 1; border-radius: 50%;
+    background: radial-gradient(circle, rgba(62,180,137,0.30) 0%, rgba(62,180,137,0) 68%);
+  }
+
+  /* AS SEEN ON — sits on the same dark band as the hero so the credibility
+     lands before the page ever lightens. */
+  .seen-on { background: var(--void); padding: 0 0 clamp(40px, 6vw, 64px); }
+  .seen-on-inner {
+    border-top: 1px solid rgba(255,255,255,0.09);
+    padding-top: 30px;
+    display: flex; align-items: center; justify-content: center;
+    gap: clamp(20px, 4vw, 52px); flex-wrap: wrap;
+  }
+  .seen-on-label {
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--on-void-dim); white-space: nowrap;
+  }
+  .seen-on-logos {
+    display: flex; align-items: center; gap: clamp(22px, 4vw, 46px); flex-wrap: wrap;
+    justify-content: center;
+  }
+  /* Network marks carry their own brand colours and several contain dark navy,
+     which disappears against the band. Each sits on a light plate so the mark
+     stays itself rather than being recoloured. */
+  .seen-on-logos img {
+    height: 30px; width: auto; display: block;
+  }
+  .seen-on-logos .logo-plate {
+    background: #fff; border-radius: 6px; padding: 9px 14px;
+    display: flex; align-items: center;
+  }
+  .seen-on-note {
+    width: 100%; text-align: center; font-size: 12px; color: var(--on-void-dim);
+    opacity: 0.55; margin-top: 4px;
   }
 
   /* TRUST STRIP */
@@ -184,18 +304,60 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
   .reason-item strong { display: block; font-size: 17px; margin-bottom: 4px; }
   .reason-item span { font-size: 15px; color: var(--ink-soft); }
 
-  /* PRODUCTS */
-  .products { background: var(--mint-pale); }
+  /* PRODUCTS — dark. Both packshots are photographed on black, so a dark band
+     lets the products bleed into the page instead of floating on white cards. */
+  .products { background: var(--void); }
   .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; margin-top: 50px; }
   .product-card {
-    background: #fff; border-radius: 18px; padding: 34px 30px; box-shadow: var(--shadow-card);
-    display: flex; flex-direction: column;
+    background: var(--void-2);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 18px; padding: 0 0 32px;
+    display: flex; flex-direction: column; overflow: hidden;
+    transition: border-color .25s ease;
   }
-  .product-card img { width: 100%; max-width: 220px; height: auto; margin: 0 auto 22px; display: block; }
-  .product-card h3 { font-size: 1.5rem; margin-bottom: 8px; }
-  .product-card .price { font-size: 15px; font-weight: 600; color: var(--mint-deep); margin-bottom: 12px; }
-  .product-card p.desc { font-size: 15px; margin-bottom: 22px; }
+  .product-card:hover { border-color: var(--void-line); }
+  /* Portrait frames: both a bottle and a stack of lozenges are taller than
+     they are wide, and a landscape frame forces the crop to pick up the
+     artwork's callout type on either side. */
+  .product-media {
+    position: relative; aspect-ratio: 3 / 4; overflow: hidden;
+    background: #000;
+    margin-bottom: 26px;
+  }
+  .product-media img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  /* The Opti-Mint artwork is a composed graphic with type baked in. Cropped
+     loosely it shows half-words, so the frame pushes in far enough to hold
+     only the bottle. */
+  .product-media--shot img { object-position: 50% 38%; transform: scale(2.2); }
+  /* The artwork's callouts sit too close to the bottle to crop away without
+     cutting into it. Its background is already black, so fading the frame's
+     edges to black dissolves the stray half-words into the band. */
+  .product-media--shot::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(90deg,
+      #000 0%, rgba(0,0,0,0.85) 12%, rgba(0,0,0,0) 30%,
+      rgba(0,0,0,0) 70%, rgba(0,0,0,0.85) 88%, #000 100%);
+  }
+  /* The Mint Mints packshot ships on an opaque white background, so rather than
+     fighting it the frame becomes a deliberate white product tile. */
+  .product-media--mints { background: var(--cream); }
+  .product-media--mints img { object-fit: contain; padding: 26px; background: var(--cream); }
+  .product-card > *:not(.product-media) { padding-left: 30px; padding-right: 30px; }
+  .product-card h3 { font-size: 1.5rem; margin-bottom: 8px; color: var(--on-void); }
+  .product-card .price { font-size: 15px; font-weight: 600; color: var(--mint); margin-bottom: 12px; }
+  .product-card p.desc { font-size: 15px; margin-bottom: 26px; color: var(--on-void-dim); }
   .product-card .btn { margin-top: auto; }
+
+  /* WHAT'S IN IT — the landscape artwork runs edge to edge. It is the single
+     most informative asset the clinic has, so it gets the full measure. */
+  .formula { background: var(--void); padding-top: 0; }
+  .formula-frame {
+    border-radius: 18px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .formula-frame img { width: 100%; height: auto; display: block; }
 
   /* PROCESS */
   .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; margin-top: 50px; }
@@ -212,17 +374,23 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
   .compare-table-wrap { overflow-x: auto; margin-top: 46px; }
   .compare-table {
     width: 100%; border-collapse: collapse; min-width: 620px;
-    background: #fff; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-card);
+    background: var(--void-2); border-radius: 14px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
   }
   .compare-table th { padding: 18px 22px; font-weight: 600; font-size: 15px; }
-  .compare-table thead tr { background: var(--mint); color: #fff; }
+  .compare-table thead tr { background: rgba(255,255,255,0.04); color: var(--on-void); }
   .compare-table thead th:first-child { text-align: left; }
-  .compare-table thead th.hi { font-weight: 700; }
-  .compare-table td { padding: 15px 22px; font-size: 15px; border-bottom: 1px solid var(--gray-100); }
-  .compare-table td:first-child { font-weight: 500; }
+  /* The Mint column is the only one that needs emphasis; it gets a mint rule
+     rather than a filled header, so the ✓ marks stay the loudest thing. */
+  .compare-table thead th.hi { font-weight: 700; color: var(--mint); box-shadow: inset 0 -2px 0 var(--mint); }
+  .compare-table td {
+    padding: 15px 22px; font-size: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--on-void-dim);
+  }
+  .compare-table td:first-child { font-weight: 500; color: var(--on-void); }
   .compare-table td.c { text-align: center; }
-  .compare-table .yes { color: var(--mint); font-weight: 700; }
-  .compare-table .no { color: var(--gray-500); }
+  .compare-table .yes { color: var(--mint); font-weight: 700; font-size: 17px; }
+  .compare-table .no { color: #4a5654; }
   .compare-table tbody tr:last-child td { border-bottom: none; }
 
   /* FAQ */
@@ -231,10 +399,24 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
   .faq-item h3 { font-size: 1.2rem; margin-bottom: 9px; }
   .faq-item p { font-size: 15.5px; }
 
-  /* FINAL CTA */
-  .final-cta { background: linear-gradient(140deg, var(--mint-deep) 0%, var(--mint) 100%); color: #fff; text-align: center; }
-  .final-cta h2 { color: #fff; }
-  .final-cta p { color: rgba(255,255,255,0.9); max-width: 34em; margin: 18px auto 0; }
+  /* FINAL CTA — the page closes on the same photograph language it opened with,
+     so the last frame rhymes with the first. */
+  .final-cta {
+    position: relative; overflow: hidden; text-align: center;
+    background: var(--void);
+  }
+  .final-cta-bg {
+    position: absolute; inset: 0;
+    background-image: url('../images/happy-couple-enjoying-piggyback-ride-in-the-sun-2026-01-09-10-27-31-utc.jpg');
+    background-size: cover; background-position: 50% 34%;
+    filter: saturate(0.72) brightness(0.8);
+  }
+  .final-cta-scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,13,12,0.86) 0%, rgba(10,13,12,0.93) 100%);
+  }
+  .final-cta .container { position: relative; z-index: 1; }
+  .final-cta p { max-width: 34em; margin: 18px auto 0; }
   .final-cta .hero-ctas { justify-content: center; }
 
   /* FOOTER */
@@ -263,11 +445,13 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
   <button type="button" aria-label="Dismiss" onclick="document.getElementById('offerBar').hidden=true">&times;</button>
 </div>
 
-<section class="hero">
+<section class="hero band-dark">
+  <div class="hero-bg" role="presentation"></div>
+  <div class="hero-scrim" role="presentation"></div>
   <div class="container hero-grid">
     <div class="hero-content">
-      <span class="eyebrow">Men's Health &middot; Sandy &amp; Layton, Utah</span>
-      <h1>5 reasons men in Utah stopped planning around the blue pill</h1>
+      <div class="rule-node" role="presentation"></div>
+      <h1 class="display">5 reasons men in Utah stopped planning around the blue pill</h1>
       <p>
         A Utah-licensed provider, a prescription built around you, and discreet delivery.
         Start with three quick questions — no waiting room, no pharmacy counter.
@@ -281,7 +465,21 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
       </p>
     </div>
     <div class="hero-image-wrap">
-      <img class="hero-image" src="../images/optimint-shot-vertical.webp" alt="Mint Medical men's health treatments">
+      <img class="hero-image" src="../images/optimint-shot-vertical.webp" alt="The Opti-Mint Shot">
+    </div>
+  </div>
+</section>
+
+<section class="seen-on band-dark">
+  <div class="container">
+    <div class="seen-on-inner">
+      <span class="seen-on-label">As seen on</span>
+      <div class="seen-on-logos">
+        <span class="logo-plate"><img src="../images/KSL_NBC_5.svg.png" alt="KSL TV 5, NBC"></span>
+        <!-- Additional network logos: drop the file into images/, then copy the
+             line above and swap the src and alt. PNG or SVG with transparency,
+             at least 60px tall so it stays sharp on retina. -->
+      </div>
     </div>
   </div>
 </section>
@@ -327,30 +525,48 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 </section>
 
 <!-- PRODUCTS -->
-<section class="products">
+<section class="products band-dark">
   <div class="container">
     <div class="narrow" style="text-align:center;">
       <span class="eyebrow">Two Ways To Take It</span>
-      <h2>Whichever fits how you plan the evening</h2>
+      <h2 class="display">Whichever fits how you plan the evening</h2>
     </div>
     <div class="products-grid">
       <div class="product-card">
-        <picture>
-          <source srcset="../Products/MN-MINTMINTS-FRONT@3x.webp" type="image/webp">
-          <img src="../Products/MN-MINTMINTS-FRONT@3x.png" alt="Mint Mints — sublingual lozenges for ED">
-        </picture>
+        <div class="product-media product-media--mints">
+          <picture>
+            <source srcset="../Products/MN-MINTMINTS-FRONT@3x.webp" type="image/webp">
+            <img src="../Products/MN-MINTMINTS-FRONT@3x.png" alt="Mint Mints — sublingual lozenges for ED">
+          </picture>
+        </div>
         <h3>Mint Mints</h3>
         <p class="price">Half Batch $197 &middot; Full Batch $297 (reg. $397)</p>
         <p class="desc">Sublingual lozenges that dissolve under the tongue — no water, no swallowing a tablet. Built for men who want blood flow support on their own schedule.</p>
         <a class="btn btn-primary" href="/start">Start your free visit</a>
       </div>
       <div class="product-card">
-        <img src="../images/optimint-shot-vertical.webp" alt="Opti-Mint Shot — fast-acting liquid formula">
+        <div class="product-media product-media--shot">
+          <img src="../images/optimint-shot-vertical.webp" alt="Opti-Mint Shot — fast-acting liquid formula">
+        </div>
         <h3>Opti-Mint Shot</h3>
         <p class="price">$49.97 per shot &middot; as low as $29.80 in a 10-pack</p>
         <p class="desc">A liquid formula taken about fifteen minutes ahead — nothing waiting to break down in your stomach first. Reviewed and prescribed by a Utah provider before it ships.</p>
         <a class="btn btn-primary" href="/start">Start your free visit</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S IN IT -->
+<section class="formula band-dark">
+  <div class="container">
+    <div class="formula-frame">
+      <picture>
+        <source srcset="../images/optimint-shot-benefits.webp" type="image/webp">
+        <img src="../images/optimint-shot-benefits.jpg"
+             alt="The six ingredients in the Opti-Mint Shot: PT-141, tadalafil, sildenafil, ionic minerals, caffeine and oxytocin, with a 36-hour effectiveness window and 15-minute activation time."
+             loading="lazy">
+      </picture>
     </div>
   </div>
 </section>
@@ -391,7 +607,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 </section>
 
 <!-- COMPARE -->
-<section>
+<section class="band-dark">
   <div class="container">
     <div class="narrow" style="text-align:center;">
       <span class="eyebrow">How It Compares</span>
@@ -477,12 +693,14 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 </section>
 
 <!-- FINAL CTA -->
-<section class="final-cta">
+<section class="final-cta band-dark">
+  <div class="final-cta-bg" role="presentation"></div>
+  <div class="final-cta-scrim" role="presentation"></div>
   <div class="container">
-    <h2>Your first visit is free</h2>
+    <h2 class="display">Your first visit is free</h2>
     <p>Answer a few questions, meet a Utah-licensed provider, and find out what's actually right for you. You only pay if a provider prescribes.</p>
     <div class="hero-ctas">
-      <a href="/start" class="btn btn-white btn-lg">Start your free visit</a>
+      <a href="/start" class="btn btn-primary btn-lg">Start your free visit</a>
     </div>
   </div>
 </section>
