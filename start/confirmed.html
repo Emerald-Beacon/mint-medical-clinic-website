@@ -44,6 +44,8 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     --mint: #3EB489; --mint-deep: #1f6b50; --mint-light: #e8f5f0; --mint-pale: #f7fbf9;
     --ink: #1a2b27; --ink-soft: #3d4f4a; --cream: #faf7f2;
     --gray-200: #e7e9e8; --gray-500: #8a9694;
+    --void: #0a0d0c; --on-void: #f2f5f4; --on-void-dim: #9aa8a4;
+    --mint-glow: rgba(62, 180, 137, 0.35);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -52,15 +54,26 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     -webkit-font-smoothing: antialiased;
   }
   h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; line-height: 1.15; }
-  .wrap { max-width: 560px; margin: 0 auto; padding: 40px 16px 60px; }
-  .logo { height: 24px; display: block; margin: 0 auto 36px; }
-  .tick {
-    width: 56px; height: 56px; border-radius: 50%; background: var(--mint-light);
-    color: var(--mint-deep); display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 22px;
+  .crown {
+    background: var(--void); color: var(--on-void);
+    padding: 40px 16px 46px; text-align: center;
   }
-  h1 { font-size: clamp(1.9rem, 5vw, 2.5rem); text-align: center; margin-bottom: 12px; }
-  .lede { text-align: center; color: var(--ink-soft); margin-bottom: 30px; }
+  .crown .logo { height: 24px; display: block; margin: 0 auto 30px; }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 34px 16px 60px; }
+  .crown-inner { max-width: 560px; margin: 0 auto; }
+  .tick {
+    width: 60px; height: 60px; border-radius: 50%;
+    background: rgba(62,180,137,0.14); border: 1px solid rgba(62,180,137,0.4);
+    color: var(--mint); display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 22px; box-shadow: 0 0 0 8px var(--mint-glow);
+  }
+  h1 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700; letter-spacing: -0.03em;
+    font-size: clamp(2rem, 5.4vw, 2.7rem); text-align: center;
+    margin-bottom: 12px; color: var(--on-void);
+  }
+  .lede { text-align: center; color: var(--on-void-dim); margin-bottom: 0; }
   .card { background: #fff; border: 1px solid var(--gray-200); border-radius: 12px; padding: 22px; margin-bottom: 18px; }
   .card h2 { font-size: 15px; font-weight: 600; margin-bottom: 10px; font-family: 'Inter', sans-serif; }
   .card p { color: var(--ink-soft); font-size: 15px; }
@@ -75,15 +88,18 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 </style>
 </head>
 <body>
-<div class="wrap">
-  <img class="logo" src="../images/mint-medical-logo.png" alt="Mint Medical Clinic">
-
-  <div class="tick">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+<header class="crown">
+  <div class="crown-inner">
+    <img class="logo" src="../images/Logo-white-1024x152-1.png" alt="Mint Medical Clinic">
+    <div class="tick">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h1>You're booked.</h1>
+    <p class="lede">Check your email — your confirmation and calendar invite are on the way.</p>
   </div>
+</header>
 
-  <h1>You're booked.</h1>
-  <p class="lede">Check your email — your confirmation and calendar invite are on the way.</p>
+<div class="wrap">
 
   <div class="card">
     <h2>Who's calling</h2>
