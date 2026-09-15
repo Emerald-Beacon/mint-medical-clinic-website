@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#3EB489">
+<title>Start Your Visit | Mint Medical Clinic</title>
+<meta name="description" content="Answer three quick questions and book a virtual consultation with a Utah-licensed provider.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/png" href="../images/Untitled design (1).png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','985745890592891');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></noscript>
+
+<!-- GA4: paste a real Measurement ID (format: G dash 10 alphanumeric chars) below to switch GA4 on for this page. -->
+<script>
+  var GA4_MEASUREMENT_ID = '';
+  if (GA4_MEASUREMENT_ID) {
+    var gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_MEASUREMENT_ID;
+    document.head.appendChild(gaScript);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', GA4_MEASUREMENT_ID);
+  }
+</script>
+
+<style>
+  :root {
+    --mint: #3EB489;
+    --mint-dark: #2f9670;
+    --mint-deep: #1f6b50;
+    --mint-light: #e8f5f0;
+    --mint-pale: #f7fbf9;
+    --gold: #c9a96e;
+    --ink: #1a2b27;
+    --ink-soft: #3d4f4a;
+    --cream: #faf7f2;
+    --gray-200: #e7e9e8;
+    --gray-500: #8a9694;
+    --gray-700: #4a5856;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  h1, h2, h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  /* --- chrome: logo, progress, back. Nothing else competes for attention. --- */
+  .quiz-head {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--cream);
+    padding: 18px 16px 0;
+  }
+  .quiz-head-inner {
+    max-width: 560px; margin: 0 auto;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .quiz-back {
+    background: none; border: 0; cursor: pointer;
+    padding: 8px; margin-left: -8px;
+    color: var(--gray-500); line-height: 0;
+    min-width: 44px; min-height: 44px;
+  }
+  .quiz-back:hover { color: var(--ink); }
+  .quiz-logo { height: 22px; margin: 0 auto; display: block; }
+  .quiz-back-spacer { min-width: 44px; }
+  .quiz-progress-track {
+    max-width: 560px; margin: 16px auto 0;
+    height: 2px; background: var(--gray-200); border-radius: 2px;
+  }
+  .quiz-progress-bar {
+    height: 100%; width: 0; background: var(--mint);
+    border-radius: 2px; transition: width .4s ease;
+  }
+
+  /* --- stage --- */
+  .quiz-main { padding: 40px 16px 80px; }
+  .quiz-stage, .quiz-static { max-width: 560px; margin: 0 auto; }
+  .quiz-question {
+    font-size: clamp(1.75rem, 5vw, 2.4rem);
+    margin-bottom: 28px;
+  }
+
+  /* --- options: full-width pills, one tap, auto-advance --- */
+  .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+  .quiz-option {
+    display: block; width: 100%; min-height: 56px;
+    padding: 16px 20px; text-align: left;
+    font-family: inherit; font-size: 16px; color: var(--ink);
+    background: #fff; border: 1px solid var(--gray-200); border-radius: 10px;
+    cursor: pointer; transition: border-color .15s, background .15s, transform .1s;
+  }
+  .quiz-option:hover { border-color: var(--mint); background: var(--mint-pale); }
+  .quiz-option:focus-visible { outline: 2px solid var(--mint-deep); outline-offset: 2px; }
+  .quiz-option.is-selected { border-color: var(--mint); background: var(--mint-light); }
+
+  .quiz-select {
+    width: 100%; min-height: 56px; padding: 16px 20px;
+    font-family: inherit; font-size: 16px; color: var(--ink);
+    background: #fff; border: 1px solid var(--gray-200); border-radius: 10px;
+  }
+  .quiz-select:focus-visible { outline: 2px solid var(--mint-deep); outline-offset: 2px; }
+
+  .quiz-btn {
+    display: inline-block; min-height: 52px; padding: 15px 32px;
+    font-family: inherit; font-size: 16px; font-weight: 600;
+    color: #fff; background: var(--mint-deep);
+    border: 0; border-radius: 999px; cursor: pointer;
+  }
+  .quiz-btn:hover { background: var(--ink); }
+  .quiz-btn:focus-visible { outline: 2px solid var(--mint-deep); outline-offset: 3px; }
+  .quiz-btn-block { display: block; width: 100%; }
+
+  .quiz-interstitial { text-align: center; }
+  .quiz-interstitial-body {
+    color: var(--ink-soft); margin: 18px auto 30px; max-width: 440px;
+  }
+
+  .quiz-processing { text-align: center; padding-top: 60px; }
+  .quiz-spinner {
+    width: 54px; height: 54px; margin: 0 auto 26px;
+    border: 2px solid var(--gray-200); border-top-color: var(--mint);
+    border-radius: 50%; animation: quiz-spin 1s linear infinite;
+  }
+  .quiz-spinner.is-static { animation: none; border-top-color: var(--gray-200); }
+  @keyframes quiz-spin { to { transform: rotate(360deg); } }
+  .quiz-processing-text { font-size: clamp(1.4rem, 4vw, 1.9rem); color: var(--ink-soft); }
+
+  .quiz-sr {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap;
+  }
+
+  .rec-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--mint-deep); display: block; margin-bottom: 6px;
+  }
+  .rec-name { font-size: clamp(2rem, 6vw, 2.8rem); margin-bottom: 10px; }
+  .rec-tagline { color: var(--ink-soft); margin-bottom: 24px; }
+  .rec-image { display: block; max-width: 240px; margin: 0 auto 26px; }
+  .rec-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .rec-chip {
+    font-size: 13px; padding: 8px 14px; border-radius: 999px;
+    background: var(--mint-light); color: var(--mint-deep);
+  }
+  .rec-why {
+    background: #fff; border: 1px solid var(--gray-200); border-radius: 10px;
+    padding: 18px 20px; margin-bottom: 24px; color: var(--ink-soft); font-size: 15px;
+  }
+  .rec-price { font-size: 15px; color: var(--gray-700); margin-bottom: 26px; }
+  .rec-faq { border-top: 1px solid var(--gray-200); margin-bottom: 26px; }
+  .rec-faq details { border-bottom: 1px solid var(--gray-200); }
+  .rec-faq summary {
+    padding: 16px 0; cursor: pointer; font-weight: 600; font-size: 15px; list-style: none;
+  }
+  .rec-faq summary::-webkit-details-marker { display: none; }
+  .rec-faq summary::after { content: '+'; float: right; color: var(--mint-deep); }
+  .rec-faq details[open] summary::after { content: '–'; }
+  .rec-faq p { padding: 0 0 16px; color: var(--ink-soft); font-size: 15px; }
+  .rec-quote {
+    background: var(--mint-pale); border-radius: 10px; padding: 20px; margin-bottom: 26px;
+    font-size: 15px; color: var(--ink-soft);
+  }
+  .rec-quote cite { display: block; margin-top: 10px; font-style: normal; color: var(--gray-500); font-size: 13px; }
+  .rec-switch {
+    display: block; text-align: center; margin-top: 16px;
+    font-size: 14px; color: var(--gray-500); background: none; border: 0;
+    cursor: pointer; text-decoration: underline; width: 100%;
+    padding: 16px 0; box-sizing: border-box;
+  }
+  .rec-switch:focus-visible { outline: 2px solid var(--mint-deep); outline-offset: 2px; }
+  /* Sticky CTA must never cover the last element above it. */
+  .rec-sticky {
+    position: sticky; bottom: 0; background: var(--cream);
+    padding: 10px 0 12px; margin-top: 8px;
+    box-shadow: 0 -12px 20px -12px rgba(26,43,39,.18);
+  }
+  .waitlist-note { color: var(--ink-soft); margin: 14px 0 24px; }
+
+  .cap-benefits { text-align: center; padding: 10px 0 26px; }
+  .cap-benefits li { list-style: none; color: var(--ink-soft); padding: 5px 0; font-size: 15px; }
+  .cap-sheet {
+    background: #fff; border-radius: 16px 16px 0 0;
+    padding: 26px 20px 28px; margin: 0 -16px -80px;
+    box-shadow: 0 -10px 40px rgba(26,43,39,.10);
+  }
+  .cap-field { margin-bottom: 14px; }
+  .cap-field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .cap-field input {
+    width: 100%; min-height: 52px; padding: 14px 16px;
+    font-family: inherit; font-size: 16px; /* 16px prevents iOS zoom on focus */
+    border: 1px solid var(--gray-200); border-radius: 10px; background: #fff;
+  }
+  .cap-field input:focus-visible { outline: 2px solid var(--mint-deep); outline-offset: 1px; }
+  .cap-consent {
+    display: flex; gap: 10px; align-items: center; min-height: 48px;
+    padding: 8px 0; box-sizing: border-box; margin-bottom: 10px;
+    font-size: 13px; color: var(--gray-700);
+  }
+  .cap-consent input { min-width: 18px; min-height: 18px; flex-shrink: 0; }
+  .cap-expect {
+    background: var(--mint-pale); border-radius: 10px;
+    padding: 14px 16px; margin-top: 16px; font-size: 14px; color: var(--ink-soft);
+  }
+  .cap-error { color: #b3261e; font-size: 14px; margin-bottom: 12px; }
+
+  .sched-intro { margin-bottom: 20px; }
+  .sched-intro p { color: var(--ink-soft); margin-top: 8px; }
+  .sched-actions { display: flex; flex-direction: column; gap: 14px; }
+  .quiz-btn-secondary {
+    background: #fff; color: var(--mint-deep); border: 1px solid var(--mint-deep);
+  }
+  .quiz-btn-secondary:hover { background: var(--mint-pale); color: var(--mint-deep); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<div id="quizRoot">
+<header class="quiz-head">
+  <div class="quiz-head-inner">
+    <button class="quiz-back" type="button" data-quiz-back hidden aria-label="Go back">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <img class="quiz-logo" src="../images/mint-medical-logo.png" alt="Mint Medical Clinic">
+    <span class="quiz-back-spacer" aria-hidden="true"></span>
+  </div>
+  <div class="quiz-progress-track">
+    <div class="quiz-progress-bar" data-quiz-progress></div>
+  </div>
+</header>
+
+<main class="quiz-main">
+  <div class="quiz-sr" data-quiz-live aria-live="polite" role="status"></div>
+  <div class="quiz-stage" data-quiz-stage></div>
+
+  <!-- Static steps. Filled in by Tasks 4-6. Present in the HTML at build time
+       so Netlify Forms can detect the capture form. -->
+  <section class="quiz-static" id="stepRecommendation" data-quiz-static hidden>
+    <span class="rec-eyebrow">Your recommendation</span>
+    <h1 class="rec-name" data-quiz-heading data-rec-name></h1>
+    <p class="rec-tagline" data-rec-tagline></p>
+    <img class="rec-image" data-rec-image src="" alt="">
+    <div class="rec-chips" data-rec-chips></div>
+    <div class="rec-why" data-rec-why></div>
+    <p class="rec-price" data-rec-price></p>
+
+    <div class="rec-faq">
+      <details>
+        <summary>Do I need a prescription?</summary>
+        <p>Yes. A Utah-licensed provider reviews your consultation and prescribes only if it's appropriate for you. That's the visit you're about to book.</p>
+      </details>
+      <details>
+        <summary>What happens on the consultation?</summary>
+        <p>About fifteen minutes, by phone or video. Your provider asks about your health and goals, answers your questions, and confirms your dose. No waiting room.</p>
+      </details>
+      <details>
+        <summary>Will the packaging give it away?</summary>
+        <p>No. Everything ships in discreet, unmarked packaging, and it's billed discreetly too.</p>
+      </details>
+      <details>
+        <summary>What if this isn't the right fit for me?</summary>
+        <p>Your provider may recommend something different once they've talked with you. Nothing is locked in by this quiz.</p>
+      </details>
+    </div>
+
+    <blockquote class="rec-quote">
+      &ldquo;Booked it on a Tuesday, talked to an actual provider that week. No pharmacy counter, no awkward conversation.&rdquo;
+      <cite>Verified Mint Medical patient</cite>
+    </blockquote>
+
+    <div class="rec-sticky">
+      <button type="button" class="quiz-btn quiz-btn-block" data-rec-continue>Continue</button>
+      <button type="button" class="rec-switch" data-rec-switch></button>
+    </div>
+  </section>
+
+  <section class="quiz-static" id="stepWaitlist" data-quiz-static hidden>
+    <h1 class="quiz-question" data-quiz-heading>We're not licensed in your state yet.</h1>
+    <p class="waitlist-note">
+      Mint Medical providers can only treat patients in the states we're licensed in, and yours isn't one of them yet.
+      Leave your email and we'll tell you the moment that changes. No other emails, ever.
+    </p>
+    <form name="mens-health-waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="waitlistForm">
+      <input type="hidden" name="form-name" value="mens-health-waitlist">
+      <input type="hidden" name="state" data-waitlist-state value="">
+      <p hidden aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <label class="quiz-sr" for="waitlistEmail">Email address</label>
+      <input class="quiz-select" type="email" id="waitlistEmail" name="email" placeholder="you@example.com" autocomplete="email" required>
+      <div style="height:12px"></div>
+      <button type="submit" class="quiz-btn quiz-btn-block">Add me to the list</button>
+    </form>
+  </section>
+
+  <section class="quiz-static" id="stepContact" data-quiz-static hidden>
+    <ul class="cap-benefits">
+      <li>Harder, more reliable erections</li>
+      <li>A Utah-licensed provider, not an app</li>
+      <li>Discreet, unmarked delivery</li>
+    </ul>
+    <div class="cap-sheet">
+      <h1 class="quiz-question" data-quiz-heading style="font-size:1.6rem;margin-bottom:18px;">Let's start your visit.</h1>
+      <form name="mens-health-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="leadForm">
+        <input type="hidden" name="form-name" value="mens-health-lead">
+        <input type="hidden" name="quiz-answers" data-lead-answers value="">
+        <input type="hidden" name="recommended-product" data-lead-product value="">
+        <input type="hidden" name="utm-source" data-lead-utm-source value="">
+        <input type="hidden" name="utm-campaign" data-lead-utm-campaign value="">
+        <input type="hidden" name="fbclid" data-lead-fbclid value="">
+        <input type="hidden" name="consent-version" value="mens-health-v1-2026-09-14">
+        <p hidden aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+        <div class="cap-field">
+          <label for="leadEmail">Email address</label>
+          <input type="email" id="leadEmail" name="email" autocomplete="email" required>
+        </div>
+        <div class="cap-field">
+          <label for="leadName">First name</label>
+          <input type="text" id="leadName" name="first-name" autocomplete="given-name" required>
+        </div>
+        <div class="cap-field">
+          <label for="leadPhone">Mobile number</label>
+          <input type="tel" id="leadPhone" name="phone" autocomplete="tel" inputmode="tel" required>
+        </div>
+
+        <label class="cap-consent">
+          <input type="checkbox" id="leadConsentTelehealth" name="consent-telehealth" required>
+          <span>I agree to the <a href="/privacy-policy">Privacy Policy</a> and consent to telehealth.</span>
+        </label>
+        <label class="cap-consent">
+          <input type="checkbox" id="leadConsentContact" name="consent-contact" required>
+          <span>I agree to receive calls and texts from Mint Medical Clinic about my consultation.</span>
+        </label>
+
+        <div class="cap-error" id="leadError" role="alert" hidden></div>
+        <button type="submit" class="quiz-btn quiz-btn-block" id="leadSubmit">Continue to scheduling</button>
+
+        <div class="cap-expect">
+          A Mint provider will call you from <strong>(801) 804-8000</strong> at the time you choose.
+          Save the number so you know it's us.
+        </div>
+      </form>
+    </div>
+  </section>
+  <section class="quiz-static" id="stepSchedule" data-quiz-static hidden>
+    <div class="sched-intro">
+      <h1 class="quiz-question" data-quiz-heading style="font-size:1.7rem;margin-bottom:0;">Pick a time with a Utah provider.</h1>
+      <p>
+        Fifteen minutes, by phone or video. No waiting room, no pharmacy counter.
+        Your provider confirms your dose and sends it discreetly. Booking opens
+        in a new tab — pick your time there, then come back here to finish.
+      </p>
+    </div>
+
+    <div class="sched-actions">
+      <a class="quiz-btn quiz-btn-block" id="schedOpen" href="https://new-consultation.zohobookings.com/portal-embed#/mintmedicalclinic" target="_blank" rel="noopener">Choose your time</a>
+      <button type="button" class="quiz-btn quiz-btn-block quiz-btn-secondary" id="schedDone">I've booked my time →</button>
+    </div>
+  </section>
+</main>
+</div>
+
+<script src="../js/quiz-mens-health.js"></script>
+<script src="../js/quiz-engine.js"></script>
+<script>
+  (function () {
+    var cfg = window.MensHealthQuiz;
+    var root = document.getElementById('quizRoot');
+    // Dedupe GA4 quiz_step_* events within this page session: the engine's
+    // render() runs on forward nav, popstate (Back/Forward), and initial
+    // mount, so without this a Back-then-forward re-inflates a step's
+    // count. A real page reload starts a fresh session and is allowed to
+    // re-fire — that's a genuinely new session.
+    var reportedSteps = {};
+
+    // Host-side record of the product actually shown on screen right now,
+    // independent of the engine's `recommendation` state. "See the other
+    // option" repaints the screen without touching the engine, so this is
+    // the source of truth for what gets recorded on the lead (B3).
+    var chosenProduct = null;
+
+    // Copy that references the user's own answers — the payoff for the
+    // processing screen. Must reflect real input, never boilerplate.
+    var WHY = {
+      goal: {
+        faster: 'you want things to start faster',
+        longer: 'you want to stay hard longer',
+        both: 'you want both speed and staying power',
+        confidence: 'you want to feel confident again'
+      },
+      tried: {
+        none: "you haven't tried a prescription yet",
+        'not-enough': "the blue pill hasn't done enough",
+        planning: "you're tired of planning around a pill",
+        stronger: 'you want something stronger than what you have tried'
+      }
+    };
+
+    function renderRecommendation(key) {
+      var p = cfg.products[key];
+      if (!p) return;
+      chosenProduct = key;
+      var a = QuizEngine.getState().answers;
+
+      root.querySelector('[data-rec-name]').textContent = p.name;
+      root.querySelector('[data-rec-tagline]').textContent = p.tagline;
+
+      var img = root.querySelector('[data-rec-image]');
+      img.src = p.image;
+      img.alt = p.name;
+
+      var chips = root.querySelector('[data-rec-chips]');
+      chips.innerHTML = '';
+      p.chips.forEach(function (text) {
+        var s = document.createElement('span');
+        s.className = 'rec-chip';
+        s.textContent = text;
+        chips.appendChild(s);
+      });
+
+      var bits = [];
+      if (WHY.goal[a.goal]) bits.push(WHY.goal[a.goal]);
+      if (WHY.tried[a.tried]) bits.push(WHY.tried[a.tried]);
+      root.querySelector('[data-rec-why]').textContent = bits.length
+        ? 'You told us ' + bits.join(', and ') + '. ' + p.name + ' is the option our providers start most men on for exactly that.'
+        : p.name + ' is the option our providers start most men on.';
+
+      root.querySelector('[data-rec-price]').textContent = p.priceLine;
+
+      // Two products means someone may want the other one without restarting.
+      var other = key === 'mint-mints' ? 'opti-mint-shot' : 'mint-mints';
+      var sw = root.querySelector('[data-rec-switch]');
+      sw.textContent = 'See ' + cfg.products[other].name + ' instead';
+      sw.onclick = function () {
+        renderRecommendation(other);
+      };
+    }
+
+    root.querySelector('[data-rec-continue]').addEventListener('click', function () {
+      QuizEngine.goTo('contact');
+    });
+
+    // --- attribution: capture on landing, carry into the lead record ---
+    var params = new URLSearchParams(window.location.search);
+    function attr(name) {
+      var fromUrl = params.get(name);
+      if (fromUrl) {
+        try { sessionStorage.setItem('mint_' + name, fromUrl); } catch (e) {}
+        return fromUrl;
+      }
+      try { return sessionStorage.getItem('mint_' + name) || ''; } catch (e) { return ''; }
+    }
+
+    function encode(data) {
+      return Object.keys(data)
+        .map(function (k) {
+          return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
+        })
+        .join('&');
+    }
+
+    var leadForm = document.getElementById('leadForm');
+    var leadError = document.getElementById('leadError');
+    var leadSubmit = document.getElementById('leadSubmit');
+
+    leadForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      leadError.hidden = true;
+
+      var state = QuizEngine.getState();
+      root.querySelector('[data-lead-answers]').value = JSON.stringify(state.answers);
+      root.querySelector('[data-lead-product]').value = chosenProduct || state.recommendation || '';
+      root.querySelector('[data-lead-utm-source]').value = attr('utm_source');
+      root.querySelector('[data-lead-utm-campaign]').value = attr('utm_campaign');
+      root.querySelector('[data-lead-fbclid]').value = attr('fbclid');
+
+      var payload = {};
+      new FormData(leadForm).forEach(function (v, k) { payload[k] = v; });
+
+      leadSubmit.disabled = true;
+      leadSubmit.textContent = 'One moment…';
+
+      function advance() {
+        leadSubmit.disabled = false;
+        leadSubmit.textContent = 'Continue to scheduling';
+        if (window.fbq) fbq('track', 'Lead');
+        if (window.gtag) gtag('event', 'quiz_lead_captured');
+        QuizEngine.goTo('schedule');
+      }
+
+      // A booking is worth more than a form record: one retry, then advance
+      // regardless. Losing the booking because the form 500'd is the worst outcome.
+      function post(retriesLeft) {
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encode(payload)
+        })
+          .then(function (response) {
+            if (!response.ok) { throw new Error('lead post failed: ' + response.status); }
+            advance();
+          })
+          .catch(function (err) {
+            if (retriesLeft > 0) { post(retriesLeft - 1); return; }
+            console.warn('Mint lead POST failed after retry: ' + (err && err.message ? err.message : err));
+            if (window.gtag) gtag('event', 'quiz_lead_post_failed');
+            if (window.fbq) fbq('trackCustom', 'LeadPostFailed');
+            leadError.textContent = "We've got your details — we'll confirm by email.";
+            leadError.hidden = false;
+            advance();
+          });
+      }
+      post(1);
+    });
+
+    document.getElementById('schedDone').addEventListener('click', function () {
+      window.location.href = '/start/confirmed.html';
+    });
+
+    document.getElementById('schedOpen').addEventListener('click', function () {
+      if (window.gtag) gtag('event', 'quiz_booking_opened');
+      if (window.fbq) fbq('track', 'InitiateCheckout');
+    });
+
+    QuizEngine.mount(root, cfg, {
+      onStep: function (stepId) {
+        // Licensure gate (N2): browser history (Back/Forward), or a shared
+        // deep link, can land on these steps with stale, missing, or
+        // unlicensed-state answers. Re-check every time, host-side, since
+        // the engine itself accepts any hash naming a step.
+        if (stepId === 'recommendation' || stepId === 'contact' || stepId === 'schedule') {
+          var answers = QuizEngine.getState().answers;
+          // Guard against infinite loops: 'waitlist' and steps[0] are never
+          // in the set above, so redirecting to either cannot re-enter here.
+          if (!cfg.isLicensed(answers.state)) {
+            QuizEngine.goTo('waitlist');
+            return;
+          }
+          if (!answers.goal) {
+            QuizEngine.goTo(cfg.steps[0].id);
+            return;
+          }
+        }
+        if (!reportedSteps[stepId]) {
+          reportedSteps[stepId] = true;
+          if (window.gtag) gtag('event', 'quiz_step_' + stepId);
+        }
+        if (stepId === 'recommendation') {
+          renderRecommendation(QuizEngine.getState().recommendation || 'mint-mints');
+          // The engine focuses and announces the heading before this hook runs,
+          // so at that moment the product name is still empty. Re-announce now
+          // that it has been filled in, or screen readers hear nothing.
+          var h = root.querySelector('#stepRecommendation [data-quiz-heading]');
+          var live = root.querySelector('[data-quiz-live]');
+          if (h && live) {
+            live.textContent = 'Your recommendation: ' + h.textContent;
+            h.focus();
+          }
+        }
+        if (stepId === 'waitlist') {
+          var s = root.querySelector('[data-waitlist-state]');
+          if (s) s.value = QuizEngine.getState().answers.state || '';
+        }
+      }
+    });
+  })();
+</script>
+</body>
+</html>
