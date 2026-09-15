@@ -170,17 +170,59 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     background: var(--mint); box-shadow: 0 0 0 4px var(--mint-glow);
   }
 
-  /* OFFER BAR */
-  .offer-bar {
+  /* TRUST BAR
+     Rotates one reassurance at a time. Not dismissible by design. */
+  .trust-bar {
     background: var(--void); color: #fff;
-    border-bottom: 1px solid rgba(255,255,255,0.07); text-align: center; font-size: 14px;
-    padding: 12px 44px 12px 16px; position: relative; line-height: 1.4;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 14px; line-height: 1.4;
+    padding: 12px 16px; text-align: center;
+    /* Height is fixed to the tallest line so rotation never nudges the hero
+       down — a bar that reflows on every tick shifts the whole page. */
+    min-height: 44px;
+    display: flex; align-items: center; justify-content: center;
   }
-  .offer-bar span { font-weight: 500; }
-  .offer-bar button {
-    position: absolute; top: 50%; right: 10px; transform: translateY(-50%);
-    background: none; border: none; color: #fff; font-size: 22px; line-height: 1;
-    cursor: pointer; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+  .trust-track {
+    position: relative; width: 100%; max-width: 760px; height: 20px;
+  }
+  .trust-item {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    gap: 9px; font-weight: 500;
+    opacity: 0; transition: opacity .55s ease;
+    pointer-events: none;
+  }
+  .trust-item.is-on { opacity: 1; }
+  .trust-item svg { flex: 0 0 auto; color: var(--mint); }
+  .trust-item span {
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  /* On a phone the two longest lines overrun the width. Truncating a trust
+     message mid-sentence reads as broken, so they wrap instead — and the track
+     is pinned to two lines' height whether or not the current item needs both,
+     so the hero never shifts as the bar rotates. */
+  @media (max-width: 560px) {
+    .trust-bar { min-height: 58px; padding: 10px 14px; font-size: 13px; }
+    .trust-track { height: 38px; max-width: 100%; }
+    .trust-item { gap: 8px; }
+    .trust-item span { white-space: normal; text-overflow: clip; line-height: 1.35; }
+  }
+
+  /* Anyone who prefers reduced motion gets the whole set at once instead of a
+     timed rotation — the same information without anything moving. The script
+     reads this too and stops the timer. */
+  @media (prefers-reduced-motion: reduce) {
+    .trust-bar { padding: 11px 16px; }
+    .trust-track {
+      position: static; height: auto;
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 6px 22px;
+    }
+    .trust-item {
+      position: static; opacity: 1; transition: none; gap: 7px;
+    }
+    .trust-item span { white-space: normal; }
   }
 
   /* Buttons */
@@ -467,9 +509,30 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 </head>
 <body>
 
-<div class="offer-bar" id="offerBar">
-  <span>First visit is free — you only pay if a provider prescribes.</span>
-  <button type="button" aria-label="Dismiss" onclick="document.getElementById('offerBar').hidden=true">&times;</button>
+<div class="trust-bar">
+  <ul class="trust-track" id="trustTrack">
+  <li class="trust-item is-on">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>First visit is free — you only pay if a provider prescribes.</span>
+  </li>
+  <li class="trust-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Free shipping on every order</span>
+  </li>
+  <li class="trust-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Locally owned and operated in Layton, Utah</span>
+  </li>
+  <li class="trust-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Licensed in all 50 states</span>
+  </li>
+  <li class="trust-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/></svg><span>Discreet, unmarked packaging — and discreet billing</span>
+  </li>
+  <li class="trust-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Prescribed by Utah-licensed providers</span>
+  </li>
+  <li class="trust-item">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>No insurance required</span>
+  </li>
+  </ul>
 </div>
 
 <section class="hero band-dark">
@@ -751,5 +814,43 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
   </div>
 </footer>
 
+<script>
+(function () {
+  var track = document.getElementById('trustTrack');
+  if (!track) return;
+  var items = track.querySelectorAll('.trust-item');
+  if (items.length < 2) return;
+
+  // Reduced motion: the stylesheet already lays every item out at once, so
+  // there is nothing to rotate and no timer to run.
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (still && still.matches) return;
+
+  var i = 0, timer = null;
+  var DWELL = 4200;
+
+  function show(n) {
+    items[i].classList.remove('is-on');
+    i = (n + items.length) % items.length;
+    items[i].classList.add('is-on');
+  }
+  function start() { if (!timer) timer = setInterval(function () { show(i + 1); }, DWELL); }
+  function stop()  { clearInterval(timer); timer = null; }
+
+  // Pause while the pointer is over the bar or something inside it has focus,
+  // so a message cannot slide out from under someone still reading it.
+  track.addEventListener('mouseenter', stop);
+  track.addEventListener('mouseleave', start);
+  track.addEventListener('focusin', stop);
+  track.addEventListener('focusout', start);
+
+  // Don't burn cycles rotating a bar nobody is looking at.
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop(); else start();
+  });
+
+  start();
+})();
+</script>
 </body>
 </html>
