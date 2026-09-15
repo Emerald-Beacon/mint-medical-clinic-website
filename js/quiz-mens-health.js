@@ -15,7 +15,15 @@
 
   // Deployment-time value. Spec section 12: Utah is verified; more states pending
   // from Josh. Adding one is a one-line edit requiring no structural change.
-  var LICENSED_STATES = ['UT'];
+  // All 50 states plus DC. The gate is kept rather than removed: if licensure
+  // ever lapses somewhere, pulling a code out of this list is the whole fix,
+  // and the waitlist path it falls back to is already built and tested.
+  var LICENSED_STATES = [
+    'AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA',
+    'KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ',
+    'NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT',
+    'VA','WA','WV','WI','WY','DC'
+  ];
 
   var products = {
     'mint-mints': {

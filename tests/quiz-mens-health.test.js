@@ -79,8 +79,19 @@ test('isLicensed: Utah is licensed', () => {
   assert.strictEqual(quiz.isLicensed('UT'), true);
 });
 
-test('isLicensed: an unlisted state is not licensed', () => {
-  assert.strictEqual(quiz.isLicensed('CA'), false);
+test('isLicensed: a code that is not in the list is not licensed', () => {
+  // Every US state and DC is licensed, so this guards the mechanism itself:
+  // isLicensed must still reject a code it was not given, or the gate is
+  // silently answering true to everything.
+  assert.strictEqual(quiz.isLicensed('ZZ'), false);
+  assert.strictEqual(quiz.isLicensed('PR'), false);
+});
+
+test('isLicensed: every US state and DC is licensed', () => {
+  assert.strictEqual(quiz.LICENSED_STATES.length, 51);
+  ['CA', 'NY', 'TX', 'FL', 'UT', 'DC', 'WY'].forEach((code) => {
+    assert.strictEqual(quiz.isLicensed(code), true, `${code} should be licensed`);
+  });
 });
 
 test('isLicensed: is case-insensitive', () => {
