@@ -57,13 +57,13 @@
 | Date | Day | Cluster | Title | Template | Primary Keyword | GEO / AI-query target | Status |
 |------|-----|---------|-------|----------|-----------------|------------------------|--------|
 | Aug 4 | Tue | C | What to Expect in Your First Month on Tirzepatide (Side Effects & How We Manage Them) | how-to / safety | tirzepatide side effects | "What side effects should I expect in the first month of a GLP-1?" | ✅ Published 2026-07-30 |
-| Aug 6 | Thu | B | The 2025 FDA Update on Testosterone Safety: What Changed and Why It Matters | data-research | testosterone FDA black box 2025 | "Is testosterone therapy still considered dangerous after the new FDA update?" | Idea |
-| Aug 11 | Tue | A | ED Isn't Just an "Older Man" Problem: A Guide for Men Under 40 | faq-knowledge | ED in young men | "I'm in my 30s with mild ED — would shockwave therapy help me?" | Idea |
-| Aug 13 | Thu | D | Testosterone for Women: Can It Really Bring Back Your Libido? | evidence explainer | testosterone therapy for women libido | "Can a doctor prescribe testosterone to a woman for low libido, and is it safe?" | Idea |
-| Aug 18 | Tue | C | Is Compounded Semaglutide Still Legal in 2026? What Utah Patients Need to Know | explainer / authority | compounded semaglutide legal 2026 | "Is compounded semaglutide still allowed in 2026 and how is it different from brand?" | Idea |
-| Aug 20 | Thu | E | Clínica de Bienestar para Hombres en Utah: TRT, Pérdida de Peso y Más (en Español) | pillar (Spanish) | clínica de hombres Utah / TRT en español | "¿Hay una clínica de bienestar para hombres que hable español en Utah?" | Idea |
-| Aug 25 | Tue | C | Back-to-School Weight Loss Reset: Starting a GLP-1 This Fall | seasonal / conversion | weight loss clinic Layton Utah | "Restart weight loss when the kids go back to school — how do GLP-1 programs work?" | Idea |
-| Aug 27 | Thu | B | Bioidentical vs. Synthetic Hormones: What's Actually Different (and Safer)? | comparison | bioidentical vs synthetic hormones | "What's the real difference between bioidentical and synthetic HRT, and which is safer?" | Idea |
+| Aug 6 | Thu | B | The 2025 FDA Update on Testosterone Safety: What Changed and Why It Matters | data-research | testosterone FDA black box 2025 | "Is testosterone therapy still considered dangerous after the new FDA update?" | ✅ Published 2026-08-04 |
+| Aug 11 | Tue | A | ED Isn't Just an "Older Man" Problem: A Guide for Men Under 40 | faq-knowledge | ED in young men | "I'm in my 30s with mild ED — would shockwave therapy help me?" | ✅ Published 2026-08-06 |
+| Aug 13 | Thu | D | Testosterone for Women: Can It Really Bring Back Your Libido? | evidence explainer | testosterone therapy for women libido | "Can a doctor prescribe testosterone to a woman for low libido, and is it safe?" | ✅ Published 2026-08-11 |
+| Aug 18 | Tue | C | Is Compounded Semaglutide Still Legal in 2026? What Utah Patients Need to Know | explainer / authority | compounded semaglutide legal 2026 | "Is compounded semaglutide still allowed in 2026 and how is it different from brand?" | ✅ Published 2026-08-13 |
+| Aug 20 | Thu | E | Clínica de Bienestar para Hombres en Utah: TRT, Pérdida de Peso y Más (en Español) | pillar (Spanish) | clínica de hombres Utah / TRT en español | "¿Hay una clínica de bienestar para hombres que hable español en Utah?" | ✅ Published 2026-08-18 |
+| Aug 25 | Tue | C | Back-to-School Weight Loss Reset: Starting a GLP-1 This Fall | seasonal / conversion | weight loss clinic Layton Utah | "Restart weight loss when the kids go back to school — how do GLP-1 programs work?" | ✅ Published 2026-08-20 |
+| Aug 27 | Thu | B | Bioidentical vs. Synthetic Hormones: What's Actually Different (and Safer)? | comparison | bioidentical vs synthetic hormones | "What's the real difference between bioidentical and synthetic HRT, and which is safer?" | ✅ Published 2026-08-25 |
 
 ---
 
@@ -71,10 +71,10 @@
 
 | Date | Day | Cluster | Title | Template | Primary Keyword | GEO / AI-query target | Status |
 |------|-----|---------|-------|----------|-----------------|------------------------|--------|
-| Sep 1 | Tue | A | The Trifecta Protocol Explained: Why Combining Shockwave, Cryotherapy & HRT Works Better | explainer | combination ED treatment protocol | "Does combining shockwave therapy with testosterone work better than either alone?" | Idea |
-| Sep 3 | Thu | D | Vaginal Dryness After 40: Causes and What Actually Helps (Beyond Lubricant) | pillar / how-to | vaginal dryness treatment | "What are the real options for vaginal dryness besides over-the-counter lubricant?" | Idea |
-| Sep 8 | Tue | B | Perimenopause at 40+: Early Signs, Stages, and When to Consider HRT | how-to | perimenopause symptoms | "My periods are irregular with night sweats at 45 — is this perimenopause, what helps?" | Idea |
-| Sep 10 | Thu | D | Genitourinary Syndrome of Menopause: The Condition Half of Women Have but Few Discuss | educational / GEO | genitourinary syndrome of menopause | "What is genitourinary syndrome of menopause and how is it treated?" | Idea |
+| Sep 1 | Tue | A | The Trifecta Protocol Explained: Why Combining Shockwave, Cryotherapy & HRT Works Better | explainer | combination ED treatment protocol | "Does combining shockwave therapy with testosterone work better than either alone?" | ✅ Published 2026-09-01 |
+| Sep 3 | Thu | D | Vaginal Dryness After 40: Causes and What Actually Helps (Beyond Lubricant) | pillar / how-to | vaginal dryness treatment | "What are the real options for vaginal dryness besides over-the-counter lubricant?" | ✅ Published 2026-09-03 |
+| Sep 8 | Tue | B | Perimenopause at 40+: Early Signs, Stages, and When to Consider HRT | how-to | perimenopause symptoms | "My periods are irregular with night sweats at 45 — is this perimenopause, what helps?" | ✅ Published 2026-09-08 |
+| Sep 10 | Thu | D | Genitourinary Syndrome of Menopause: The Condition Half of Women Have but Few Discuss | educational / GEO | genitourinary syndrome of menopause | "What is genitourinary syndrome of menopause and how is it treated?" | ✅ Published 2026-09-10 |
 | Sep 15 | Tue | A | Is Online ED Treatment Safe? Telehealth vs. In-Person Care in Utah | comparison | online ED treatment / telehealth | "Is online ED treatment safe, or is it just a pill mill?" | Idea |
 | Sep 17 | Thu | B | Menopause & Perimenopause Hormone Therapy: Your 2026 FAQ | faq-knowledge | menopause hormone therapy near me | "Is HRT still dangerous after the WHI study, and how do I know if I need it?" | Idea |
 
