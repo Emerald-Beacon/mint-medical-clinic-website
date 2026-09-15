@@ -75,7 +75,7 @@
 | Sep 3 | Thu | D | Vaginal Dryness After 40: Causes and What Actually Helps (Beyond Lubricant) | pillar / how-to | vaginal dryness treatment | "What are the real options for vaginal dryness besides over-the-counter lubricant?" | ✅ Published 2026-09-03 |
 | Sep 8 | Tue | B | Perimenopause at 40+: Early Signs, Stages, and When to Consider HRT | how-to | perimenopause symptoms | "My periods are irregular with night sweats at 45 — is this perimenopause, what helps?" | ✅ Published 2026-09-08 |
 | Sep 10 | Thu | D | Genitourinary Syndrome of Menopause: The Condition Half of Women Have but Few Discuss | educational / GEO | genitourinary syndrome of menopause | "What is genitourinary syndrome of menopause and how is it treated?" | ✅ Published 2026-09-10 |
-| Sep 15 | Tue | A | Is Online ED Treatment Safe? Telehealth vs. In-Person Care in Utah | comparison | online ED treatment / telehealth | "Is online ED treatment safe, or is it just a pill mill?" | Idea |
+| Sep 15 | Tue | A | Is Online ED Treatment Safe? Telehealth vs. In-Person Care in Utah | comparison | online ED treatment / telehealth | "Is online ED treatment safe, or is it just a pill mill?" | ✅ Published 2026-09-15 |
 | Sep 17 | Thu | B | Menopause & Perimenopause Hormone Therapy: Your 2026 FAQ | faq-knowledge | menopause hormone therapy near me | "Is HRT still dangerous after the WHI study, and how do I know if I need it?" | Idea |
 
 ---
