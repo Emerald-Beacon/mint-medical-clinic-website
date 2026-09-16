@@ -326,6 +326,24 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
   }
   .co-assure li { padding: 3px 0; }
   .co-assure strong { color: var(--on-void); }
+  /* Promo callout. A dashed mint edge sets it apart from the pack cards
+     without competing with the selected pack's solid mint border. */
+  .co-promo {
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    margin-bottom: 20px; padding: 16px 18px;
+    border: 2px dashed var(--mint); border-radius: 12px;
+    background: rgba(62,180,137,0.08);
+  }
+  .co-promo-text { font-size: 15px; color: var(--on-void); line-height: 1.4; }
+  .co-promo-text strong { color: var(--mint); }
+  .co-promo-code {
+    flex-shrink: 0; min-height: 44px; padding: 10px 16px;
+    font-family: inherit; font-size: 15px; font-weight: 700; letter-spacing: 0.08em;
+    color: var(--mint); background: var(--void); cursor: pointer;
+    border: 1px solid var(--void-line); border-radius: 8px;
+  }
+  .co-promo-code:hover { border-color: var(--mint); }
+  .co-promo-code:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
   .co-error { color: #ff8a80; font-size: 14px; margin-top: 12px; }
   .co-alt { display: block; text-align: center; margin-top: 16px; font-size: 14px; color: var(--on-void-dim); }
   .co-alt a { color: var(--on-void-dim); }
@@ -473,6 +491,11 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     <fieldset class="co-packs" data-co-packs>
       <legend class="quiz-sr">Choose your supply</legend>
     </fieldset>
+
+    <div class="co-promo">
+      <span class="co-promo-text">Use promo code <strong>MINT20</strong> at checkout for <strong>20% off</strong>.</span>
+      <button type="button" class="co-promo-code" id="coPromo" aria-label="Copy promo code MINT20">MINT20</button>
+    </div>
 
     <button type="button" class="quiz-btn quiz-btn-block" id="coPay">Continue to secure checkout</button>
     <div class="co-error" id="coError" role="alert" hidden></div>
@@ -816,6 +839,19 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
           coPay.disabled = false;
           coPay.textContent = 'Continue to secure checkout';
         });
+    });
+
+    // Tap the code to copy it, so it can be pasted into Snipcart's discount field.
+    var coPromo = document.getElementById('coPromo');
+    coPromo.addEventListener('click', function () {
+      function done() {
+        coPromo.textContent = 'Copied';
+        setTimeout(function () { coPromo.textContent = 'MINT20'; }, 1600);
+      }
+      try {
+        navigator.clipboard.writeText('MINT20').then(done, function () {});
+      } catch (e) { /* no clipboard access; the code is visible to type */ }
+      if (window.gtag) gtag('event', 'quiz_promo_copied');
     });
 
     document.getElementById('coBook').addEventListener('click', function () {
