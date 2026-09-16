@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#3EB489">
-<title>You're Booked | Mint Medical Clinic</title>
+<title>Order Received | Mint Medical Clinic</title>
 <meta name="robots" content="noindex, follow">
 <link rel="icon" type="image/png" href="../images/Untitled design (1).png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,6 +83,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     min-height: 52px; padding: 15px 28px; border-radius: 999px;
     font-weight: 600; color: #fff; background: var(--mint-deep); margin-top: 24px;
   }
+  .btn-quiet { background: #fff; color: var(--mint-deep); border: 1px solid var(--mint-deep); margin-top: 12px; }
   .foot { text-align: center; font-size: 13px; color: var(--gray-500); margin-top: 30px; }
   .foot a { color: var(--gray-500); }
 </style>
@@ -94,30 +95,31 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     <div class="tick">
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
-    <h1>You're booked.</h1>
-    <p class="lede">Check your email — your confirmation and calendar invite are on the way.</p>
+    <h1>Your order is in.</h1>
+    <p class="lede">A Utah-licensed provider is reviewing your information now. Your receipt is on its way to your email.</p>
   </div>
 </header>
 
 <div class="wrap">
 
   <div class="card">
-    <h2>Who's calling</h2>
-    <p>A Mint Medical provider, licensed in Utah — not a call centre.</p>
+    <h2>What happens next</h2>
+    <p>A Mint Medical provider, licensed in Utah, reviews your order. Reviews take minutes, not weeks. Once it's approved, your order ships in plain, unmarked packaging.</p>
   </div>
 
   <div class="card">
-    <h2>From this number</h2>
+    <h2>If we have a question</h2>
     <span class="num">(801) 804-8000</span>
-    <p>Save it now so you know it's us when we ring at your chosen time.</p>
+    <p>If your provider needs anything, we'll reach out from this number. Save it so you know it's us.</p>
   </div>
 
   <div class="card">
-    <h2>What to have ready</h2>
-    <p>Nothing. Your provider will ask about your health and goals on the call. It takes about fifteen minutes.</p>
+    <h2>Our promise</h2>
+    <p>If for any reason your provider can't prescribe, you'll get a full refund.</p>
   </div>
 
-  <a class="btn" href="tel:8018048000">Call us now instead</a>
+  <a class="btn" href="https://new-consultation.zohobookings.com/portal-embed#/mintmedicalclinic" target="_blank" rel="noopener" id="bookOptional">Want to talk it through? Book an optional call</a>
+  <a class="btn btn-quiet" href="tel:8018048000">Call us now</a>
 
   <p class="foot">
     Questions before your visit? Call <a href="tel:8018048000">(801) 804-8000</a>.<br>
@@ -128,8 +130,25 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 <script>
   // The funnel is finished; drop the working state.
   try { sessionStorage.removeItem('mint_quiz_mens-health'); } catch (e) {}
-  if (window.fbq) fbq('track', 'Schedule');
-  if (window.gtag) gtag('event', 'quiz_consult_booked');
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var value = parseFloat(params.get('value'));
+    var order = params.get('order') || '';
+    // Fire Purchase once per order: a refresh of this page must not double-count.
+    var seenKey = 'mint_purchase_' + order;
+    var seen = false;
+    try { seen = !!(order && sessionStorage.getItem(seenKey)); } catch (e) {}
+    if (!seen && !isNaN(value)) {
+      if (window.fbq) fbq('track', 'Purchase', { value: value, currency: 'USD' }, order ? { eventID: order } : undefined);
+      if (window.gtag) gtag('event', 'purchase', { transaction_id: order, value: value, currency: 'USD' });
+      try { if (order) sessionStorage.setItem(seenKey, '1'); } catch (e) {}
+    }
+    var book = document.getElementById('bookOptional');
+    if (book) book.addEventListener('click', function () {
+      if (window.fbq) fbq('track', 'Schedule');
+      if (window.gtag) gtag('event', 'quiz_consult_booked');
+    });
+  })();
 </script>
 </body>
 </html>

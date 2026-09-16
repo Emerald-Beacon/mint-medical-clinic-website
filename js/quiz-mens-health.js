@@ -27,20 +27,47 @@
 
   var products = {
     'mint-mints': {
-      name: 'Mint Mints',
+      name: 'Mint Mints™',
       tagline:
         'A prescription troche that dissolves under your tongue — no pill to swallow, no waiting an hour.',
       image: '../Products/MN-MINTMINTS-FRONT@3x.png',
       chips: [
         'Dissolves under the tongue',
         'Faster than a swallowed pill',
-        'No pharmacy counter',
+        'Mint flavored. Obviously.',
         'Discreet, unmarked packaging'
       ],
-      priceLine: 'Half Batch $197 · Full Batch $297 (reg. $397)'
+      priceLine: 'Half Batch $197 · Full Batch $297 (reg. $397)',
+      // Checkout options. id/price/url must match the snipcart-add-item
+      // buttons on the product page at `url`: Snipcart crawls that page to
+      // validate the price, and rejects the order if they disagree.
+      packs: [
+        {
+          id: 'mint-mints-full',
+          name: 'Mint Mints — Full Batch',
+          label: 'Full Batch',
+          note: 'Best value · save $100',
+          price: 297.0,
+          was: 397,
+          weight: 100,
+          url: 'https://mintmedicalclinic.com/products/mint-mints',
+          image: 'https://mintmedicalclinic.com/Products/MN-MINTMINTS-FRONT@3x.png',
+          recommended: true
+        },
+        {
+          id: 'mint-mints-half',
+          name: 'Mint Mints — Half Batch (First-Time Intro)',
+          label: 'Half Batch',
+          note: 'First-time intro',
+          price: 197.0,
+          weight: 60,
+          url: 'https://mintmedicalclinic.com/products/mint-mints',
+          image: 'https://mintmedicalclinic.com/Products/MN-MINTMINTS-FRONT@3x.png'
+        }
+      ]
     },
     'opti-mint-shot': {
-      name: 'The Opti-Mint Shot',
+      name: 'The Opti-Mint Shot™',
       tagline:
         'One shot, about fifteen minutes before — supporting desire and blood flow together.',
       image: '../images/optimint-shot-vertical.webp',
@@ -50,21 +77,55 @@
         'Nothing to take daily',
         'Discreet, unmarked packaging'
       ],
-      priceLine: '$49.97 per shot · as low as $29.80 in a 10-pack'
+      priceLine: '$49.97 per shot · as low as $29.80 in a 10-pack',
+      packs: [
+        {
+          id: 'opti-mint-shot-10',
+          name: 'Opti-Mint Shot — 10 Pack',
+          label: '10 Pack',
+          note: '$29.80 per shot · best value',
+          price: 297.95,
+          weight: 600,
+          url: 'https://mintmedicalclinic.com/products/opti-mint-shot',
+          image: 'https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png',
+          recommended: true
+        },
+        {
+          id: 'opti-mint-shot-5',
+          name: 'Opti-Mint Shot — 5 Pack',
+          label: '5 Pack',
+          note: '$39.59 per shot',
+          price: 197.95,
+          weight: 300,
+          url: 'https://mintmedicalclinic.com/products/opti-mint-shot',
+          image: 'https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png'
+        },
+        {
+          id: 'opti-mint-shot-1',
+          name: 'Opti-Mint Shot — Single Shot',
+          label: 'Single Shot',
+          note: 'Try one',
+          price: 49.97,
+          weight: 60,
+          url: 'https://mintmedicalclinic.com/products/opti-mint-shot',
+          image: 'https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png'
+        }
+      ]
     }
   };
 
   /**
-   * Spec section 6.1. Evaluated top-down, first match wins.
+   * Evaluated top-down, first match wins. Revised 2026-09-16 (team meeting):
+   * "stronger" recommends Mint Mints, "faster" recommends the shot.
    * Biased toward Mint Mints as the default: it is the lower-commitment entry
    * product and the direct Rugiet Ready / Hims Hard Mints competitor.
    */
   function recommend(answers) {
     var a = answers || {};
-    if (a.tried === 'stronger') return 'opti-mint-shot';
+    if (a.tried === 'stronger') return 'mint-mints';
     if (a.tried === 'not-enough') return 'opti-mint-shot';
     if (a.priority === 'fast') return 'opti-mint-shot';
-    if (a.tried === 'planning') return 'mint-mints';
+    if (a.priority === 'strong') return 'mint-mints';
     return 'mint-mints';
   }
 
@@ -91,9 +152,11 @@
       type: 'interstitial',
       // Spec section 5.2: no invented statistic. This is the qualitative
       // reassurance variant, safe to ship without substantiation work.
+      // "Reviewed in minutes" replaces "same-week appointments" (2026-09-16);
+      // it describes review speed and never promises approval.
       headline: 'You are not doing this alone.',
       body:
-        'Utah-licensed providers. Same-week appointments. Discreet, unmarked packaging — billed discreetly too.',
+        'Utah-licensed providers. Reviewed in minutes, not weeks. Discreet, unmarked packaging — billed discreetly too.',
       cta: 'Next'
     },
     {
@@ -148,7 +211,10 @@
     },
     { id: 'recommendation', type: 'static', elementId: 'stepRecommendation' },
     { id: 'contact', type: 'static', elementId: 'stepContact' },
-    { id: 'schedule', type: 'static', elementId: 'stepSchedule' }
+    // Pay-first (2026-09-16): checkout replaces the booked call as the last
+    // step. A provider call is optional and offered after payment.
+    // Not named "checkout": the Snipcart panel owns #/cart and #/checkout.
+    { id: 'purchase', type: 'static', elementId: 'stepCheckout' }
   ];
 
   return {

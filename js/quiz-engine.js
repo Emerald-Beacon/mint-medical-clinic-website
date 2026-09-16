@@ -313,6 +313,10 @@ window.QuizEngine = (function () {
 
   function onPopState() {
     var id = (window.location.hash || '').replace('#/', '');
+    // A hash that names no step belongs to someone else on the page (the
+    // Snipcart panel routes through #/cart and #/checkout). Leave the quiz
+    // where it is rather than resetting it to the first question.
+    if (!stepById(id)) return;
     // Never let Back land on the processing screen — it would re-fire its timer
     // and bounce the user forward again.
     var step = stepById(id);

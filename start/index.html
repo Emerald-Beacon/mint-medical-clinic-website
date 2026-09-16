@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#3EB489">
 <title>Start Your Visit | Mint Medical Clinic</title>
-<meta name="description" content="Answer three quick questions and book a virtual consultation with a Utah-licensed provider.">
+<meta name="description" content="Answer a few quick questions, check out, and a Utah-licensed provider reviews your order online.">
 <meta name="robots" content="noindex, follow">
 <link rel="icon" type="image/png" href="../images/Untitled design (1).png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,10 +142,14 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 
   .quiz-select {
     width: 100%; min-height: 60px; padding: 18px 22px;
-    font-family: inherit; font-size: 16px; color: var(--on-void);
-    background: var(--void-2); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px;
+    font-family: inherit; font-size: 16px; color: #fff;
+    background: var(--void-2); border: 1px solid rgba(255,255,255,0.18); border-radius: 12px;
+    /* Tells the OS to draw the open list dark too. Without it some systems
+       paint the list dark while the options keep dark text, so the states
+       are there but nearly invisible. */
+    color-scheme: dark;
   }
-  .quiz-select option { color: #111; }
+  .quiz-select option { color: #fff; background: var(--void-2); }
   .quiz-select:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
 
   .quiz-btn {
@@ -291,13 +295,39 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
   }
   .cap-error { color: #b3261e; font-size: 14px; margin-bottom: 12px; }
 
-  .sched-intro { margin-bottom: 20px; }
-  .sched-intro p { color: var(--ink-soft); margin-top: 8px; }
-  .sched-actions { display: flex; flex-direction: column; gap: 14px; }
-  .quiz-btn-secondary {
-    background: #fff; color: var(--mint-deep); border: 1px solid var(--mint-deep);
+  /* --- checkout --- */
+  .co-intro { margin-bottom: 22px; }
+  .co-intro p { color: var(--on-void-dim); margin-top: 10px; }
+  .co-packs { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; border: 0; }
+  .co-pack {
+    display: flex; align-items: center; gap: 14px; min-height: 64px;
+    padding: 16px 20px; border-radius: 12px; cursor: pointer;
+    background: var(--void-2); border: 1px solid rgba(255,255,255,0.09);
+    transition: border-color .15s, background .15s, box-shadow .15s;
   }
-  .quiz-btn-secondary:hover { background: var(--mint-pale); color: var(--mint-deep); }
+  .co-pack:hover { border-color: var(--void-line); }
+  .co-pack input { accent-color: var(--mint); width: 18px; height: 18px; flex-shrink: 0; }
+  .co-pack:has(input:checked) {
+    border-color: var(--mint); background: #12201b;
+    box-shadow: inset 3px 0 0 var(--mint), 0 0 0 1px var(--mint);
+  }
+  .co-pack:has(input:focus-visible) { outline: 2px solid var(--mint); outline-offset: 3px; }
+  .co-pack-main { flex: 1; }
+  .co-pack-label { display: block; font-weight: 600; color: var(--on-void); }
+  .co-pack-note { display: block; font-size: 13px; color: var(--on-void-dim); }
+  .co-pack-price { font-weight: 700; color: var(--mint); white-space: nowrap; }
+  .co-pack-was { color: var(--gray-500); text-decoration: line-through; font-weight: 400; margin-right: 6px; }
+  .co-assure {
+    list-style: none; margin: 18px 0 0; padding: 16px 18px;
+    background: var(--void-2); border: 1px solid rgba(255,255,255,0.08);
+    border-left: 3px solid var(--mint); border-radius: 10px;
+    font-size: 14px; color: var(--on-void-dim);
+  }
+  .co-assure li { padding: 3px 0; }
+  .co-assure strong { color: var(--on-void); }
+  .co-error { color: #ff8a80; font-size: 14px; margin-top: 12px; }
+  .co-alt { display: block; text-align: center; margin-top: 16px; font-size: 14px; color: var(--on-void-dim); }
+  .co-alt a { color: var(--on-void-dim); }
 
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
@@ -338,11 +368,11 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     <div class="rec-faq">
       <details>
         <summary>Do I need a prescription?</summary>
-        <p>Yes. A Utah-licensed provider reviews your consultation and prescribes only if it's appropriate for you. That's the visit you're about to book.</p>
+        <p>Yes. A Utah-licensed provider reviews your answers and prescribes only if it's appropriate for you. That review happens online, right after checkout.</p>
       </details>
       <details>
-        <summary>What happens on the consultation?</summary>
-        <p>About fifteen minutes, by phone or video. Your provider asks about your health and goals, answers your questions, and confirms your dose. No waiting room.</p>
+        <summary>Do I have to talk to someone?</summary>
+        <p>Only if you want to. The whole visit can happen online. If you'd like to talk it through, a provider is available by phone or video. If your provider has a question, they'll reach out.</p>
       </details>
       <details>
         <summary>Will the packaging give it away?</summary>
@@ -350,7 +380,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
       </details>
       <details>
         <summary>What if this isn't the right fit for me?</summary>
-        <p>Your provider may recommend something different once they've talked with you. Nothing is locked in by this quiz.</p>
+        <p>Your provider may recommend something different after reviewing your information. And if for any reason we can't prescribe, you get a full refund.</p>
       </details>
     </div>
 
@@ -386,6 +416,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     <ul class="cap-benefits">
       <li>Harder, more reliable erections</li>
       <li>A Utah-licensed provider, not an app</li>
+      <li>Reviewed in minutes, not weeks</li>
       <li>Discreet, unmarked delivery</li>
     </ul>
     <div class="cap-sheet">
@@ -397,7 +428,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
         <input type="hidden" name="utm-source" data-lead-utm-source value="">
         <input type="hidden" name="utm-campaign" data-lead-utm-campaign value="">
         <input type="hidden" name="fbclid" data-lead-fbclid value="">
-        <input type="hidden" name="consent-version" value="mens-health-v1-2026-09-14">
+        <input type="hidden" name="consent-version" value="mens-health-v2-2026-09-16">
         <p hidden aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 
         <div class="cap-field">
@@ -419,39 +450,61 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
         </label>
         <label class="cap-consent">
           <input type="checkbox" id="leadConsentContact" name="consent-contact" required>
-          <span>I agree to receive calls and texts from Mint Medical Clinic about my consultation.</span>
+          <span>I agree to receive calls and texts from Mint Medical Clinic about my visit and order.</span>
         </label>
 
         <div class="cap-error" id="leadError" role="alert" hidden></div>
-        <button type="submit" class="quiz-btn quiz-btn-block" id="leadSubmit">Continue to scheduling</button>
+        <button type="submit" class="quiz-btn quiz-btn-block" id="leadSubmit">Continue to checkout</button>
 
         <div class="cap-expect">
-          A Mint provider will call you from <strong>(801) 804-8000</strong> at the time you choose.
-          Save the number so you know it's us.
+          A Utah-licensed provider reviews your order online. If they have a question,
+          they'll call from <strong>(801) 804-8000</strong>. Save the number so you know it's us.
         </div>
       </form>
     </div>
   </section>
-  <section class="quiz-static" id="stepSchedule" data-quiz-static hidden>
-    <div class="sched-intro">
-      <h1 class="quiz-question" data-quiz-heading style="font-size:1.7rem;margin-bottom:0;">Pick a time with a Utah provider.</h1>
-      <p>
-        Fifteen minutes, by phone or video. No waiting room, no pharmacy counter.
-        Your provider confirms your dose and sends it discreetly. Booking opens
-        in a new tab — pick your time there, then come back here to finish.
-      </p>
+  <section class="quiz-static" id="stepCheckout" data-quiz-static hidden>
+    <div class="co-intro">
+      <h1 class="quiz-question" data-quiz-heading style="font-size:1.7rem;margin-bottom:0;">Choose your supply.</h1>
+      <p>Check out here, and a Utah-licensed provider reviews your order online. No appointment to wait for.</p>
     </div>
 
-    <div class="sched-actions">
-      <a class="quiz-btn quiz-btn-block" id="schedOpen" href="https://new-consultation.zohobookings.com/portal-embed#/mintmedicalclinic" target="_blank" rel="noopener">Choose your time</a>
-      <button type="button" class="quiz-btn quiz-btn-block quiz-btn-secondary" id="schedDone">I've booked my time →</button>
-    </div>
+    <fieldset class="co-packs" data-co-packs>
+      <legend class="quiz-sr">Choose your supply</legend>
+    </fieldset>
+
+    <button type="button" class="quiz-btn quiz-btn-block" id="coPay">Continue to secure checkout</button>
+    <div class="co-error" id="coError" role="alert" hidden></div>
+
+    <ul class="co-assure">
+      <li><strong>Reviewed in minutes, not weeks</strong> by a Utah-licensed provider.</li>
+      <li><strong>Full refund</strong> if for any reason we can't prescribe.</li>
+      <li>Discreet, unmarked packaging. Free shipping.</li>
+    </ul>
+
+    <span class="co-alt">Rather talk to a provider first?
+      <a href="https://new-consultation.zohobookings.com/portal-embed#/mintmedicalclinic" target="_blank" rel="noopener" id="coBook">Book a free call</a>
+      or call <a href="tel:8018048000">(801) 804-8000</a>.</span>
+  </section>
   </section>
 </main>
 </div>
 
-<script src="../js/quiz-mens-health.js"></script>
-<script src="../js/quiz-engine.js"></script>
+<!-- Snipcart: same store as the product pages. Loaded only when the visitor
+     reaches checkout, so the quiz itself stays light. -->
+<script>
+  window.SnipcartSettings = {
+    publicApiKey: 'MTQzOTA0YWMtODZlMS00YzIwLWE4NGMtNTNlNjIwY2JjN2QzNjM5MDgwNjcxMzQzOTk0MzE0',
+    loadStrategy: 'manual',
+    currency: 'usd',
+    modalStyle: 'side'
+  };
+</script>
+<script>
+(()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
+</script>
+<script src="../js/quiz-mens-health.js?v=20260916b"></script>
+<script src="../js/quiz-engine.js?v=20260916b"></script>
 <script>
   (function () {
     var cfg = window.MensHealthQuiz;
@@ -566,20 +619,21 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 
       var payload = {};
       new FormData(leadForm).forEach(function (v, k) { payload[k] = v; });
+      leadDetails = { email: payload.email, name: payload['first-name'], phone: payload.phone };
 
       leadSubmit.disabled = true;
       leadSubmit.textContent = 'One moment…';
 
       function advance() {
         leadSubmit.disabled = false;
-        leadSubmit.textContent = 'Continue to scheduling';
+        leadSubmit.textContent = 'Continue to checkout';
         if (window.fbq) fbq('track', 'Lead');
         if (window.gtag) gtag('event', 'quiz_lead_captured');
-        QuizEngine.goTo('schedule');
+        QuizEngine.goTo('purchase');
       }
 
-      // A booking is worth more than a form record: one retry, then advance
-      // regardless. Losing the booking because the form 500'd is the worst outcome.
+      // A sale is worth more than a form record: one retry, then advance
+      // regardless. Losing the order because the form 500'd is the worst outcome.
       function post(retriesLeft) {
         fetch('/', {
           method: 'POST',
@@ -603,13 +657,168 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
       post(1);
     });
 
-    document.getElementById('schedDone').addEventListener('click', function () {
-      window.location.href = '/start/confirmed.html';
+    // --- checkout (Snipcart, side panel, same page) ---
+    var packsEl = root.querySelector('[data-co-packs]');
+    var coPay = document.getElementById('coPay');
+    var coError = document.getElementById('coError');
+    var leadDetails = {};
+    var snipcartReady = null;
+
+    function money(n) {
+      return '$' + (n % 1 ? n.toFixed(2) : String(n));
+    }
+
+    function renderPacks(key) {
+      var p = cfg.products[key];
+      if (!p) return;
+      var legend = packsEl.querySelector('legend');
+      packsEl.innerHTML = '';
+      packsEl.appendChild(legend);
+      p.packs.forEach(function (pack, i) {
+        var label = document.createElement('label');
+        label.className = 'co-pack';
+
+        var input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'co-pack';
+        input.value = pack.id;
+        input.checked = pack.recommended || (i === 0 && !p.packs.some(function (x) { return x.recommended; }));
+        label.appendChild(input);
+
+        var main = document.createElement('span');
+        main.className = 'co-pack-main';
+        var name = document.createElement('span');
+        name.className = 'co-pack-label';
+        name.textContent = p.name + ' · ' + pack.label;
+        var note = document.createElement('span');
+        note.className = 'co-pack-note';
+        note.textContent = pack.note;
+        main.appendChild(name);
+        main.appendChild(note);
+        label.appendChild(main);
+
+        var price = document.createElement('span');
+        price.className = 'co-pack-price';
+        if (pack.was) {
+          var was = document.createElement('span');
+          was.className = 'co-pack-was';
+          was.textContent = money(pack.was);
+          price.appendChild(was);
+        }
+        price.appendChild(document.createTextNode(money(pack.price)));
+        label.appendChild(price);
+
+        packsEl.appendChild(label);
+      });
+    }
+
+    function selectedPack() {
+      var key = chosenProduct || QuizEngine.getState().recommendation || 'mint-mints';
+      var checked = packsEl.querySelector('input[name="co-pack"]:checked');
+      var packs = cfg.products[key].packs;
+      for (var i = 0; i < packs.length; i++) {
+        if (checked && packs[i].id === checked.value) return packs[i];
+      }
+      return packs[0];
+    }
+
+    // Resolves once the Snipcart SDK is usable. Rejects after a timeout so a
+    // blocked script shows the visitor a way forward instead of a dead button.
+    function loadSnipcart() {
+      if (snipcartReady) return snipcartReady;
+      snipcartReady = new Promise(function (resolve, reject) {
+        if (window.Snipcart && window.Snipcart.api) { resolve(window.Snipcart); return; }
+        var timer = setTimeout(function () {
+          snipcartReady = null;
+          reject(new Error('Snipcart did not load'));
+        }, 15000);
+        document.addEventListener('snipcart.ready', function () {
+          clearTimeout(timer);
+          window.Snipcart.events.on('cart.confirmed', onOrderConfirmed);
+          // Snipcart rewrites the hash as its panel opens and closes. Put the
+          // quiz's own hash back whenever the panel is shut, so a reload or a
+          // Back press still lands on checkout.
+          restoreQuizHash();
+          // Snipcart's own route event fires before it clears the hash, so
+          // listen for the cleared hash itself.
+          window.addEventListener('hashchange', function () {
+            var h = window.location.hash;
+            if (h === '' || h === '#' || h === '#/') restoreQuizHash();
+          });
+          resolve(window.Snipcart);
+        }, { once: true });
+        if (window.LoadSnipcart) window.LoadSnipcart();
+      });
+      return snipcartReady;
+    }
+
+    function restoreQuizHash() {
+      var id = QuizEngine.getState().stepId;
+      if (id && window.location.hash !== '#/' + id) {
+        window.history.replaceState({ stepId: id }, '', '#/' + id);
+      }
+    }
+
+    function onOrderConfirmed(order) {
+      var total = order && typeof order.total === 'number' ? order.total : '';
+      var inv = order && order.invoiceNumber ? order.invoiceNumber : '';
+      if (window.gtag) gtag('event', 'quiz_order_placed', { value: total, currency: 'USD' });
+      window.location.href = '/start/confirmed.html?order=' + encodeURIComponent(inv) +
+        '&value=' + encodeURIComponent(total);
+    }
+
+    coPay.addEventListener('click', function () {
+      var pack = selectedPack();
+      coError.hidden = true;
+      coPay.disabled = true;
+      coPay.textContent = 'Opening secure checkout…';
+
+      loadSnipcart()
+        .then(function (Snipcart) {
+          // One funnel item at a time: drop anything the visitor added on an
+          // earlier pass through this step so the cart matches what they picked.
+          var existing = Snipcart.store.getState().cart.items.items || [];
+          var removals = existing.map(function (item) {
+            return Snipcart.api.cart.items.remove(item.uniqueId);
+          });
+          return Promise.all(removals).then(function () {
+            return Snipcart.api.cart.items.add({
+              id: pack.id,
+              name: pack.name,
+              price: pack.price,
+              url: pack.url,
+              image: pack.image,
+              weight: pack.weight,
+              quantity: 1,
+              maxQuantity: 10
+            });
+          }).then(function () {
+            if (leadDetails.email) {
+              return Snipcart.api.cart.update({
+                email: leadDetails.email,
+                billingAddress: { name: leadDetails.name || '', phone: leadDetails.phone || '' }
+              }).catch(function () { /* prefill is a nicety, never a blocker */ });
+            }
+          }).then(function () {
+            Snipcart.api.theme.cart.open();
+            if (window.fbq) fbq('track', 'InitiateCheckout', { value: pack.price, currency: 'USD', content_ids: [pack.id] });
+            if (window.gtag) gtag('event', 'quiz_checkout_opened', { value: pack.price, currency: 'USD' });
+          });
+        })
+        .catch(function (err) {
+          console.warn('Mint checkout failed to open: ' + (err && err.message ? err.message : err));
+          if (window.gtag) gtag('event', 'quiz_checkout_failed');
+          coError.textContent = "Checkout didn't open. Please try again, or call (801) 804-8000 and we'll take your order by phone.";
+          coError.hidden = false;
+        })
+        .then(function () {
+          coPay.disabled = false;
+          coPay.textContent = 'Continue to secure checkout';
+        });
     });
 
-    document.getElementById('schedOpen').addEventListener('click', function () {
+    document.getElementById('coBook').addEventListener('click', function () {
       if (window.gtag) gtag('event', 'quiz_booking_opened');
-      if (window.fbq) fbq('track', 'InitiateCheckout');
     });
 
     QuizEngine.mount(root, cfg, {
@@ -618,7 +827,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
         // deep link, can land on these steps with stale, missing, or
         // unlicensed-state answers. Re-check every time, host-side, since
         // the engine itself accepts any hash naming a step.
-        if (stepId === 'recommendation' || stepId === 'contact' || stepId === 'schedule') {
+        if (stepId === 'recommendation' || stepId === 'contact' || stepId === 'purchase') {
           var answers = QuizEngine.getState().answers;
           // Guard against infinite loops: 'waitlist' and steps[0] are never
           // in the set above, so redirecting to either cannot re-enter here.
@@ -646,6 +855,11 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
             live.textContent = 'Your recommendation: ' + h.textContent;
             h.focus();
           }
+        }
+        if (stepId === 'purchase') {
+          renderPacks(chosenProduct || QuizEngine.getState().recommendation || 'mint-mints');
+          // Start fetching the SDK now so the pay button responds instantly.
+          loadSnipcart().catch(function () { /* surfaced when they tap pay */ });
         }
         if (stepId === 'waitlist') {
           var s = root.querySelector('[data-waitlist-state]');
