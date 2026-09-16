@@ -2,12 +2,19 @@ const test = require('node:test');
 const assert = require('node:assert');
 const quiz = require('../js/quiz-mens-health.js');
 
-// --- recommend(): the five rules from spec section 6.1, top-down, first match wins ---
+// --- recommend(): top-down, first match wins (routing revised 2026-09-16) ---
 
-test('recommend: "want something stronger" routes to the shot', () => {
+test('recommend: "want something stronger" routes to mint mints', () => {
   assert.strictEqual(
     quiz.recommend({ goal: 'both', tried: 'stronger', priority: 'private' }),
-    'opti-mint-shot'
+    'mint-mints'
+  );
+});
+
+test('recommend: priority "how strong it is" routes to mint mints', () => {
+  assert.strictEqual(
+    quiz.recommend({ goal: 'longer', tried: 'none', priority: 'strong' }),
+    'mint-mints'
   );
 });
 
@@ -39,12 +46,12 @@ test('recommend: never tried anything defaults to mint mints', () => {
   );
 });
 
-test('recommend: "stronger" beats "planning" because rules are ordered', () => {
-  // A user could only hold one `tried` value, but priority must not override
-  // an explicit `tried: stronger`. This pins the top-down ordering.
+test('recommend: tried "stronger" outranks priority "fast" because rules are ordered', () => {
+  // Priority must not override an explicit `tried: stronger`. This pins the
+  // top-down ordering.
   assert.strictEqual(
-    quiz.recommend({ goal: 'both', tried: 'stronger', priority: 'spontaneous' }),
-    'opti-mint-shot'
+    quiz.recommend({ goal: 'both', tried: 'stronger', priority: 'fast' }),
+    'mint-mints'
   );
 });
 
@@ -53,9 +60,7 @@ test('recommend: returns a valid product for empty answers', () => {
   assert.ok(result === 'mint-mints' || result === 'opti-mint-shot');
 });
 
-test('recommend: priority "fast" outranks tried "planning" (spec 6.1 ordering)', () => {
-  // If the "tried === planning" rule were ever moved above "priority === fast"
-  // in the config, this is the one reachable case that would flip and expose it.
+test('recommend: priority "fast" wins when tried is "planning"', () => {
   assert.strictEqual(
     quiz.recommend({ tried: 'planning', priority: 'fast' }),
     'opti-mint-shot'
@@ -71,6 +76,34 @@ test('product priceLine copy is byte-exact', () => {
     quiz.products['opti-mint-shot'].priceLine,
     '$49.97 per shot · as low as $29.80 in a 10-pack'
   );
+});
+
+test('every product has checkout packs with a Snipcart id, price and url', () => {
+  const expected = {
+    'mint-mints-full': 297.0,
+    'mint-mints-half': 197.0,
+    'opti-mint-shot-1': 49.97,
+    'opti-mint-shot-5': 197.95,
+    'opti-mint-shot-10': 297.95
+  };
+  const seen = {};
+  for (const key of ['mint-mints', 'opti-mint-shot']) {
+    const packs = quiz.products[key].packs;
+    assert.ok(Array.isArray(packs) && packs.length > 0, `${key} has no packs`);
+    for (const pack of packs) {
+      assert.ok(pack.id && pack.name && pack.url, `${key} pack missing fields`);
+      assert.ok(/^https:\/\//.test(pack.url), `${pack.id} url must be absolute`);
+      seen[pack.id] = pack.price;
+    }
+  }
+  // Snipcart rejects an order whose price disagrees with the product page.
+  assert.deepStrictEqual(seen, expected);
+});
+
+test('the flow ends at checkout, not a booking step', () => {
+  const ids = quiz.steps.map((s) => s.id);
+  assert.strictEqual(ids[ids.length - 1], 'purchase');
+  assert.ok(!ids.includes('schedule'));
 });
 
 // --- isLicensed() ---

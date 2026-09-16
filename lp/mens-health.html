@@ -396,6 +396,16 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
   .product-media--mints { background: var(--cream); }
   .product-media--mints img { object-fit: contain; padding: 26px; background: var(--cream); }
   .product-card > *:not(.product-media) { padding-left: 30px; padding-right: 30px; }
+  /* A hand-drawn-feeling aside pointing at the Mints packshot. The joke is
+     the point: of course the mints from Mint Medical are mint flavored. */
+  .flavor-note {
+    position: absolute; right: 18px; bottom: 16px;
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600; font-style: italic;
+    color: var(--mint-deep); transform: rotate(-4deg);
+  }
+  .flavor-note svg { flex-shrink: 0; }
+  .tm { font-size: 0.55em; vertical-align: super; font-weight: 500; margin-left: 1px; }
   .product-card h3 { font-size: 1.5rem; margin-bottom: 8px; color: var(--on-void); }
   .product-card .price { font-size: 15px; font-weight: 600; color: var(--mint); margin-bottom: 12px; }
   .product-card p.desc { font-size: 15px; margin-bottom: 26px; color: var(--on-void-dim); }
@@ -512,7 +522,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 <div class="trust-bar">
   <ul class="trust-track" id="trustTrack">
   <li class="trust-item is-on">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>First visit is free — you only pay if a provider prescribes.</span>
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Full refund if a provider can't prescribe</span>
   </li>
   <li class="trust-item">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Free shipping on every order</span>
@@ -527,7 +537,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/></svg><span>Discreet, unmarked packaging — and discreet billing</span>
   </li>
   <li class="trust-item">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Prescribed by Utah-licensed providers</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Reviewed in minutes by Utah-licensed providers</span>
   </li>
   <li class="trust-item">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>No insurance required</span>
@@ -543,19 +553,19 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
       <div class="rule-node" role="presentation"></div>
       <h1 class="display">5 reasons men in Utah stopped planning around the blue pill</h1>
       <p>
-        A Utah-licensed provider, a prescription built around you, and discreet delivery.
-        Start with three quick questions — no waiting room, no pharmacy counter.
+        A Utah-licensed provider, not an app. A prescription built around you, reviewed in minutes,
+        and delivered discreetly. Start with a few quick questions — no waiting room, no pharmacy counter.
       </p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="/start">Start your free visit</a>
         <a class="btn-text" href="/start">See if it's right for me</a>
       </div>
       <p class="hero-reassure">
-        Free online visit &nbsp;&middot;&nbsp; No insurance required &nbsp;&middot;&nbsp; Discreet shipping
+        Reviewed in minutes &nbsp;&middot;&nbsp; No insurance required &nbsp;&middot;&nbsp; Full refund if we can't prescribe
       </p>
     </div>
     <div class="hero-image-wrap">
-      <img class="hero-image" src="../images/optimint-shot-vertical.webp" alt="The Opti-Mint Shot">
+      <img class="hero-image" src="../images/optimint-shot-vertical.webp" alt="The Opti-Mint Shot™">
     </div>
   </div>
 </section>
@@ -590,7 +600,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
   <div class="container">
     <div class="narrow" style="text-align:center;">
       <span class="eyebrow">Why Men Are Switching</span>
-      <h2>The blue pill isn't the only way to plan the evening</h2>
+      <h2>The blue pill isn't the only option</h2>
     </div>
     <div class="reasons-list">
       <div class="reason-item">
@@ -603,11 +613,11 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
       </div>
       <div class="reason-item">
         <span class="reason-num">3</span>
-        <div><strong>No pharmacy counter, no waiting room</strong><span>The visit happens online. Complete a short questionnaire, then talk with a provider by phone or video from wherever you are.</span></div>
+        <div><strong>No pharmacy counter, no waiting room</strong><span>The visit happens online. Answer a short questionnaire and you're done — or talk with a provider by phone or video if you'd like.</span></div>
       </div>
       <div class="reason-item">
         <span class="reason-num">4</span>
-        <div><strong>Options beyond a single tablet</strong><span>A fast-dissolving lozenge or a fifteen-minutes-before liquid shot — whichever fits how you actually plan an evening.</span></div>
+        <div><strong>Options beyond a single tablet</strong><span>A fast-dissolving lozenge or a fifteen-minutes-before liquid shot — morning, evening, whenever it fits you.</span></div>
       </div>
       <div class="reason-item">
         <span class="reason-num">5</span>
@@ -622,26 +632,30 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
   <div class="container">
     <div class="narrow" style="text-align:center;">
       <span class="eyebrow">Two Ways To Take It</span>
-      <h2 class="display">Whichever fits how you plan the evening</h2>
+      <h2 class="display">Whenever it's right for you</h2>
     </div>
     <div class="products-grid">
       <div class="product-card">
         <div class="product-media product-media--mints">
           <picture>
             <source srcset="../Products/MN-MINTMINTS-FRONT@3x.webp" type="image/webp">
-            <img src="../Products/MN-MINTMINTS-FRONT@3x.png" alt="Mint Mints — sublingual lozenges for ED">
+            <img src="../Products/MN-MINTMINTS-FRONT@3x.png" alt="Mint Mints™ — sublingual lozenges for ED">
           </picture>
+          <span class="flavor-note">
+            <svg width="26" height="18" viewBox="0 0 26 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M25 14C17 16 8 12 3 4"/><path d="M2 10 3 4l6 1"/></svg>
+            Mint flavored. Obviously.
+          </span>
         </div>
-        <h3>Mint Mints</h3>
+        <h3>Mint Mints<span class="tm">™</span></h3>
         <p class="price">Half Batch $197 &middot; Full Batch $297 (reg. $397)</p>
-        <p class="desc">Sublingual lozenges that dissolve under the tongue — no water, no swallowing a tablet. Built for men who want blood flow support on their own schedule.</p>
+        <p class="desc">Sublingual lozenges that dissolve under the tongue — no water, no swallowing a tablet. Mint flavored, because we're Mint Medical. Take them whenever it's right for you.</p>
         <a class="btn btn-primary" href="/start">Start your free visit</a>
       </div>
       <div class="product-card">
         <div class="product-media product-media--shot">
-          <img src="../images/optimint-shot-vertical.webp" alt="Opti-Mint Shot — fast-acting liquid formula">
+          <img src="../images/optimint-shot-vertical.webp" alt="Opti-Mint Shot™ — fast-acting liquid formula">
         </div>
-        <h3>Opti-Mint Shot</h3>
+        <h3>Opti-Mint Shot<span class="tm">™</span></h3>
         <p class="price">$49.97 per shot &middot; as low as $29.80 in a 10-pack</p>
         <p class="desc">A liquid formula taken about fifteen minutes ahead — nothing waiting to break down in your stomach first. Reviewed and prescribed by a Utah provider before it ships.</p>
         <a class="btn btn-primary" href="/start">Start your free visit</a>
@@ -657,7 +671,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
       <picture>
         <source srcset="../images/optimint-shot-benefits.webp" type="image/webp">
         <img src="../images/optimint-shot-benefits.jpg"
-             alt="The six ingredients in the Opti-Mint Shot: PT-141, tadalafil, sildenafil, ionic minerals, caffeine and oxytocin, with a 36-hour effectiveness window and 15-minute activation time."
+             alt="The six ingredients in the Opti-Mint Shot™: PT-141, tadalafil, sildenafil, ionic minerals, caffeine and oxytocin, with a 36-hour effectiveness window and 15-minute activation time."
              loading="lazy">
       </picture>
     </div>
@@ -675,17 +689,17 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
       <div class="process-item">
         <div class="process-num">1</div>
         <h3>Answer a few questions</h3>
-        <p>A few quick questions about your goals — a couple of minutes, from your phone. Your health history is covered with your provider on the visit.</p>
+        <p>A few quick questions about your goals — a couple of minutes, from your phone.</p>
       </div>
       <div class="process-item">
         <div class="process-num">2</div>
-        <h3>Meet a Utah provider</h3>
-        <p>15 minutes, phone or video. This is the part an app can't do — a real provider who knows your history, answering your actual questions.</p>
+        <h3>Check out in one step</h3>
+        <p>Pick your supply and pay securely on the same page. If for any reason we can't prescribe, you get a full refund.</p>
       </div>
       <div class="process-item">
         <div class="process-num">3</div>
-        <h3>Your prescription is approved</h3>
-        <p>Your provider personalizes what's prescribed based on your history — not a generic default.</p>
+        <h3>A Utah provider reviews it</h3>
+        <p>Reviewed in minutes, not weeks — a real Utah-licensed provider, not an app. Want to talk it through? Phone or video is always an option.</p>
       </div>
       <div class="process-item">
         <div class="process-num">4</div>
@@ -718,13 +732,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
         </thead>
         <tbody>
           <tr>
-            <td>Always a live visit, never async-only</td>
-            <td class="c yes">✓</td>
-            <td class="c yes">✓</td>
-            <td class="c no">—</td>
-          </tr>
-          <tr>
-            <td>15-minute provider visit, phone or video</td>
+            <td>Talk to a provider by phone or video, if you want</td>
             <td class="c yes">✓</td>
             <td class="c no">—</td>
             <td class="c no">—</td>
@@ -763,11 +771,11 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     <div class="faq-list">
       <div class="faq-item">
         <h3>Do I need a prescription?</h3>
-        <p>Yes. Both Mint Mints and the Opti-Mint Shot contain prescription medications. Complete a short, confidential online visit, and if it's appropriate for you, your prescription ships discreetly to your door.</p>
+        <p>Yes. Both Mint Mints™ and the Opti-Mint Shot™ contain prescription medications. Complete a short, confidential online visit and check out. A Utah-licensed provider reviews your information, and your prescription ships discreetly to your door. If for any reason we can't prescribe, you get a full refund.</p>
       </div>
       <div class="faq-item">
-        <h3>What happens on the consultation?</h3>
-        <p>A Utah-licensed provider reviews your health history and current medications, then talks with you by phone or video for about 15 minutes. It's a real conversation with a real provider, not an automated form.</p>
+        <h3>Do I have to talk to someone?</h3>
+        <p>Only if you want to. The whole visit can be completed online, and a Utah-licensed provider reviews your information within minutes. If you'd rather talk it through, a provider is available by phone or video.</p>
       </div>
       <div class="faq-item">
         <h3>How fast does it work?</h3>
@@ -779,7 +787,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
       </div>
       <div class="faq-item">
         <h3>Which one is right for me?</h3>
-        <p>Mint Mints are sublingual lozenges you take on your own schedule. The Opti-Mint Shot is a liquid taken about fifteen minutes before. Your provider can help you decide which fits how you actually plan an evening.</p>
+        <p>Mint Mints™ are mint-flavored sublingual lozenges you take on your own schedule. The Opti-Mint Shot™ is a liquid taken about fifteen minutes before. The quiz recommends one based on your answers, and your provider can help you decide which fits you best.</p>
       </div>
     </div>
   </div>
@@ -791,7 +799,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
   <div class="final-cta-scrim" role="presentation"></div>
   <div class="container">
     <h2 class="display">Your first visit is free</h2>
-    <p>Answer a few questions, meet a Utah-licensed provider, and find out what's actually right for you. You only pay if a provider prescribes.</p>
+    <p>Answer a few questions, check out, and a Utah-licensed provider reviews your order in minutes. If for any reason we can't prescribe, you get a full refund.</p>
     <div class="hero-ctas">
       <a href="/start" class="btn btn-primary btn-lg">Start your free visit</a>
     </div>
