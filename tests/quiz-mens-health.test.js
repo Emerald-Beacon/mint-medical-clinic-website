@@ -92,6 +92,8 @@ test('every product has checkout packs with a Snipcart id, price and url', () =>
     assert.ok(Array.isArray(packs) && packs.length > 0, `${key} has no packs`);
     for (const pack of packs) {
       assert.ok(pack.id && pack.name && pack.url, `${key} pack missing fields`);
+      assert.ok(pack.weight > 0, `${pack.id} needs a weight or Snipcart rejects the order`);
+      assert.ok(pack.description, `${pack.id} needs a description`);
       assert.ok(/^https:\/\//.test(pack.url), `${pack.id} url must be absolute`);
       seen[pack.id] = pack.price;
     }

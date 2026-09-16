@@ -44,6 +44,7 @@
       packs: [
         {
           id: 'mint-mints-full',
+          description: 'Mint Mints Full Batch — fast-acting ED lozenges',
           name: 'Mint Mints — Full Batch',
           label: 'Full Batch',
           note: 'Best value · save $100',
@@ -56,6 +57,7 @@
         },
         {
           id: 'mint-mints-half',
+          description: 'Mint Mints Half Batch — first-time introductory offer',
           name: 'Mint Mints — Half Batch (First-Time Intro)',
           label: 'Half Batch',
           note: 'First-time intro',
@@ -83,6 +85,7 @@
       packs: [
         {
           id: 'opti-mint-shot-1',
+          description: 'Opti-Mint Shot — single fast-acting intimacy shot',
           name: 'Opti-Mint Shot — Single Shot',
           label: '1 Vial',
           note: 'Try it',
@@ -93,6 +96,7 @@
         },
         {
           id: 'opti-mint-shot-5',
+          description: 'Opti-Mint Shot 5 Pack — fast-acting intimacy shots',
           name: 'Opti-Mint Shot — 5 Pack',
           label: '5 Vials',
           note: '$39.59 per vial · save $51',
@@ -103,6 +107,7 @@
         },
         {
           id: 'opti-mint-shot-10',
+          description: 'Opti-Mint Shot 10 Pack — fast-acting intimacy shots',
           name: 'Opti-Mint Shot — 10 Pack',
           label: '10 Vials',
           note: '$29.80 per vial · best value, save $201',

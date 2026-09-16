@@ -527,8 +527,8 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 <script>
 (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
 </script>
-<script src="../js/quiz-mens-health.js?v=20260916c"></script>
-<script src="../js/quiz-engine.js?v=20260916c"></script>
+<script src="../js/quiz-mens-health.js?v=20260916d"></script>
+<script src="../js/quiz-engine.js?v=20260916d"></script>
 <script>
   (function () {
     var cfg = window.MensHealthQuiz;
@@ -783,6 +783,47 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
       }
     }
 
+    // Add the pack by clicking a real snipcart-add-item button rather than
+    // Snipcart.api.cart.items.add(): the API drops data-item-weight, and
+    // Snipcart then rejects the order at payment because the cart's weight
+    // doesn't match the crawled product page ("invalid products").
+    function addViaButton(pack) {
+      var btn = document.getElementById('coAddItem');
+      if (!btn) {
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.id = 'coAddItem';
+        btn.className = 'snipcart-add-item';
+        btn.hidden = true;
+        btn.setAttribute('aria-hidden', 'true');
+        btn.tabIndex = -1;
+        document.body.appendChild(btn);
+      }
+      var attrs = {
+        'data-item-id': pack.id,
+        'data-item-name': pack.name,
+        'data-item-price': pack.price.toFixed(2),
+        'data-item-url': pack.url,
+        'data-item-description': pack.description,
+        'data-item-image': pack.image,
+        'data-item-weight': String(pack.weight),
+        'data-item-quantity': '1',
+        'data-item-max-quantity': '10'
+      };
+      Object.keys(attrs).forEach(function (k) { btn.setAttribute(k, attrs[k]); });
+
+      return new Promise(function (resolve, reject) {
+        var tries = 0;
+        btn.click();
+        (function check() {
+          var items = window.Snipcart.store.getState().cart.items.items || [];
+          if (items.some(function (i) { return i.id === pack.id; })) { resolve(); return; }
+          if (++tries > 40) { reject(new Error('item was not added')); return; }
+          setTimeout(check, 150);
+        })();
+      });
+    }
+
     function onOrderConfirmed(order) {
       var total = order && typeof order.total === 'number' ? order.total : '';
       var inv = order && order.invoiceNumber ? order.invoiceNumber : '';
@@ -806,16 +847,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
             return Snipcart.api.cart.items.remove(item.uniqueId);
           });
           return Promise.all(removals).then(function () {
-            return Snipcart.api.cart.items.add({
-              id: pack.id,
-              name: pack.name,
-              price: pack.price,
-              url: pack.url,
-              image: pack.image,
-              weight: pack.weight,
-              quantity: 1,
-              maxQuantity: 10
-            });
+            return addViaButton(pack);
           }).then(function () {
             if (leadDetails.email) {
               return Snipcart.api.cart.update({
