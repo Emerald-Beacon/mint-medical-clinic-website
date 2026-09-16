@@ -77,38 +77,40 @@
         'Nothing to take daily',
         'Discreet, unmarked packaging'
       ],
-      priceLine: '$49.97 per shot · as low as $29.80 in a 10-pack',
+      priceLine: '1 vial $49.97 · 5 vials $197.95 · 10 vials $297.95',
+      // Bundles: 1, 5 or 10 vials. Display labels only — the Snipcart ids,
+      // names and prices below must stay identical to lp/opti-mint-shot.html.
       packs: [
         {
-          id: 'opti-mint-shot-10',
-          name: 'Opti-Mint Shot — 10 Pack',
-          label: '10 Pack',
-          note: '$29.80 per shot · best value',
-          price: 297.95,
-          weight: 600,
+          id: 'opti-mint-shot-1',
+          name: 'Opti-Mint Shot — Single Shot',
+          label: '1 Vial',
+          note: 'Try it',
+          price: 49.97,
+          weight: 60,
           url: 'https://mintmedicalclinic.com/products/opti-mint-shot',
-          image: 'https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png',
-          recommended: true
+          image: 'https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png'
         },
         {
           id: 'opti-mint-shot-5',
           name: 'Opti-Mint Shot — 5 Pack',
-          label: '5 Pack',
-          note: '$39.59 per shot',
+          label: '5 Vials',
+          note: '$39.59 per vial · save $51',
           price: 197.95,
           weight: 300,
           url: 'https://mintmedicalclinic.com/products/opti-mint-shot',
           image: 'https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png'
         },
         {
-          id: 'opti-mint-shot-1',
-          name: 'Opti-Mint Shot — Single Shot',
-          label: 'Single Shot',
-          note: 'Try one',
-          price: 49.97,
-          weight: 60,
+          id: 'opti-mint-shot-10',
+          name: 'Opti-Mint Shot — 10 Pack',
+          label: '10 Vials',
+          note: '$29.80 per vial · best value, save $201',
+          price: 297.95,
+          weight: 600,
           url: 'https://mintmedicalclinic.com/products/opti-mint-shot',
-          image: 'https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png'
+          image: 'https://mintmedicalclinic.com/Products/MN-OPTIMINT-FRONT@3x.png',
+          recommended: true
         }
       ]
     }

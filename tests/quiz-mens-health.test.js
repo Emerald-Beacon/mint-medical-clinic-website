@@ -74,7 +74,7 @@ test('product priceLine copy is byte-exact', () => {
   );
   assert.strictEqual(
     quiz.products['opti-mint-shot'].priceLine,
-    '$49.97 per shot · as low as $29.80 in a 10-pack'
+    '1 vial $49.97 · 5 vials $197.95 · 10 vials $297.95'
   );
 });
 
@@ -98,6 +98,12 @@ test('every product has checkout packs with a Snipcart id, price and url', () =>
   }
   // Snipcart rejects an order whose price disagrees with the product page.
   assert.deepStrictEqual(seen, expected);
+});
+
+test('the shot is offered as 1, 5 or 10 vials, with 10 preselected', () => {
+  const packs = quiz.products['opti-mint-shot'].packs;
+  assert.deepStrictEqual(packs.map((p) => p.label), ['1 Vial', '5 Vials', '10 Vials']);
+  assert.deepStrictEqual(packs.filter((p) => p.recommended).map((p) => p.id), ['opti-mint-shot-10']);
 });
 
 test('the flow ends at checkout, not a booking step', () => {
