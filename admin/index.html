@@ -472,6 +472,75 @@
             background: var(--red);
         }
 
+        /* Orders / shipping dashboard */
+        .orders-toolbar {
+            display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+            justify-content: space-between; margin-bottom: 20px;
+        }
+        .orders-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+        .orders-filter {
+            padding: 8px 14px; border-radius: 999px; cursor: pointer;
+            border: 1px solid var(--gray-200); background: var(--white);
+            font: inherit; font-size: 14px; color: var(--gray-600);
+        }
+        .orders-filter.active { background: var(--mint); border-color: var(--mint); color: var(--white); }
+        .orders-filter .count { font-weight: 600; margin-left: 4px; }
+        .orders-meta { font-size: 13px; color: var(--gray-600); display: flex; align-items: center; gap: 10px; }
+        .orders-search {
+            padding: 8px 12px; border: 1px solid var(--gray-200); border-radius: 8px;
+            font: inherit; font-size: 14px; min-width: 220px;
+        }
+        .orders-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
+        .orders-stat { background: var(--gray-100); border-radius: 10px; padding: 14px 16px; }
+        .orders-stat .num { display: block; font-size: 24px; font-weight: 600; color: var(--dark); }
+        .orders-stat .lbl { font-size: 13px; color: var(--gray-600); }
+        .orders-stat.hot { background: #e8f5f0; }
+        .orders-stat.hot .num { color: var(--mint-dark); }
+        .order-list { display: flex; flex-direction: column; gap: 14px; }
+        .order-card {
+            border: 1px solid var(--gray-200); border-radius: 12px; padding: 18px 20px;
+            display: grid; grid-template-columns: 1.1fr 1.2fr 1fr auto; gap: 20px; align-items: start;
+        }
+        .order-card.needs-action { border-left: 4px solid var(--mint); }
+        .order-card h3 { font-size: 16px; color: var(--dark); margin-bottom: 4px; }
+        .order-sub { font-size: 13px; color: var(--gray-600); }
+        .order-label {
+            font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--gray-400); margin-bottom: 6px;
+        }
+        .order-items { list-style: none; font-size: 14px; color: var(--dark); }
+        .order-items li { padding: 2px 0; }
+        .order-address { font-size: 14px; line-height: 1.5; color: var(--dark); white-space: pre-line; }
+        .order-total { font-size: 18px; font-weight: 600; color: var(--dark); margin-top: 8px; }
+        .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .badge {
+            display: inline-block; padding: 3px 10px; border-radius: 999px;
+            font-size: 12px; font-weight: 600; background: var(--gray-100); color: var(--gray-600);
+        }
+        .badge.mint { background: #e8f5f0; color: var(--mint-dark); }
+        .badge.amber { background: #fff4e0; color: #9a5b00; }
+        .badge.red { background: #fdecee; color: var(--red); }
+        .badge.dark { background: var(--dark); color: var(--white); }
+        .order-actions { display: flex; flex-direction: column; gap: 8px; min-width: 150px; }
+        .order-actions .btn { width: 100%; padding: 9px 14px; font-size: 14px; text-align: center; }
+        .order-tracking { font-size: 13px; margin-top: 6px; word-break: break-all; }
+        .order-tracking a { color: var(--mint-dark); }
+        .form-group textarea, .form-group select {
+            width: 100%; padding: 12px; border: 1px solid var(--gray-200); border-radius: 8px; font: inherit;
+        }
+        .orders-notice {
+            background: #fff4e0; color: #7a4a00; border-radius: 10px;
+            padding: 14px 16px; margin-bottom: 16px; font-size: 14px;
+        }
+
+        @media (max-width: 1000px) {
+            .order-card { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .order-card { grid-template-columns: 1fr; }
+            .orders-search { min-width: 0; width: 100%; }
+        }
+
         @media (max-width: 768px) {
             .admin-nav ul {
                 overflow-x: auto;
@@ -488,23 +557,7 @@
             }
         }
     </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '985745890592891');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+<!-- No Meta Pixel here: this page shows patient orders and addresses. -->
 </head>
 <body>
     <!-- Login Screen -->
@@ -563,7 +616,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
     <!-- Admin Dashboard -->
     <div id="adminContainer" class="admin-container">
         <header class="admin-header">
-            <h1>Blog Admin</h1>
+            <h1>Mint Admin</h1>
             <div class="admin-header-right">
                 <a href="/" class="btn btn-secondary btn-sm" style="text-decoration: none;">Back to Site</a>
                 <span class="user-name" id="userName"></span>
@@ -573,7 +626,8 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
 
         <nav class="admin-nav">
             <ul>
-                <li><a href="#" class="active" data-tab="articles">Articles</a></li>
+                <li><a href="#" class="active" data-tab="orders">Orders</a></li>
+                <li><a href="#" data-tab="articles">Articles</a></li>
                 <li><a href="#" data-tab="categories">Categories</a></li>
                 <li><a href="#" data-tab="users">Users</a></li>
                 <li><a href="#" data-tab="settings">Settings</a></li>
@@ -581,8 +635,45 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
         </nav>
 
         <main class="admin-content">
+            <!-- Orders Tab -->
+            <div id="ordersTab" class="tab-content active">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2>Orders &amp; Shipping</h2>
+                        <div class="orders-meta">
+                            <span id="ordersUpdated">Loading…</span>
+                            <button onclick="loadOrders()" class="btn btn-secondary btn-sm" id="ordersRefresh">Refresh</button>
+                        </div>
+                    </div>
+                    <div class="admin-card-body">
+                        <div id="ordersNotice" class="orders-notice" style="display: none;"></div>
+                        <div class="orders-stats">
+                            <div class="orders-stat hot"><span class="num" id="statToShip">–</span><span class="lbl">To ship</span></div>
+                            <div class="orders-stat"><span class="num" id="statPickup">–</span><span class="lbl">Awaiting clinic pickup</span></div>
+                            <div class="orders-stat"><span class="num" id="statToday">–</span><span class="lbl">Orders today</span></div>
+                            <div class="orders-stat"><span class="num" id="statRevenue">–</span><span class="lbl">Revenue (last 50 orders)</span></div>
+                        </div>
+                        <div class="orders-toolbar">
+                            <div class="orders-filters" id="ordersFilters">
+                                <button class="orders-filter active" data-filter="toship">To ship<span class="count" data-count="toship"></span></button>
+                                <button class="orders-filter" data-filter="pickup">Pickup<span class="count" data-count="pickup"></span></button>
+                                <button class="orders-filter" data-filter="shipped">Shipped<span class="count" data-count="shipped"></span></button>
+                                <button class="orders-filter" data-filter="all">All<span class="count" data-count="all"></span></button>
+                            </div>
+                            <input type="search" id="ordersSearch" class="orders-search" placeholder="Search name, email, invoice…" aria-label="Search orders">
+                        </div>
+                        <div id="ordersLoading" class="loading"><div class="spinner"></div></div>
+                        <div id="ordersEmpty" class="empty-state" style="display: none;">
+                            <h3>Nothing here</h3>
+                            <p>No orders match this view.</p>
+                        </div>
+                        <div id="ordersList" class="order-list"></div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Articles Tab -->
-            <div id="articlesTab" class="tab-content active">
+            <div id="articlesTab" class="tab-content">
                 <div class="admin-card">
                     <div class="admin-card-header">
                         <h2>All Articles</h2>
@@ -835,6 +926,31 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
         </div>
     </div>
 
+    <!-- Mark Shipped Modal -->
+    <div id="shipModal" class="modal">
+        <div class="modal-content" style="max-width: 460px;">
+            <div class="modal-header">
+                <h2>Mark as shipped</h2>
+                <button class="modal-close" onclick="closeShipModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 16px; color: var(--gray-600);">Order <strong id="shipInvoice"></strong> for <span id="shipName"></span>. Snipcart emails the customer when an order is marked shipped.</p>
+                <div class="form-group">
+                    <label for="shipTracking">Tracking number</label>
+                    <input type="text" id="shipTracking" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="shipTrackingUrl">Tracking link (optional)</label>
+                    <input type="url" id="shipTrackingUrl" placeholder="https://" autocomplete="off">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeShipModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" style="width: auto;" id="shipConfirm" onclick="confirmShip()">Mark shipped</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast -->
     <div id="toast" class="toast"></div>
 
@@ -842,6 +958,8 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
         // API endpoints
         const AUTH_API = '/api/admin-auth';
         const ARTICLES_API = '/api/blog-webhook';
+        const ORDERS_API = '/api/snipcart-orders';
+        const ORDERS_REFRESH_MS = 60000;
 
         // State
         let authToken = localStorage.getItem('adminToken');
@@ -921,6 +1039,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
             document.getElementById('loginContainer').style.display = 'none';
             document.getElementById('adminContainer').style.display = 'block';
             document.getElementById('userName').textContent = currentUser.name;
+            startOrders();
             await loadCategories(); // Load categories first for article dropdown
             loadArticles();
             loadUsers();
@@ -992,6 +1111,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
             localStorage.removeItem('adminToken');
             authToken = null;
             currentUser = null;
+            stopOrders();
             showLogin();
         }
 
@@ -1448,6 +1568,275 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
             } catch (e) {
                 showToast('Failed to create user', 'error');
             }
+        }
+
+        // Orders / shipping dashboard
+        let orders = [];
+        let ordersFilter = 'toship';
+        let ordersTimer = null;
+        let shippingOrderToken = null;
+        let ordersLoadedOnce = false;
+
+        let ordersWired = false;
+
+        function stopOrders() {
+            clearInterval(ordersTimer);
+            ordersTimer = null;
+            orders = [];
+            ordersLoadedOnce = false;
+            document.getElementById('ordersList').innerHTML = '';
+        }
+
+        function startOrders() {
+            clearInterval(ordersTimer);
+            ordersTimer = setInterval(() => { if (!document.hidden && authToken) loadOrders(); }, ORDERS_REFRESH_MS);
+            loadOrders();
+            if (ordersWired) return;
+            ordersWired = true;
+            document.querySelectorAll('#ordersFilters .orders-filter').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    ordersFilter = btn.dataset.filter;
+                    document.querySelectorAll('#ordersFilters .orders-filter').forEach(b => b.classList.toggle('active', b === btn));
+                    renderOrders();
+                });
+            });
+            document.getElementById('ordersSearch').addEventListener('input', renderOrders);
+            // Polling pauses while the tab is hidden; catch up the moment it's back.
+            document.addEventListener('visibilitychange', () => { if (!document.hidden && authToken) loadOrders(); });
+        }
+
+        async function ordersRequest(body) {
+            const res = await fetch(ORDERS_API, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...body, token: authToken })
+            });
+            const data = await res.json().catch(() => ({}));
+            if (res.status === 401) { handleLogout(); throw new Error('Session expired'); }
+            if (!res.ok) throw new Error(data.error || 'Request failed');
+            return data;
+        }
+
+        async function loadOrders() {
+            const refreshBtn = document.getElementById('ordersRefresh');
+            const notice = document.getElementById('ordersNotice');
+            refreshBtn.disabled = true;
+            try {
+                const data = await ordersRequest({ action: 'list' });
+                const previous = new Set(orders.map(o => o.token));
+                const fresh = ordersLoadedOnce ? data.orders.filter(o => !previous.has(o.token)) : [];
+                orders = data.orders;
+                ordersLoadedOnce = true;
+                notice.style.display = 'none';
+                document.getElementById('ordersUpdated').textContent =
+                    'Updated ' + new Date(data.fetchedAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+                if (fresh.length) showToast(fresh.length === 1 ? 'New order received' : `${fresh.length} new orders received`);
+                renderOrders();
+            } catch (e) {
+                notice.textContent = e.message;
+                notice.style.display = 'block';
+                document.getElementById('ordersUpdated').textContent = 'Update failed';
+            } finally {
+                refreshBtn.disabled = false;
+                document.getElementById('ordersLoading').style.display = 'none';
+            }
+        }
+
+        // An order is only work for the shipping team once it's paid and not
+        // cancelled or already on its way.
+        function isOpen(o) {
+            return o.paymentStatus === 'Paid' && !['Shipped', 'Delivered', 'Cancelled'].includes(o.status);
+        }
+
+        function orderBucket(o) {
+            if (o.status === 'Shipped' || o.status === 'Delivered') return 'shipped';
+            if (!isOpen(o)) return 'other';
+            return o.isPickup ? 'pickup' : 'toship';
+        }
+
+        function money(n) {
+            return (Number(n) || 0).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+        }
+
+        function renderOrders() {
+            const counts = { toship: 0, pickup: 0, shipped: 0, all: orders.length };
+            orders.forEach(o => { const b = orderBucket(o); if (counts[b] != null) counts[b]++; });
+            document.querySelectorAll('#ordersFilters [data-count]').forEach(el => {
+                el.textContent = counts[el.dataset.count] ? ` ${counts[el.dataset.count]}` : '';
+            });
+
+            const today = new Date().toDateString();
+            document.getElementById('statToShip').textContent = counts.toship;
+            document.getElementById('statPickup').textContent = counts.pickup;
+            document.getElementById('statToday').textContent =
+                orders.filter(o => new Date(o.completedAt || o.createdAt).toDateString() === today).length;
+            document.getElementById('statRevenue').textContent =
+                money(orders.filter(o => o.paymentStatus === 'Paid').reduce((sum, o) => sum + (Number(o.total) || 0), 0));
+
+            const q = document.getElementById('ordersSearch').value.trim().toLowerCase();
+            const visible = orders.filter(o => {
+                if (ordersFilter !== 'all' && orderBucket(o) !== ordersFilter) return false;
+                if (!q) return true;
+                const a = o.shippingAddress || {};
+                return [o.invoiceNumber, o.email, a.name, a.city, o.trackingNumber]
+                    .some(v => String(v || '').toLowerCase().includes(q));
+            });
+
+            const list = document.getElementById('ordersList');
+            list.innerHTML = '';
+            document.getElementById('ordersEmpty').style.display = visible.length ? 'none' : 'block';
+            visible.forEach(o => list.appendChild(orderCard(o)));
+        }
+
+        function el(tag, className, text) {
+            const node = document.createElement(tag);
+            if (className) node.className = className;
+            if (text != null) node.textContent = text;
+            return node;
+        }
+
+        function badge(text, tone) {
+            return el('span', 'badge' + (tone ? ' ' + tone : ''), text);
+        }
+
+        function orderCard(o) {
+            const a = o.shippingAddress || {};
+            const card = el('div', 'order-card' + (isOpen(o) ? ' needs-action' : ''));
+
+            // Who & when
+            const who = el('div');
+            who.appendChild(el('h3', null, a.name || o.email));
+            who.appendChild(el('div', 'order-sub', `#${o.invoiceNumber} · ${new Date(o.completedAt || o.createdAt).toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}`));
+            const contact = el('div', 'order-sub');
+            const mail = el('a', null, o.email);
+            mail.href = 'mailto:' + o.email;
+            mail.style.color = 'inherit';
+            contact.appendChild(mail);
+            who.appendChild(contact);
+            if (a.phone) {
+                const tel = el('a', 'order-sub', a.phone);
+                tel.href = 'tel:' + a.phone.replace(/[^\d+]/g, '');
+                tel.style.display = 'block';
+                who.appendChild(tel);
+            }
+            const badges = el('div', 'badges');
+            badges.appendChild(badge(o.status, o.status === 'Shipped' || o.status === 'Delivered' ? 'mint' : o.status === 'Cancelled' ? 'red' : 'dark'));
+            if (o.paymentStatus !== 'Paid') badges.appendChild(badge('Payment: ' + o.paymentStatus, 'amber'));
+            o.discounts.forEach(d => badges.appendChild(badge(d)));
+            who.appendChild(badges);
+            card.appendChild(who);
+
+            // Items
+            const items = el('div');
+            items.appendChild(el('div', 'order-label', 'Items'));
+            const ul = el('ul', 'order-items');
+            o.items.forEach(i => ul.appendChild(el('li', null, `${i.quantity} × ${i.name}`)));
+            items.appendChild(ul);
+            items.appendChild(el('div', 'order-total', money(o.total)));
+            card.appendChild(items);
+
+            // Delivery
+            const delivery = el('div');
+            delivery.appendChild(el('div', 'order-label', o.isPickup ? 'Clinic pickup' : (o.shippingMethod || 'Shipping')));
+            if (o.isPickup) {
+                delivery.appendChild(el('div', 'order-address', 'Customer picks up at the clinic.'));
+            } else {
+                const lines = [
+                    a.name,
+                    a.company,
+                    [a.address1, a.address2].filter(Boolean).join(', '),
+                    `${a.city}${a.city ? ', ' : ''}${a.province} ${a.postalCode}`.trim(),
+                    a.country !== 'US' ? a.country : ''
+                ].filter(Boolean);
+                delivery.appendChild(el('div', 'order-address', lines.join('\n')));
+            }
+            if (o.trackingNumber) {
+                const t = el('div', 'order-tracking');
+                t.appendChild(document.createTextNode('Tracking: '));
+                if (o.trackingUrl) {
+                    const link = el('a', null, o.trackingNumber);
+                    link.href = o.trackingUrl;
+                    link.target = '_blank';
+                    link.rel = 'noopener';
+                    t.appendChild(link);
+                } else {
+                    t.appendChild(document.createTextNode(o.trackingNumber));
+                }
+                delivery.appendChild(t);
+            }
+            card.appendChild(delivery);
+
+            // Actions
+            const actions = el('div', 'order-actions');
+            if (isOpen(o)) {
+                const primary = el('button', 'btn btn-primary', o.isPickup ? 'Picked up' : 'Mark shipped');
+                primary.type = 'button';
+                primary.addEventListener('click', () => o.isPickup ? markPickedUp(o, primary) : openShipModal(o));
+                actions.appendChild(primary);
+            }
+            if (o.status === 'Shipped') {
+                const delivered = el('button', 'btn btn-secondary', 'Mark delivered');
+                delivered.type = 'button';
+                delivered.addEventListener('click', () => updateOrderStatus(o, 'Delivered', {}, delivered));
+                actions.appendChild(delivered);
+            }
+            const view = el('a', 'btn btn-secondary', 'Open in Snipcart');
+            view.href = 'https://app.snipcart.com/dashboard/orders/' + encodeURIComponent(o.token);
+            view.target = '_blank';
+            view.rel = 'noopener';
+            actions.appendChild(view);
+            card.appendChild(actions);
+
+            return card;
+        }
+
+        async function updateOrderStatus(o, status, extra, button) {
+            if (button) button.disabled = true;
+            try {
+                const data = await ordersRequest({ action: 'update-status', orderToken: o.token, status, ...extra });
+                const i = orders.findIndex(x => x.token === o.token);
+                if (i !== -1) orders[i] = data.order;
+                renderOrders();
+                showToast(`Order #${o.invoiceNumber} marked ${status.toLowerCase()}`);
+                return true;
+            } catch (e) {
+                showToast(e.message, 'error');
+                if (button) button.disabled = false;
+                return false;
+            }
+        }
+
+        function markPickedUp(o, button) {
+            // Snipcart has no "picked up" status; Delivered is the closest.
+            updateOrderStatus(o, 'Delivered', {}, button);
+        }
+
+        function openShipModal(o) {
+            shippingOrderToken = o.token;
+            document.getElementById('shipInvoice').textContent = '#' + o.invoiceNumber;
+            document.getElementById('shipName').textContent = (o.shippingAddress && o.shippingAddress.name) || o.email;
+            document.getElementById('shipTracking').value = '';
+            document.getElementById('shipTrackingUrl').value = '';
+            document.getElementById('shipModal').classList.add('show');
+            document.getElementById('shipTracking').focus();
+        }
+
+        function closeShipModal() {
+            document.getElementById('shipModal').classList.remove('show');
+            shippingOrderToken = null;
+        }
+
+        async function confirmShip() {
+            const o = orders.find(x => x.token === shippingOrderToken);
+            if (!o) return closeShipModal();
+            const btn = document.getElementById('shipConfirm');
+            btn.disabled = true;
+            const ok = await updateOrderStatus(o, 'Shipped', {
+                trackingNumber: document.getElementById('shipTracking').value,
+                trackingUrl: document.getElementById('shipTrackingUrl').value
+            });
+            btn.disabled = false;
+            if (ok) closeShipModal();
         }
 
         // Tabs
