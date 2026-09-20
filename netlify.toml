@@ -22,6 +22,11 @@
   to = "/.netlify/functions/admin-auth"
   status = 200
 
+[[redirects]]
+  from = "/api/snipcart-orders"
+  to = "/.netlify/functions/snipcart-orders"
+  status = 200
+
 # Pretty URLs for blog articles (optional - for cleaner URLs)
 [[redirects]]
   from = "/blog/:slug"
