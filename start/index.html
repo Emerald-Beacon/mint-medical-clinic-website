@@ -493,7 +493,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     </fieldset>
 
     <div class="co-promo">
-      <span class="co-promo-text">Use promo code <strong>MINT20</strong> at checkout for <strong>20% off</strong>.</span>
+      <span class="co-promo-text">Use promo code <strong data-promo-code>MINT20</strong> at checkout for <strong data-promo-pct>20% off</strong>.</span>
       <button type="button" class="co-promo-code" id="coPromo" aria-label="Copy promo code MINT20">MINT20</button>
     </div>
 
@@ -529,6 +529,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
 </script>
 <script src="../js/quiz-mens-health.js?v=20260916d"></script>
 <script src="../js/quiz-engine.js?v=20260916d"></script>
+<script src="../js/exit-offer.js?v=20260923"></script>
 <script>
   (function () {
     var cfg = window.MensHealthQuiz;
@@ -856,6 +857,13 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
               }).catch(function () { /* prefill is a nicety, never a blocker */ });
             }
           }).then(function () {
+            // Someone who claimed the exit offer shouldn't have to find the
+            // discount field. If Snipcart refuses the code, they can still type it.
+            var exitCode = window.MintExitOffer && MintExitOffer.claimedCode();
+            if (exitCode) {
+              return Snipcart.api.cart.applyDiscount(exitCode).catch(function () {});
+            }
+          }).then(function () {
             Snipcart.api.theme.cart.open();
             if (window.fbq) fbq('track', 'InitiateCheckout', { value: pack.price, currency: 'USD', content_ids: [pack.id] });
             if (window.gtag) gtag('event', 'quiz_checkout_opened', { value: pack.price, currency: 'USD' });
@@ -874,14 +882,26 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     });
 
     // Tap the code to copy it, so it can be pasted into Snipcart's discount field.
+    // A visitor who claimed the exit offer sees that code here instead of MINT20.
     var coPromo = document.getElementById('coPromo');
+    var promoCode = 'MINT20';
+    function applyPromo(code, pct) {
+      promoCode = code;
+      coPromo.textContent = code;
+      coPromo.setAttribute('aria-label', 'Copy promo code ' + code);
+      root.querySelector('[data-promo-code]').textContent = code;
+      root.querySelector('[data-promo-pct]').textContent = pct + '% off';
+    }
+    if (window.MintExitOffer && MintExitOffer.claimedCode()) {
+      applyPromo(MintExitOffer.CODE, MintExitOffer.PERCENT);
+    }
     coPromo.addEventListener('click', function () {
       function done() {
         coPromo.textContent = 'Copied';
-        setTimeout(function () { coPromo.textContent = 'MINT20'; }, 1600);
+        setTimeout(function () { coPromo.textContent = promoCode; }, 1600);
       }
       try {
-        navigator.clipboard.writeText('MINT20').then(done, function () {});
+        navigator.clipboard.writeText(promoCode).then(done, function () {});
       } catch (e) { /* no clipboard access; the code is visible to type */ }
       if (window.gtag) gtag('event', 'quiz_promo_copied');
     });
@@ -889,6 +909,24 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     document.getElementById('coBook').addEventListener('click', function () {
       if (window.gtag) gtag('event', 'quiz_booking_opened');
     });
+
+    // Exit offer. Not on the waitlist (they can't buy), not mid-matching
+    // (it would talk over the one animated moment), and not over the open
+    // Snipcart panel, which owns #/cart and #/checkout.
+    if (window.MintExitOffer) {
+      MintExitOffer.init({
+        page: 'quiz-mens-health',
+        ctaLabel: 'Claim 30% off and continue',
+        canShow: function () {
+          var id = QuizEngine.getState().stepId;
+          if (id === 'waitlist' || id === 'matching') return false;
+          return !/^#\/(cart|checkout|order)/.test(window.location.hash);
+        },
+        onClaim: function (code) {
+          applyPromo(code, MintExitOffer.PERCENT);
+        }
+      });
+    }
 
     QuizEngine.mount(root, cfg, {
       onStep: function (stepId) {
