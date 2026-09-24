@@ -30,7 +30,7 @@
       name: 'Mint Mints™',
       tagline:
         'A prescription troche that dissolves under your tongue — no pill to swallow, no waiting an hour.',
-      image: '../Products/MN-MINTMINTS-FRONT@3x.png',
+      image: '../images/mint-mints-dark.webp',
       chips: [
         'Dissolves under the tongue',
         'Faster than a swallowed pill',

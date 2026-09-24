@@ -391,10 +391,9 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
       #000 0%, rgba(0,0,0,0.85) 12%, rgba(0,0,0,0) 30%,
       rgba(0,0,0,0) 70%, rgba(0,0,0,0.85) 88%, #000 100%);
   }
-  /* The Mint Mints packshot ships on an opaque white background, so rather than
-     fighting it the frame becomes a deliberate white product tile. */
-  .product-media--mints { background: var(--cream); }
-  .product-media--mints img { object-fit: contain; padding: 26px; background: var(--cream); }
+  /* The Mint Mints hero is shot on near-black with a mint rim light, the same
+     language as the Opti-Mint artwork, so both cards sit in the band alike. */
+  .product-media--mints img { object-position: 50% 45%; }
   .product-card > *:not(.product-media) { padding-left: 30px; padding-right: 30px; }
   /* A hand-drawn-feeling aside pointing at the Mints packshot. The joke is
      the point: of course the mints from Mint Medical are mint flavored. */
@@ -402,7 +401,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
     position: absolute; right: 18px; bottom: 16px;
     display: flex; align-items: center; gap: 6px;
     font-size: 13px; font-weight: 600; font-style: italic;
-    color: var(--mint-deep); transform: rotate(-4deg);
+    color: var(--mint); transform: rotate(-4deg);
   }
   .flavor-note svg { flex-shrink: 0; }
   .tm { font-size: 0.55em; vertical-align: super; font-weight: 500; margin-left: 1px; }
@@ -638,8 +637,8 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"></no
       <div class="product-card">
         <div class="product-media product-media--mints">
           <picture>
-            <source srcset="../Products/MN-MINTMINTS-FRONT@3x.webp" type="image/webp">
-            <img src="../Products/MN-MINTMINTS-FRONT@3x.png" alt="Mint Mints™ — sublingual lozenges for ED">
+            <source srcset="../images/mint-mints-dark.webp" type="image/webp">
+            <img src="../images/mint-mints-dark.jpg" alt="Mint Mints™ — sublingual lozenges for ED">
           </picture>
           <span class="flavor-note">
             <svg width="26" height="18" viewBox="0 0 26 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M25 14C17 16 8 12 3 4"/><path d="M2 10 3 4l6 1"/></svg>
