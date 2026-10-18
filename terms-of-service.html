@@ -27,10 +27,12 @@
     <link rel="stylesheet" href="css/style.css?v=20260613">
 
     <style>
+        /* Legal pages have no promo bar: pin the header to the top and clear it. */
+        .header, .header[style] { top: 0 !important; }
         .legal-content {
             max-width: 900px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: calc(var(--header-height, 80px) + 3rem) 2rem 4rem;
         }
         .legal-content h1 {
             color: #1a1a1a;
@@ -95,15 +97,7 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 </head>
 <body>
-    <!-- Promo Banner -->
-    <a href="https://new-consultation.zohobookings.com/#/mintmedicalclinic" class="promo-banner" target="_blank" rel="noopener">
-        <span class="promo-banner-text">
-            <strong>Click Here to Claim Your FREE Consultation and Intimacy Kit for BOTH of you!</strong>
-            New Patients Also Will Receive A Free 5 Night Stay in a Luxury Hawaiian Hotel!
-        </span>
-        <span class="promo-banner-arrow">→</span>
-    </a>
-
+    
     <!-- Header (injected by header.js) -->
     <header class="header"></header>
 
@@ -222,7 +216,6 @@ src="https://www.facebook.com/tr?id=985745890592891&ev=PageView&noscript=1"
                             <li><a href="/services">Services</a></li>
                             <li><a href="/services/telehealth-ed">Telehealth</a></li>
                             <li><a href="/locations/">Locations</a></li>
-                            <li><a href="/affiliate">Affiliate Program</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
