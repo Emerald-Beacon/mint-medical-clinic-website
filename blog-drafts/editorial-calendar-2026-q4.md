@@ -87,7 +87,7 @@ The three `…-2026` pricing titles should be retitled to **2027** during their 
 | Date | Day | Type | Cluster | Title / Refresh target | Slug | Template | Primary Keyword | GEO / AI-query target | Status |
 |------|-----|------|---------|------------------------|------|----------|-----------------|------------------------|--------|
 | Oct 20 | Tue | **Refresh** | A | ↻ `does-shockwave-therapy-for-ed-work` | `does-shockwave-therapy-for-ed-work` | — | does shockwave therapy for ED work | Refresh with newest meta-analyses | ♻️ Refreshed 2026-10-20 |
-| Oct 22 | Thu | New | C | Semaglutide Plateau: Why Weight Loss Stalls and What to Do About It | `semaglutide-plateau-why-weight-loss-stalls` | how-to | semaglutide plateau | "I stopped losing weight on semaglutide — what now?" | Idea |
+| Oct 22 | Thu | New | C | Semaglutide Plateau: Why Weight Loss Stalls and What to Do About It | `semaglutide-plateau-why-weight-loss-stalls` | how-to | semaglutide plateau | "I stopped losing weight on semaglutide — what now?" | ✅ Published 2026-10-22 |
 | Oct 27 | Tue | New | E | PRP for Sexual Wellness: What the P-Shot and O-Shot Can and Can't Do | `prp-p-shot-o-shot-utah-what-to-know` | faq-knowledge | p-shot o-shot Utah | "Does the P-Shot actually work, and what does it cost?" | Idea |
 | Oct 29 | Thu | New | B | Estrogen, Progesterone & Testosterone: A Woman's Guide to Which Hormones You Need | `womens-hormone-panel-estrogen-progesterone-testosterone` | how-to | women's hormone panel | "Which hormones should a woman get tested?" | Idea |
 | Nov 3 | Tue | New | E | Open Enrollment 2027: Using HSA & FSA Dollars for Weight Loss and Hormone Care | `hsa-fsa-weight-loss-hormone-care-2027` | how-to | HSA FSA weight loss | "Can I use my HSA or FSA for GLP-1 or TRT?" | Idea |
